@@ -1,3 +1,4 @@
+# autogenerates git ignore template for python projects
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

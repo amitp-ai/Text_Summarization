@@ -1,4 +1,5 @@
-## Three dataset explored for Text Summarization
+## Capstone Project on Text Summarization.
+I explored the following different datasets for this task.
 
     1. CNN/Daily Mail
         - For Pytorch, can get the dataset easily from <https://huggingface.co/datasets/cnn_dailymail>

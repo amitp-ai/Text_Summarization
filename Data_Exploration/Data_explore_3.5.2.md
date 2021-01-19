@@ -1,12 +1,7 @@
 ## Three dataset explored
-<ul>
-    a
-    b
-    c
-    
-</ul>
 
 ### Text Summarization
+    <www.cnn.com>
     1. CNN/Daily Mail
         - Can get the dataset easily from <https://huggingface.co/datasets/cnn_dailymail>
         - For Tensorflow, can also easily get the dataset from <https://www.tensorflow.org/datasets/catalog/cnn_dailymail>

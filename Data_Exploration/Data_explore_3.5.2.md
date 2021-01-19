@@ -1,10 +1,14 @@
 ## Three dataset explored
-> aa
->> bb
+<ul>
+    a
+    b
+    c
+    
+</ul>
 
 ### Text Summarization
     1. CNN/Daily Mail
-        - Can get the dataset easily from [https://huggingface.co/datasets/cnn_dailymail][website]
+        - Can get the dataset easily from <https://huggingface.co/datasets/cnn_dailymail>
         - For Tensorflow, can also easily get the dataset from <https://www.tensorflow.org/datasets/catalog/cnn_dailymail>
         - The source that both Huggingface and Tensorflow uses (as cited in their documentation) is:
         a. https://github.com/abisee/cnn-dailymail (This is the best place to start/use as has links/instructions to get processed and unprocessed data)

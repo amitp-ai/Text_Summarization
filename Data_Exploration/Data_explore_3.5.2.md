@@ -23,6 +23,6 @@
         a. https://www.tensorflow.org/datasets/catalog/reddit (this is very large ~18GB!)
     
 ### Summary
-    The CNN dataset has 92,579 examples and is 392.367704MB in size.
-    The Daily Mail dataset has 219,506 examples and is 979.205688MB in size.
-    The Gigaword dataset has 3,993,608 examples and is 939.402629MB in size.
+    The CNN dataset has 92,579 examples and is 392.3MB in size.
+    The Daily Mail dataset has 219,506 examples and is 979.2MB in size.
+    The Gigaword dataset has 3,993,608 examples and is 939.4MB in size.

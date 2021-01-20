@@ -1,5 +1,5 @@
 ## Capstone Project on Text Summarization.
-I explored the following different datasets for this task.
+I explored the following different datasets for this task (this submission is for unit 3.5.2)
 
     1. CNN/Daily Mail
         - For Pytorch, can get the dataset easily from <https://huggingface.co/datasets/cnn_dailymail>
@@ -24,6 +24,11 @@ I explored the following different datasets for this task.
         a. https://www.tensorflow.org/datasets/catalog/reddit (this is very large ~18GB!)
     
 ### Summary
-    The CNN dataset has 92,579 examples and is 392.3MB in size.
-    The Daily Mail dataset has 219,506 examples and is 979.2MB in size.
-    The Gigaword dataset has 3,993,608 examples and is 939.4MB in size.
+    The CNN dataset has 92579 examples and is 392.4MB in size.
+    The CNN dataset md5 checksum is: 85ac23a1926a831e8f46a6b8eaf57263
+
+    The Daily Mail dataset has 219506 examples and is 979.2MB in size.
+    The Daily Mail dataset md5 checksum is: f9c5f565e8abe86c38bfa4ae8f96fd72
+
+    The Gigaword dataset has 3993608 examples and is 939.4MB in size.
+    The Gigaword dataset md5 checksum is: 064e658dc0d42e0f721d03287a7a9913

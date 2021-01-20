@@ -18,10 +18,10 @@ I explored the following different datasets for text summarization.
   1. Get data from <https://github.com/harvardnlp/sent-summary> (Tensorflow data (b) links here too)
   2. For tensorflow from <https://www.tensorflow.org/datasets/catalog/gigaword>
 
-3. Opinions dataset (this is too small though, under 20MB)
+* Opinions dataset (this is too small though, under 20MB)
 
-4. Reddit data
-    a. https://www.tensorflow.org/datasets/catalog/reddit (this is very large ~18GB!)
+* Reddit data
+  1. https://www.tensorflow.org/datasets/catalog/reddit (this is very large ~18GB!)
 
 ### Summary
 The CNN dataset has 92579 examples and is 392.4MB in size.

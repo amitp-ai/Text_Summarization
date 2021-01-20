@@ -1,22 +1,22 @@
 ## Capstone Project on Text Summarization.
-I explored the following different datasets.
+I explored the following different datasets for text summarization.
 
-1. CNN/Daily Mail
+* CNN/Daily Mail
     * For Pytorch, can get the dataset easily from <https://huggingface.co/datasets/cnn_dailymail>
     * For Tensorflow, can also easily get the dataset from <https://www.tensorflow.org/datasets/catalog/cnn_dailymail>
     * But for the sake of experience, I decided to collect the data myself from the source that both Huggingface and Tensorflow uses (as cited in their documentation).
-    * In particular, I collected data from (b) below
-        * https://github.com/abisee/cnn-dailymail (This is the best place to start/use as has links/instructions to get processed and unprocessed data)
-        * https://cs.nyu.edu/~kcho/DMQA/ (original unprocessed dataset. Stories has the data for text summarization. Queestions is used for QA task)
+    * In particular, I collected data from (2) below
+        1. https://github.com/abisee/cnn-dailymail (This is the best place to start/use as has links/instructions to get processed and unprocessed data)
+        2. https://cs.nyu.edu/~kcho/DMQA/ (original unprocessed dataset. Stories has the data for text summarization. Queestions is used for QA task)
            https://github.com/deepmind/rc-data (the script used to generate the data)
-        * https://github.com/becxer/cnn-dailymail/ (suggested by (a) for unprocessed data and how to process it -- it gets it's data from (b))
-        * https://github.com/JafferWilson/Process-Data-of-CNN-DailyMail (suggested by (a) for processed data. Processed data in binary format for Tensorflow. It also has unprocessed data (probably copied from (b))
-        * This actuallly has the CNN/DM dataset grouped by train/val/test sets <https://github.com/harvardnlp/sent-summary>. Maybe use this instead as its much better than (a/b)?
+        3. https://github.com/becxer/cnn-dailymail/ (suggested by (1) for unprocessed data and how to process it -- it gets it's data from (2))
+        4. https://github.com/JafferWilson/Process-Data-of-CNN-DailyMail (suggested by (1) for processed data. Processed data in binary format for Tensorflow. It also has unprocessed data (probably copied from (2))
+        5. This actually has the CNN/DM dataset grouped by train/val/test sets <https://github.com/harvardnlp/sent-summary>. Maybe use this instead as its much better than (1/2)?
 
-2. Gigaword dataset
-    - I collected data from (a) below    
-    a. Get data from <https://github.com/harvardnlp/sent-summary> (Tensorflow data (b) links here too)
-    b. For tensorflow from <https://www.tensorflow.org/datasets/catalog/gigaword>
+* Gigaword dataset
+  I collected data from (a) below    
+  1. Get data from <https://github.com/harvardnlp/sent-summary> (Tensorflow data (b) links here too)
+  2. For tensorflow from <https://www.tensorflow.org/datasets/catalog/gigaword>
 
 3. Opinions dataset (this is too small though, under 20MB)
 

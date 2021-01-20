@@ -14,9 +14,8 @@ I explored the following different datasets for text summarization.
         5. This actually has the CNN/DM dataset grouped by train/val/test sets <https://github.com/harvardnlp/sent-summary>. Maybe use this instead as it requires less processing work than (a/b)
 
 * **Gigaword dataset**  
-  I collected data from (i) below    
-  1. Get data from <https://github.com/harvardnlp/sent-summary> (Tensorflow data (ii) links here too)
-  2. For tensorflow from <https://www.tensorflow.org/datasets/catalog/gigaword>
+  1. Collected data from <https://github.com/harvardnlp/sent-summary> (Tensorflow data (ii) links here too)
+  2. For tensorflow, can also get this dataset from <https://www.tensorflow.org/datasets/catalog/gigaword>
 
 * **Opinions dataset** (this is too small though, under 20MB. So not collected/used.)
 

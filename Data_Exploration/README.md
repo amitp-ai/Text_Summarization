@@ -1,7 +1,7 @@
 ## Data Collection for Text Summarization (Capstone Project)
 I explored the following different datasets for text summarization.
 
-### Data Collection
+### 1. Data Collection
 * **CNN/Daily Mail**
     * For Pytorch, can get the dataset easily from <https://huggingface.co/datasets/cnn_dailymail>
     * For Tensorflow, can also easily get the dataset from <https://www.tensorflow.org/datasets/catalog/cnn_dailymail>
@@ -23,7 +23,7 @@ I explored the following different datasets for text summarization.
 * **Reddit dataset**
   1. https://www.tensorflow.org/datasets/catalog/reddit (this is very large ~18GB!)
 
-### Examples
+### 2. Examples
 
 ---
 #### **CNN/Daily Mail**
@@ -35,7 +35,7 @@ Case involves girl living with mother in Scotland; husband is in U.S. Custody ca
 
 ---
 
-### Summary
+### 3. Summary
 1. The CNN dataset has 92579 examples and is 392.4MB in size.  
    The CNN dataset md5 checksum (for *.tgz) is: 85ac23a1926a831e8f46a6b8eaf57263
 

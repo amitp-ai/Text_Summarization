@@ -1,4 +1,4 @@
-## Capstone Project on Text Summarization.
+## Data Collection for Text Summarization (Capstone Project).
 I explored the following different datasets for text summarization.
 
 * **CNN/Daily Mail**
@@ -24,11 +24,11 @@ I explored the following different datasets for text summarization.
   1. https://www.tensorflow.org/datasets/catalog/reddit (this is very large ~18GB!)
 
 ### Summary
-The CNN dataset has 92579 examples and is 392.4MB in size.
-The CNN dataset md5 checksum (for *.tgz) is: 85ac23a1926a831e8f46a6b8eaf57263
+1. The CNN dataset has 92579 examples and is 392.4MB in size.
+   The CNN dataset md5 checksum (for *.tgz) is: 85ac23a1926a831e8f46a6b8eaf57263
 
-The Daily Mail dataset has 219506 examples and is 979.2MB in size.
-The Daily Mail dataset md5 checksum (for *.tgz) is: f9c5f565e8abe86c38bfa4ae8f96fd72
+2. The Daily Mail dataset has 219506 examples and is 979.2MB in size.
+   The Daily Mail dataset md5 checksum (for *.tgz) is: f9c5f565e8abe86c38bfa4ae8f96fd72
 
-The Gigaword dataset has 3993608 examples and is 939.4MB in size.
-The Gigaword dataset md5 checksum (for *.tar.gz) is: 064e658dc0d42e0f721d03287a7a9913
+3. The Gigaword dataset has 3993608 examples and is 939.4MB in size.
+   The Gigaword dataset md5 checksum (for *.tar.gz) is: 064e658dc0d42e0f721d03287a7a9913

@@ -1,5 +1,6 @@
 # Data Collection for Text Summarization (Capstone Project)
 I explored the following different datasets for text summarization.
+Use the accompanying Python script (Data_Collection_Script.py) to download the below datasets. 
 
 ## 1. Data Collection
 * **Arxiv and Pubmed Scientific Papers**

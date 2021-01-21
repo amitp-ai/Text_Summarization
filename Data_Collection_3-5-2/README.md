@@ -1,20 +1,28 @@
 # Data Collection for Text Summarization (Capstone Project)
-I explored the following different datasets for text summarization.
-Use the accompanying Python script (Data_Collection_Script.py) to download the below datasets. 
+I explored various different datasets for text summarization.
+Use the accompanying Python script (Data_Collection_Script.py) to download the below datasets.
 
-## 1. Data Collection
+## 1. The Main Dataset
+* **Big Patent**
+    * This dataset is created using the patents filed with the USPTO.
+    * The article is the patent description and the abstract is the target summary
+    * There are 1.3M examples in this dataset, with average article length of 3500 words and average length of the summary of 116 words as shown in [BigPatent](https://arxiv.org/pdf/1906.03741.pdf)
+    * For Tensorflow, use: <https://www.tensorflow.org/datasets/catalog/big_patent>
+    * Dataset can be downloaded from <https://evasharma.github.io/bigpatent/>
+
+* **Summary**
+    * The BigPatent dataset has xx examples and is xxMB in size. It tends to have long articles.  
+    * The BigPatent dataset's md5 checksum (for *.tar.gz) is: xx
+    * See below for an example
+
+
+## 2. Other Dataset Collected/Explored
 * **Arxiv and Pubmed Scientific Papers**
     * The article is the body of the paper and abstract is the target summary
     * There are about 215k examples from Arxiv and 133k examples from Pubmed
     * This dataset is better than the new articles' dataset as explained in [BigPatent](https://arxiv.org/pdf/1906.03741.pdf)
     * For Tensorflow, use: <https://www.tensorflow.org/datasets/catalog/scientific_papers>
     * Dataset can be downloaded from <https://github.com/armancohan/long-summarization>
-
-* **Big Patent**
-    * The article is the patent description and the abstract is the target summary
-    * There are 1.3M examples in this dataset, with average article length of 3500 words and average length of the summary of 116 words as shown in [BigPatent](https://arxiv.org/pdf/1906.03741.pdf)
-    * For Tensorflow, use: <https://www.tensorflow.org/datasets/catalog/big_patent>
-    * Dataset can be downloaded from <https://evasharma.github.io/bigpatent/>
     
 * **CNN/Daily Mail**
     * For Pytorch, can get the dataset easily from <https://huggingface.co/datasets/cnn_dailymail>
@@ -37,7 +45,7 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
   1. https://www.tensorflow.org/datasets/catalog/reddit (this is very large ~18GB! So not collected/used.)
 
 
-## 2. Dataset Summary
+### Summary for Other Dataset Explored
 1. The CNN dataset has 92579 examples and is 392.4MB in size. It tends to have long articles.  
    The CNN dataset md5 checksum (for *.tgz) is: 85ac23a1926a831e8f46a6b8eaf57263
 

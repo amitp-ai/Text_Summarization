@@ -5,7 +5,7 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
 ## 1. The Main Dataset
 * **Big Patent**
     * This dataset is created using the patents filed with the USPTO.
-    * This is a much better dataset for text summarization because of it's large size and because target summary contains contains information that is uniformly distirbuted across the article. Refer to [BigPatent](https://arxiv.org/pdf/1906.03741.pdf) for details.
+    * This is a better dataset for text summarization because of it's large size and because target summary contains information that is uniformly distirbuted across the article. So the trained model cannot just cheat, but instead it has to "understand" the article. Refer to [BigPatent](https://arxiv.org/pdf/1906.03741.pdf) for details.
     * The article is the patent description and the abstract is the target summary
     * There are 1.3M examples in this dataset, with average article length of 3500 words and average length of the summary of 116 words as shown in [BigPatent](https://arxiv.org/pdf/1906.03741.pdf)
     * For Tensorflow, use: <https://www.tensorflow.org/datasets/catalog/big_patent>

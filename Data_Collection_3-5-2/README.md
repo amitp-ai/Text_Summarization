@@ -12,8 +12,8 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
     * Dataset can be downloaded from <https://evasharma.github.io/bigpatent/>
 
 * **Summary**
-    * The BigPatent dataset has xx examples and is xxMB in size. It tends to have long articles.  
-    * The BigPatent dataset's md5 checksum (for *.tar.gz) is: xx
+    * The BigPatent dataset has 1.2M training examples and is 26.2GB in size. It tends to have long articles.  
+    * The BigPatent dataset's md5 checksum (for *.tar.gz) is: 1f1c264c29e80c111b3a6a28e81cabbc
     * See below for an example
 
 

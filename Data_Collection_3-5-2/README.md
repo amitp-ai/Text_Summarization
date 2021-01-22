@@ -55,7 +55,13 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
 
 3. The Gigaword dataset has 3993608 examples and is 939.4MB in size. It tends to have short articles.  
    The Gigaword dataset md5 checksum (for *.tar.gz) is: 064e658dc0d42e0f721d03287a7a9913
-   
+
+4. The Arxiv dataset has x examples and is 15150.2MB in size.  
+   The Arxiv dataset md5 checksum (for *.zip) is: 6242aaf5cfcc7814473eee8b779c1b9f
+
+5. The Pubmed dataset has x examples and is 4940.0MB in size.  
+   The Pubmed dataset md5 checksum (for *.zip) is: 3ae396f2b690253e7379a038b410300c
+
 ## 3. Examples
 
 ### **Big Patent**

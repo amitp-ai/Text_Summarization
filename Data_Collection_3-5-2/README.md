@@ -17,7 +17,7 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
     * See below for an example
 
 
-## 2. Other Dataset Collected/Explored
+## 2. Other Datasets Collected/Explored
 * **Arxiv and Pubmed Scientific Papers**
     * The article is the body of the paper and abstract is the target summary
     * There are about 215k examples from Arxiv and 133k examples from Pubmed
@@ -46,7 +46,7 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
   1. https://www.tensorflow.org/datasets/catalog/reddit (this is a large dataset: ~18GB!)
 
 
-### Summary for Other Dataset Explored
+### Summary for Other Datasets Explored
 1. The CNN dataset has 92579 examples and is 392.4MB in size. It tends to have long articles.  
    The CNN dataset md5 checksum (for *.tgz) is: 85ac23a1926a831e8f46a6b8eaf57263
 

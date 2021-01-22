@@ -4,7 +4,8 @@ import subprocess
 import hashlib
 
 '''
-Use this script to download various different TextSummarization datasets
+Use this script to download various different Text Summarization datasets such as Big Patent, Arxiv, Pubmed, CNN, Daily Mail, and Gigaword
+
 Assumes Linux/Bash OS for tgz extraction (using subprocess.run())
 '''
 

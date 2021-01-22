@@ -145,7 +145,7 @@ if __name__ == '__main__':
     subprocess.run(args=['rm', '-f', destination])
     subprocess.run(args=['rm', '-rf', './__MACOSX'])
 
-    print('Geting Arxiv Pubmed...')
+    print('Geting Pubmed Data...')
     url = 'https://archive.org/download/armancohan-long-summarization-paper-code/pubmed-dataset.zip'
     destination = './pubmed-dataset.zip'
     download_file(destination, url=url)

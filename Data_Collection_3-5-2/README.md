@@ -47,19 +47,19 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
 
 
 ### Summary for Other Datasets Explored
-1. The CNN dataset has 92579 examples and is 392.4MB in size. It tends to have long articles.  
+1. The CNN dataset has 92,579 examples and is 392.4MB in size. It tends to have long articles.  
    The CNN dataset md5 checksum (for *.tgz) is: 85ac23a1926a831e8f46a6b8eaf57263
 
-2. The Daily Mail dataset has 219506 examples and is 979.2MB in size. It tends to have moderately long articles.  
+2. The Daily Mail dataset has 219,506 examples and is 979.2MB in size. It tends to have moderately long articles.  
    The Daily Mail dataset md5 checksum (for *.tgz) is: f9c5f565e8abe86c38bfa4ae8f96fd72
 
-3. The Gigaword dataset has 3993608 examples and is 939.4MB in size. It tends to have short articles.  
+3. The Gigaword dataset has 3,993,608 examples and is 939.4MB in size. It tends to have short articles.  
    The Gigaword dataset md5 checksum (for *.tar.gz) is: 064e658dc0d42e0f721d03287a7a9913
 
-4. The Arxiv dataset has x examples and is 15150.2MB in size.  
+4. The Arxiv dataset has 203,037 examples and is 16GB in size.  
    The Arxiv dataset md5 checksum (for *.zip) is: 6242aaf5cfcc7814473eee8b779c1b9f
 
-5. The Pubmed dataset has x examples and is 4940.0MB in size.  
+5. The Pubmed dataset has 119,924 examples and is 4.9GB in size.  
    The Pubmed dataset md5 checksum (for *.zip) is: 3ae396f2b690253e7379a038b410300c
 
 ## 3. Examples

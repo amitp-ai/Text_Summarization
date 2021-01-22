@@ -43,7 +43,7 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
 * **Opinions dataset** (this is too small though, under 20MB. So not collected/used.)
 
 * **Reddit dataset**
-  1. https://www.tensorflow.org/datasets/catalog/reddit (this is very large ~18GB! So not collected/used.)
+  1. https://www.tensorflow.org/datasets/catalog/reddit (this is a large dataset: ~18GB!)
 
 
 ### Summary for Other Dataset Explored

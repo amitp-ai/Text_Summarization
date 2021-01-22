@@ -4,23 +4,9 @@ import subprocess
 import hashlib
 
 '''
+Use this script to download various different TextSummarization datasets
 Assumes Linux/Bash OS for tgz extraction (using subprocess.run())
-
-The CNN dataset has 92579 examples and is 392.4MB in size.
-The CNN dataset md5 checksum (for *.tgz) is: 85ac23a1926a831e8f46a6b8eaf57263
-
-The Daily Mail dataset has 219506 examples and is 979.2MB in size.
-The Daily Mail dataset md5 checksum (for *.tgz) is: f9c5f565e8abe86c38bfa4ae8f96fd72
-
-The Gigaword dataset has 3993608 examples and is 939.4MB in size.
-The Gigaword dataset md5 checksum (for *.tar.gz) is: 064e658dc0d42e0f721d03287a7a9913
-
-The Arxiv dataset has 4 examples and is 15150.2MB in size.
-The Arxiv dataset md5 checksum (for *.zip) is: 6242aaf5cfcc7814473eee8b779c1b9f
-
-The Pubmed dataset has 4 examples and is 4940.0MB in size.
-The Pubmed dataset md5 checksum (for *.zip) is: 3ae396f2b690253e7379a038b410300c
-'''   
+'''
 
 def download_file(destination, id_=None, url=None):
 #This funciton is copied from stack overflow <https://stackoverflow.com/questions/25010369/wget-curl-large-file-from-google-drive>

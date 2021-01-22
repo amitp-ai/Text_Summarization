@@ -20,7 +20,6 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
 ## 2. Other Datasets Collected/Explored
 * **Arxiv and Pubmed Scientific Papers**
     * The article is the body of the paper and abstract is the target summary
-    * There are about 215k examples from Arxiv and 133k examples from Pubmed
     * This dataset is better than the new articles' dataset as explained in [BigPatent](https://arxiv.org/pdf/1906.03741.pdf)
     * For Tensorflow, use: <https://www.tensorflow.org/datasets/catalog/scientific_papers>
     * Dataset can be downloaded from <https://github.com/armancohan/long-summarization>

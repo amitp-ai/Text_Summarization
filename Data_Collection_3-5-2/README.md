@@ -9,7 +9,7 @@ Use the accompanying Python script (Data_Collection_Script.py) to download the b
     * The article is the patent description and the abstract is the target summary
     * In this dataset, the average article length is 3500 words and average abstract length is 116 words as shown in [BigPatent](https://arxiv.org/pdf/1906.03741.pdf)
     * For Tensorflow, use: <https://www.tensorflow.org/datasets/catalog/big_patent>
-    * Dataset can be downloaded from <https://evasharma.github.io/bigpatent/>
+    * For other frameworks, the dataset can be downloaded from <https://evasharma.github.io/bigpatent/>
 
 * **Summary**
     * The BigPatent dataset has 1.2M training examples and is 26.2GB in size. It tends to have long articles.  

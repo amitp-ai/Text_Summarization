@@ -1,1 +1,1 @@
-# UCSD_MLE
+# UCSD_MLE: Capstone Project on Text Summarization Using Deep Learing

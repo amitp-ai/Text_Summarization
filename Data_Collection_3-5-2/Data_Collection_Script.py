@@ -87,10 +87,8 @@ def get_checksum(file_name, block_size=128*64):
     md5_returned = md5.hexdigest()
     return md5_returned
 
-if __name__ == '__main__':
-    
-    # exit() #to skip the below code
-    
+
+def get_big_patent():
     #get BigPatent
     print('Geting BigPatent Data...')
     id_ = '1J3mucMFTWrgAYa3LuBZoLRR3CzzYD3fa'
@@ -102,20 +100,21 @@ if __name__ == '__main__':
     print('Done Unzipping')
     subprocess.run(args=['tar', 'xzf', './bigPatentData/train.tar.gz', '-C', './bigPatentData'])
     subprocess.run(args=['rm', '-f', './bigPatentData/train.tar.gz'])
-    subprocess.run(args=['gzip', '-dr', './bigPatentData/train']) #recursively unzip all files in this folder and delete the .gz files
+    # subprocess.run(args=['gzip', '-dr', './bigPatentData/train']) #recursively unzip all files in this folder and delete the .gz files
     subprocess.run(args=['tar', 'xzf', './bigPatentData/val.tar.gz', '-C', './bigPatentData'])
     subprocess.run(args=['rm', '-f', './bigPatentData/val.tar.gz'])
-    subprocess.run(args=['gzip', '-dr', './bigPatentData/val']) #recursively unzip all files in this folder and delete the .gz files
+    # subprocess.run(args=['gzip', '-dr', './bigPatentData/val']) #recursively unzip all files in this folder and delete the .gz files
     subprocess.run(args=['tar', 'xzf', './bigPatentData/test.tar.gz', '-C', './bigPatentData'])
     subprocess.run(args=['rm', '-f', './bigPatentData/test.tar.gz'])
-    subprocess.run(args=['gzip', '-dr', './bigPatentData/test']) #recursively unzip all files in this folder and delete the .gz files
+    # subprocess.run(args=['gzip', '-dr', './bigPatentData/test']) #recursively unzip all files in this folder and delete the .gz files
     print('Done Unzipping all the files inside the main data folder')
-    data = find_num_examples_in_dir('./bigPatentData/train')
+    data = 'n/a' #find_num_examples_in_dir('./bigPatentData/train')
     totsize = find_size_of_dir('./bigPatentData')
     print(f'The BigPatent dataset has {data} training examples and is {totsize/1e6:.1f}MB in size.')
     print(f'The BigPatent dataset md5 checksum (for *.tar.gz) is: {checksum}\n')
-    
-    
+
+
+def get_scientific_papers():
     #get Scientific Papers (ArXiv & PubMed)
     print('Geting Arxiv Data...')
     url = 'https://archive.org/download/armancohan-long-summarization-paper-code/arxiv-dataset.zip'
@@ -145,7 +144,9 @@ if __name__ == '__main__':
     print(f'The Pubmed dataset has {data} training examples and is {totsize/1e6:.1f}MB in size.')
     print(f'The Pubmed dataset md5 checksum (for *.zip) is: {checksum}\n')
     subprocess.run(args=['rm', '-f', destination])
-    
+
+
+def get_cnn_dailymail():
     #get CNN dataset
     print('Geting CNN Data...')
     id_ = '0BwmD_VLjROrfTHk4NFg2SndKcjQ'
@@ -174,7 +175,8 @@ if __name__ == '__main__':
     print(f'The Daily Mail dataset has {data} examples and is {totsize/1e6:.1f}MB in size.')
     print(f'The Daily Mail dataset md5 checksum (for *.tgz) is: {checksum}\n')
 
-    #Gigaword dataset
+def get_gigaword():
+#Gigaword dataset
     print('Geting Gigaword Data...')
     id_ = '0B6N7tANPyVeBNmlSX19Ld2xDU1E'
     destination = './gigaword.tar.gz'
@@ -190,5 +192,18 @@ if __name__ == '__main__':
     totsize = find_size_of_dir('./gigaword')
     print(f'The Gigaword dataset has {gigword_num_examples} examples and is {totsize/1e6:.1f}MB in size.')
     print(f'The Gigaword dataset md5 checksum (for *.tar.gz) is: {checksum}\n')
+
+    
+if __name__ == '__main__':
+    get_big_patent()
+    # get_scientific_papers()
+    # get_cnn_dailymail()
+    # get_gigaword()
+    
+
+    
+    
+
+    
 
     

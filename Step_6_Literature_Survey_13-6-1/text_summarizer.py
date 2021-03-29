@@ -6,6 +6,7 @@ import networkx as nx
 # from nltk.translate.bleu_score import corpus_bleu
 from nltk.translate.bleu_score import sentence_bleu
 from rouge import Rouge
+import sklearn.feature_extraction.text as sktext
 
 
 
@@ -89,30 +90,41 @@ class Text_Summarizer(object):
 
     def text_rank_summary(self, text):
         eps = 1e-3
-        embed_dim = len(self.word_embeddings['the'])
         topn = 3
         text_embed = []
-        num_words_not_in_glove = 0
-        num_tot_words = 0
         
-        # #non vectorized version for sanity check
-        # del_sim_mat = np.zeros((len(text), len(text)))
-        # for i in range(len(text)):
-        #     for j in range(len(text)):
-        #         if i != j:
-        #             senti = sum([word_embeddings.get(w, np.zeros((embed_dim,))) for w in text[i]])/(len(text[i])+eps)
-        #             sentj = sum([word_embeddings.get(w, np.zeros((embed_dim,))) for w in text[j]])/(len(text[j])+eps)
-        #             del_sim_mat[i][j] = cosine_similarity(senti.reshape(1,100), sentj.reshape(1,100))[0,0]
+        if self.word_embeddings: #use glove features
+            num_words_not_in_glove = 0
+            num_tot_words = 0
+            embed_dim = len(self.word_embeddings['the'])
+            # #non vectorized version for sanity check
+            # del_sim_mat = np.zeros((len(text), len(text)))
+            # for i in range(len(text)):
+            #     for j in range(len(text)):
+            #         if i != j:
+            #             senti = sum([word_embeddings.get(w, np.zeros((embed_dim,))) for w in text[i]])/(len(text[i])+eps)
+            #             sentj = sum([word_embeddings.get(w, np.zeros((embed_dim,))) for w in text[j]])/(len(text[j])+eps)
+            #             del_sim_mat[i][j] = cosine_similarity(senti.reshape(1,100), sentj.reshape(1,100))[0,0]
 
-        for sent in text:
-            num_tot_words += sum([1 for w in sent])
-            num_words_not_in_glove += sum([w not in self.word_embeddings for w in sent])
-            sent_embed = sum([self.word_embeddings.get(w, np.zeros((embed_dim,))) for w in sent])/(len(sent)+eps)
-            # sent_embed = sum([np.zeros((embed_dim,)) for w in sent])/(len(sent)+1e-3)
-            text_embed.append(sent_embed)
-        # print(f'num_words_not_in_glove {num_words_not_in_glove}, num_tot_words {num_tot_words}')
-        text_embed = np.stack(text_embed, axis=1) #ExN
-        sim_mat = cosine_similarity(text_embed.T, text_embed.T)
+            for sent in text:
+                num_tot_words += sum([1 for w in sent])
+                num_words_not_in_glove += sum([w not in self.word_embeddings for w in sent])
+                sent_embed = sum([self.word_embeddings.get(w, np.zeros((embed_dim,))) for w in sent])/(len(sent)+eps)
+                # sent_embed = sum([np.zeros((embed_dim,)) for w in sent])/(len(sent)+1e-3)
+                text_embed.append(sent_embed)
+            # print(f'num_words_not_in_glove {num_words_not_in_glove}, num_tot_words {num_tot_words}')
+            text_embed = np.stack(text_embed, axis=1).T #Num_sents X E
+        
+        else: #use TF-IDF
+            res = []
+            for sent in text:
+                res.append(utils.words2text(sent))
+            vectorizer = sktext.TfidfVectorizer()
+            X = vectorizer.fit_transform(res)
+            # print(X.shape, type(X), X.mean(1).shape)
+            text_embed = X.toarray() #convert from sparse to dense numpy array (shape: num_sents x hidden_dim)
+
+        sim_mat = cosine_similarity(text_embed, text_embed)
         sim_mat -= np.eye(sim_mat.shape[0])
         # get_top_eigenvector(sim_mat)
         nx_graph = nx.from_numpy_array(sim_mat)

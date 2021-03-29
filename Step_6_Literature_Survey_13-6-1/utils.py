@@ -8,7 +8,7 @@ import multiprocessing
 
 # Load data (string)
 def load_data_string(split_type, cpc_codes, fname=None):
-    input_path = os.path.join('/', 'content', 'gdrive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Capstone_Project', 'Step5_12-5-1_DataWrangling', 'bigPatentPreprocessedData')
+    input_path = os.path.join('/', 'content', 'gdrive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Text_Summarization_UCSD', 'Step5_12-5-1_DataWrangling', 'bigPatentPreprocessedData')
     if not fname:
         file_names = os.listdir(os.path.join(input_path,split_type,cpc_code))
         for fname in file_names:
@@ -25,7 +25,7 @@ def load_data_string(split_type, cpc_codes, fname=None):
 
 # Load data (numpy array)
 def load_data_numpy(split_type, cpc_codes, fname=None):
-    input_path = os.path.join('/', 'content', 'gdrive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Capstone_Project', 'Step5_12-5-1_DataWrangling', 'bigPatentPreprocessedData')
+    input_path = os.path.join('/', 'content', 'gdrive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Text_Summarization_UCSD', 'Step5_12-5-1_DataWrangling', 'bigPatentPreprocessedData')
     if not fname:
         file_names = os.listdir(os.path.join(input_path,split_type,cpc_code))
         for fname in file_names:

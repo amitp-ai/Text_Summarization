@@ -17,6 +17,8 @@ import models
 from datetime import datetime
 import evaluate
 import copy
+import argparse
+
 
 def train(model, train_data, val_data, abs_idx2word, device, batch_size=4, num_epochs=10, 
         print_every_iters=25, lr=1e-3, seed=101, tb_descr=''):
@@ -96,3 +98,74 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size=4, num_e
     tb_writer.flush()
     tb_writer.close()
 
+
+
+def get_data(use_full_vocab=True, cpc_codes='de', fname='data0_str_json.gz', train_size=128, val_size=16):
+    print('Getting the training data...')
+    #for desc and abs: get the vocab, word2idx, idx2word
+    desc_vocab = utils.load_vocab(file_name = f"../DataWrangling/desc_vocab_final_{cpc_codes}_after_preprocess_text.json")
+    abs_vocab = utils.load_vocab(file_name = f"../DataWrangling/abs_vocab_final_{cpc_codes}_after_preprocess_text.json")
+    print(f'Size of description vocab is {len(desc_vocab)} and abstract vocab is {len(abs_vocab)}')
+
+    desc_word2idx = utils.load_word2idx(file_name = f'../DataWrangling/desc_{cpc_codes}_word2idx.json')
+    abs_word2idx = utils.load_word2idx(file_name = f'../DataWrangling/abs_{cpc_codes}_word2idx.json')
+
+    desc_idx2word = utils.load_idx2word(file_name = f'../DataWrangling/desc_{cpc_codes}_idx2word.json')
+    abs_idx2word = utils.load_idx2word(file_name = f'../DataWrangling/abs_{cpc_codes}_idx2word.json')
+
+    #get the training and val data
+    data_train = utils.load_data_string(split_type='train', cpc_codes=cpc_codes, fname=fname)
+    data_val = utils.load_data_string(split_type='val', cpc_codes=cpc_codes, fname=fname)
+    mini_df_train = utils.get_mini_df(data_train, mini_df_size=train_size) 
+    mini_df_val = utils.get_mini_df(data_val, mini_df_size=val_size) 
+
+    if use_full_vocab:
+        lang_train = utils.Mini_Data_Language_Info(mini_df_train, desc_word2idx=desc_word2idx,abs_word2idx=abs_word2idx,
+                                                desc_idx2word=desc_idx2word, abs_idx2word=abs_idx2word,
+                                                desc_vocab=desc_vocab, abs_vocab=abs_vocab) #using full vocab
+    else:
+        lang_train = utils.Mini_Data_Language_Info(mini_df_train) #generate vocab etc (i.e. don't use full vocab)
+    lang_val = utils.Mini_Data_Language_Info(mini_df_val, desc_word2idx=lang_train.desc_word2idx,abs_word2idx=lang_train.abs_word2idx)
+
+    train_data = utils.bigPatentDataset(lang_train.mini_data, shuffle=True)
+    train_data.memory_size()
+    val_data = utils.bigPatentDataset(lang_val.mini_data, shuffle=True)
+
+    return train_data, val_data, lang_train
+
+
+def get_train_args():
+    """ Get arguments needed in train.py"""
+    parser = argparse.ArgumentParser('Train a Text Summarization Model')
+
+    parser.add_argument('--hidden_dim', nargs='?', type=int, default=50, help='The size of the hidden dimension to be used for all layers')
+    parser.add_argument('--num_layers', nargs='?', type=int, default=2, help='The number of LSTM layers')
+    parser.add_argument('--batch_size', nargs='?', type=int, default=16, help='The batch size')
+    parser.add_argument('--num_epochs', nargs='?', type=int, default=10, help='The number of epochs to train for')
+    parser.add_argument('--lr', nargs='?', type=float, default=1e-3, help='The learning rate')
+    parser.add_argument('--print_every_iters', nargs='?', type=int, default=250, help='To print/log after this many iterations')
+    parser.add_argument('--tb_descr', nargs='?', type=str, default='', help='Experiment description for tensorboard logging')
+
+    args = parser.parse_args()
+    return args
+
+
+if __name__ == '__main__':
+    args = get_train_args()
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    train_data, val_data, lang_train = get_data(use_full_vocab=True, cpc_codes='de', fname='data0_str_json.gz', 
+                                                train_size=128, val_size=16)
+    encoder = models.EncoderLSTM(vocab_size=len(lang_train.desc_vocab), hidden_dim=args.hidden_dim, 
+                                num_layers=args.num_layers, bidir=True)
+    decoder = models.DecoderLSTM(vocab_size=len(lang_train.abs_vocab), hidden_dim=args.hidden_dim, 
+                                num_layers=args.num_layers, bidir=False)
+    model = models.Seq2Seq(encoder, decoder)
+    train_data.shuffle(2)
+    val_data.shuffle(2)
+
+    print('\nStarting model training...')
+    print(args)
+    train(model=model, train_data=train_data, val_data=val_data, 
+                abs_idx2word=lang_train.abs_idx2word, device=device, batch_size=args.batch_size, 
+                num_epochs=args.num_epochs, lr=args.lr, print_every_iters=args.print_every_iters, 
+                tb_descr=args.tb_descr)

@@ -104,19 +104,19 @@ class DecoderLSTM(nn.Module):
     """
     This is the LSTM decoder
     """
-    def __init__(self, embed_size, hidden_dim, dropout=0.0, num_layers=2, bidir=True):
+    def __init__(self, vocab_size, hidden_dim, dropout=0.0, num_layers=2, bidir=False):
         super(DecoderLSTM, self).__init__()
-        self.embed_size = embed_size
+        self.vocab_size = vocab_size
         self.hidden_dim = hidden_dim
         self.dropout = dropout
         self.num_layers = num_layers
         self.bidir = bidir
         self.pad_token = 0
 
-        self.embedding = nn.Embedding(embed_size, hidden_dim, padding_idx=self.pad_token)
+        self.embedding = nn.Embedding(vocab_size, hidden_dim, padding_idx=self.pad_token)
         self.LSTM = nn.LSTM(input_size=hidden_dim, hidden_size=hidden_dim, num_layers=self.num_layers, 
                     bias=True, batch_first=True, dropout=dropout, bidirectional=self.bidir)
-        self.out_proj = nn.Linear(hidden_dim, embed_size)
+        self.out_proj = nn.Linear(hidden_dim, vocab_size)
 
 
     def forward(self, x, h0c0):
@@ -143,16 +143,16 @@ class EncoderLSTM(nn.Module):
     """
     This is the LSTM encoder
     """
-    def __init__(self, embed_size, hidden_dim, dropout=0.0, num_layers=2, bidir=True):
+    def __init__(self, vocab_size, hidden_dim, dropout=0.0, num_layers=2, bidir=True):
         super(EncoderLSTM, self).__init__()
-        self.embed_size = embed_size
+        self.vocab_size = vocab_size
         self.hidden_dim = hidden_dim
         self.dropout = dropout
         self.num_layers = num_layers
         self.bidir = bidir
         self.pad_token = 0
 
-        self.embedding = nn.Embedding(embed_size, hidden_dim, padding_idx=self.pad_token)
+        self.embedding = nn.Embedding(vocab_size, hidden_dim, padding_idx=self.pad_token)
         self.LSTM = nn.LSTM(input_size=hidden_dim, hidden_size=hidden_dim, num_layers=self.num_layers, 
                     bias=True, batch_first=True, dropout=dropout, bidirectional=self.bidir)
 

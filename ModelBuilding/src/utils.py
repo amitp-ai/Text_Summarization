@@ -10,11 +10,14 @@ import pandas as pd
 import numpy as np
 import torch
 import torch.utils.data as data
+import json
 
 
-# Load data (string)
 def load_data_string(split_type, cpc_codes, fname=None):
-    input_path = os.path.join('/', 'content', 'drive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Text_Summarization_UCSD', 'Step5_12-5-1_DataWrangling', 'bigPatentPreprocessedData')
+    """
+    Load data (in string form)
+    """
+    input_path = os.path.join('/', 'content', 'drive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Text_Summarization_UCSD', 'DataWrangling', 'bigPatentPreprocessedData')
     if not fname:
         file_names = os.listdir(os.path.join(input_path,split_type,cpc_code))
         for fname in file_names:
@@ -29,9 +32,11 @@ def load_data_string(split_type, cpc_codes, fname=None):
 
 
 
-# Load data (numpy array)
 def load_data_numpy(split_type, cpc_codes, fname=None):
-    input_path = os.path.join('/', 'content', 'drive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Text_Summarization_UCSD', 'Step5_12-5-1_DataWrangling', 'bigPatentPreprocessedData')
+    """
+    Load data (as a numpy array)
+    """
+    input_path = os.path.join('/', 'content', 'drive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Text_Summarization_UCSD', 'DataWrangling', 'bigPatentPreprocessedData')
     if not fname:
         file_names = os.listdir(os.path.join(input_path,split_type,cpc_code))
         for fname in file_names:
@@ -43,6 +48,48 @@ def load_data_numpy(split_type, cpc_codes, fname=None):
         file_name = os.path.join(input_path,split_type,cpc_codes,fname)
         data_np = np.load(file_name, allow_pickle=True)
         yield data_np
+
+
+def get_mini_df(data, mini_df_size=16, verbose=False):
+    '''
+    Get a small subset of data for quick eval/debug
+    '''
+    for df in data:
+        if verbose:
+            print(df.head(5), df.shape, df.columns)
+            print(df.iloc[0,0])
+            print(df.iloc[0,1])
+        mini_df = df.iloc[:mini_df_size,:].copy() #create a small dataset for fast prototyping and ease of debugging
+        return mini_df
+
+
+#get the full vocab, word2idx idx2word for the de dataset
+def load_vocab(file_name):
+    """
+    Load vocabulary
+    """
+    with open(file_name, "r") as fh:
+        vocab_counter = json.load(fh)
+    return vocab_counter
+
+
+def load_word2idx(file_name):
+    """
+    Load word2idx
+    """
+    with open(file_name, 'r') as fh:
+        word2idx = json.load(fh)
+    return word2idx
+
+def load_idx2word(file_name):
+    '''
+    Load idx2word
+    '''
+    with open(file_name, 'r') as fh:
+        idx2word = json.load(fh)
+    idx2word = {int(idx):w for idx,w in idx2word.items()} #have to do this but not sure why don't have to do this for word2idx (need to check how json load works)
+    return idx2word
+
 
 
 class bigPatentDataset(data.Dataset):
@@ -87,6 +134,10 @@ class bigPatentDataset(data.Dataset):
 
 
 class Mini_Data_Language_Info(object):
+    """
+    Only use this if not using the full dataset.
+    Otherwise the vocab for the full dataset is already available and stored as part of datawrangling process
+    """
     def __init__(self, mini_df, desc_word2idx=None, abs_word2idx=None, desc_idx2word=None, abs_idx2word=None, 
                 desc_vocab=None, abs_vocab=None):
         if desc_word2idx is None and abs_word2idx is None:

@@ -2,7 +2,7 @@
 Author:
     Amit Patel (amitpatel.gt@gmail.com)
 Description:
-    Various utility functions to be used for training a text summarizer
+    Various utility functions and classes used for training a text summarizer
 """
 
 import os
@@ -11,6 +11,44 @@ import numpy as np
 import torch
 import torch.utils.data as data
 import json
+import logging
+import queue
+import shutil
+
+def create_logger(fileName, logDir='logs/'):
+    '''
+    create logger and add to it a file handler and a stream handler
+    This will be helpful during production
+    (if calling from Jupyter notebook and seeing unexpected logging behavior, restart the kernel)
+    '''
+    #create logger and log everything (debug and above)
+    logger = logging.getLogger(fileName.strip('.log'))
+    logger.setLevel(logging.DEBUG)
+    logPath = os.path.join(logDir, fileName)
+
+    #create filehandler to save to .log file and also create format for the logs 
+    formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s', datefmt='%m.%d.%y %H:%M:%S')
+    fileHandler = logging.FileHandler(logPath)
+    fileHandler.setLevel(logging.DEBUG) #not necessary as usually used to set a different level from one set above
+    fileHandler.setFormatter(formatter)
+
+    #create streamhandler to also print to the console and also create format for the logs 
+    formatter = logging.Formatter('%(message)s')    
+    streamHandler = logging.StreamHandler()
+    streamHandler.setLevel(logging.DEBUG) #not necessary as usually used to set a different level from one set above
+    streamHandler.setFormatter(formatter)
+
+    #add filehandles and streamhandler to the logger
+    logger.addHandler(fileHandler)
+    logger.addHandler(streamHandler)
+    return logger
+
+def closeLoggerFileHandler(logger):
+    ''' To release file handler when done. 
+    Esp need this when used from Jupyter Notebook '''
+    for handler in logger.handlers:
+        handler.close()
+        logger.removeHandler(handler)
 
 
 def load_data_string(split_type, cpc_codes, fname=None):
@@ -199,3 +237,125 @@ class Mini_Data_Language_Info(object):
         return helper
 
 ######################################################################
+
+### Saving and Loading Models ###
+
+class CheckpointSaver(object):
+    """Class to save and load model checkpoints.
+
+    Save the best checkpoints as measured by a metric value passed into the
+    `save` method. Overwrite checkpoints with better checkpoints once
+    `maxCheckpoints` have been saved.
+
+    Args:
+        saveDir (str): Directory to save checkpoints.
+        metricName (str): Name of metric used to determine best model.
+        maximizeMetric (bool): If true, best checkpoint is that which maximizes
+            the metric value passed in via `save`. Otherwise, best checkpoint
+            minimizes the metric.
+        logger (logging.Logger): Optional logger for printing information.
+        maxCheckpoints (int): Maximum number of checkpoints to keep before
+            overwriting old ones.
+    >> adopted from CS224n Squad2.0 project -- util.py
+    """
+    def __init__(self, saveDir, metricName, maximizeMetric, logger, maxCheckpoints=3, bestVal=None):
+        super(CheckpointSaver, self).__init__()
+
+        self.saveDir = saveDir
+        self.maxCheckpoints = maxCheckpoints
+        self.metricName = metricName
+        self.maximizeMetric = maximizeMetric
+        self.logger = logger
+        self.bestVal = bestVal
+        self.ckptPaths = queue.PriorityQueue()
+        self.logger.debug(f"Saver will {'max' if maximizeMetric else 'min'}imize {metricName}...")
+
+    def isBest(self, metricVal):
+        """Check whether `metricVal` is the best seen so far.
+
+        Args:
+            metricVal (float): Metric value to compare to prior checkpoints.
+        """
+        if metricVal is None:
+            # No metric reported
+            return False
+
+        if self.bestVal is None:
+            # No checkpoint saved yet
+            return True
+
+        return ((self.maximizeMetric and self.bestVal < metricVal)
+                or (not self.maximizeMetric and self.bestVal > metricVal))
+
+    def save(self, step, model, metricVal, device):
+        """Save model parameters to disk.
+
+        Args:
+            step (int): Total number of examples seen during training so far.
+            model (torch.nn.DataParallel): Model to save.
+            metricVal (float): Determines whether checkpoint is best so far.
+            device (torch.device): Device where model resides.
+        """
+        if not os.path.exists(self.saveDir): os.mkdir(self.saveDir)
+        ckptDict = {
+            'model_name': model.__class__.__name__,
+            'model_state': model.cpu().state_dict(),
+            'step': step,
+            'metric_val': metricVal
+        }
+        model.to(device) #move back to the device the model resided before moving it to cpu for ckptDict
+
+        checkpointPath = os.path.join(self.saveDir, f'step_{step}.pth.tar')
+        torch.save(ckptDict, checkpointPath)
+        self.logger.debug(f'Saved checkpoint: {checkpointPath}')
+
+        if self.isBest(metricVal):
+            # Save the best model
+            self.bestVal = metricVal
+            best_path = os.path.join(self.saveDir, 'best.pth.tar')
+            shutil.copy(checkpointPath, best_path)
+            self.logger.debug(f'New best checkpoint at step {step}...')
+
+        # Add checkpoint path to priority queue (lowest priority removed first)
+        if self.maximizeMetric: #otherwise minimize metric
+            priority_order = metricVal
+        else:
+            priority_order = -metricVal
+
+        self.ckptPaths.put((priority_order, checkpointPath))
+
+        # Remove a checkpoint if more than maxCheckpoints have been saved
+        if self.ckptPaths.qsize() > self.maxCheckpoints:
+            _, worst_ckpt = self.ckptPaths.get()
+            try:
+                os.remove(worst_ckpt)
+                self.logger.debug(f'Removed checkpoint: {worst_ckpt}')
+            except OSError:
+                # Avoid crashing if checkpoint has been removed or protected
+                self.logger.debug(f'Unable to remove checkpoint: {worst_ckpt}... maybe its already removed or protected')
+
+
+def loadModel(model, checkpointPath, device, return_step=True):
+    """Load model parameters from disk.
+
+    Args:
+        model (torch.nn.Module): Load parameters into this model.
+        checkpointPath (str): Path to checkpoint to load.
+        Device (str): cuda or cpu
+        return_step (bool): Also return the step at which checkpoint was saved.
+
+    Returns:
+        model (torch.nn.Module): Model loaded from checkpoint.
+        step (int): Step at which checkpoint was saved. Only if `return_step`.
+    """
+    ckptDict = torch.load(checkpointPath, map_location=device)
+
+    # load parameters into the model
+    model.load_state_dict(ckptDict['model_state'])
+
+    if return_step:
+        step = ckptDict['step']
+        metricVal = ckptDict['metric_val']
+        return model, step, metricVal
+
+    return model

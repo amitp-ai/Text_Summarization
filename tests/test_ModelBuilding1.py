@@ -31,7 +31,7 @@ def test_DecLSTM():
     (batch_size, max_seq_len, vocab_size, hidden_dim) = get_ModelMetaData()
     x = torch.randint(1, vocab_size, size=(batch_size, max_seq_len), dtype=torch.int32)
     x, max_l = generate_data(x)    
-    dec = models.DecoderLSTM(vocab_size=vocab_size, hidden_dim=hidden_dim, num_layers=2, bidir=False)
+    dec = models.DecoderLSTM(vocab_size=vocab_size, hidden_dim=hidden_dim, num_layers=2)
     h0 = torch.zeros(size=(dec.num_layers * (2 if dec.bidir else 1), batch_size, hidden_dim))
     c0 = h0.clone()
     y, _ = dec(x, (h0, c0))
@@ -45,7 +45,7 @@ def test_Seq2Seq():
     y, max_l = generate_data(y)    
 
     enc = models.EncoderLSTM(vocab_size=vocab_size, hidden_dim=hidden_dim, num_layers=2, bidir=True)
-    dec = models.DecoderLSTM(vocab_size=vocab_size, hidden_dim=hidden_dim, num_layers=2, bidir=False)
+    dec = models.DecoderLSTM(vocab_size=vocab_size, hidden_dim=hidden_dim, num_layers=2)
     model = models.Seq2Seq(enc, dec)
     yhat = model(x,y)
     assert list(yhat.shape) == [batch_size, dec.vocab_size, max_l], 'The output tensor\'s shape is not correct'

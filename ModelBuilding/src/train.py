@@ -31,7 +31,7 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size,
     val_data.move_to(torch.device('cpu')) #keep data on cpu
     val_dataloader = data.DataLoader(val_data, batch_size=batch_size, shuffle=True, num_workers=0)
 
-    #model instantiation
+    #model to cpu/gpu
     model = model.to(device=device)
 
     #optimizer
@@ -50,10 +50,10 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size,
     step = 0
     model.train()
     for e in range(num_epochs):
-        for x,yt,_,_ in train_dataloader:
+        for x,yt,_,_,_ in train_dataloader:
             x, yt = x.to(device), yt.to(device)
             optimizer.zero_grad()
-            y = yt[:,:-1]
+            y = yt[:,:-1] #yt starts with --start-- token and ends with --stop-- or --pad-- tokens.
             # logger.debug(y.shape, yt.shape)
             y = model(x, y)
             seq_len = y.shape[2]+1
@@ -115,13 +115,13 @@ def evaluateModel(model, train_data, val_data, abs_idx2word, device, batch_size)
     logger.debug(f'\nRouge-1 is {r1:.4f}, Rouge-2 is {r2:.4f}, and Rouge-l is {rl:.4f}')
 
 
+
 def get_data(use_full_vocab=True, cpc_codes='de', fname='data0_str_json.gz', train_size=128, val_size=16):
     """Get data for training"""
-    logger.debug('Getting the training data...')
+    logger.debug('Getting the training and validation data...')
     #for desc and abs: get the vocab, word2idx, idx2word
     desc_vocab = utils.load_vocab(file_name = f"../DataWrangling/desc_vocab_final_{cpc_codes}_after_preprocess_text.json")
     abs_vocab = utils.load_vocab(file_name = f"../DataWrangling/abs_vocab_final_{cpc_codes}_after_preprocess_text.json")
-    logger.debug(f'Size of description vocab is {len(desc_vocab)} and abstract vocab is {len(abs_vocab)}')
 
     desc_word2idx = utils.load_word2idx(file_name = f'../DataWrangling/desc_{cpc_codes}_word2idx.json')
     abs_word2idx = utils.load_word2idx(file_name = f'../DataWrangling/abs_{cpc_codes}_word2idx.json')
@@ -141,6 +141,7 @@ def get_data(use_full_vocab=True, cpc_codes='de', fname='data0_str_json.gz', tra
                                                 desc_vocab=desc_vocab, abs_vocab=abs_vocab) #using full vocab
     else:
         lang_train = utils.Mini_Data_Language_Info(mini_df_train) #generate vocab etc (i.e. don't use full vocab)
+    logger.debug(f'Size of description vocab is {len(lang_train.desc_vocab)} and abstract vocab is {len(lang_train.abs_vocab)}')
     lang_val = utils.Mini_Data_Language_Info(mini_df_val, desc_word2idx=lang_train.desc_word2idx,abs_word2idx=lang_train.abs_word2idx)
 
     train_data = utils.bigPatentDataset(lang_train.mini_data, shuffle=True)
@@ -163,19 +164,25 @@ def get_train_args():
     """ Get arguments needed in train.py"""
     parser = argparse.ArgumentParser('Train a Text Summarization Model')
 
-    parser.add_argument('--hiddenDim', nargs='?', type=int, default=50, help='The size of the hidden dimension to be used for all layers')
-    parser.add_argument('--numLayers', nargs='?', type=int, default=2, help='The number of LSTM layers')
-    parser.add_argument('--batchSize', nargs='?', type=int, default=16, help='The batch size')
-    parser.add_argument('--numEpochs', nargs='?', type=int, default=10, help='The number of epochs to train for')
-    parser.add_argument('--lr', nargs='?', type=float, default=1e-3, help='The learning rate')
-    parser.add_argument('--dropout', nargs='?', type=float, default=0.0, help='Dropout rate')
-    parser.add_argument('--seed', nargs='?', type=int, default=0, help='To seed the random state for repeatability')
-    parser.add_argument('--printEveryIters', nargs='?', type=int, default=250, help='To print/log after this many iterations')
-    parser.add_argument('--tbDescr', nargs='?', type=str, default='', help='Experiment description for tensorboard logging')
-    parser.add_argument('--savedModelDir', nargs='?', default=None, help='Location for saving model checkpoints during training')
-    parser.add_argument('--loadBestModel', nargs='?', type=str2bool, default=False, help='Load the Best Saved Model')
+    # parser.add_argument('--hiddenDim', nargs='?', type=int, default=50, help='The size of the hidden dimension to be used for all layers')
+    parser.add_argument('--hiddenDim', type=int, default=50, help='The size of the hidden dimension to be used for all layers')
+    parser.add_argument('--numLayers', type=int, default=2, help='The number of LSTM layers')
+    parser.add_argument('--batchSize', type=int, default=16, help='The batch size')
+    parser.add_argument('--numEpochs', type=int, default=10, help='The number of epochs to train for')
+    parser.add_argument('--lr', type=float, default=1e-3, help='The learning rate')
+    parser.add_argument('--dropout', type=float, default=0.0, help='Dropout rate')
+    parser.add_argument('--seed', type=int, default=0, help='To seed the random state for repeatability')
+    parser.add_argument('--printEveryIters', type=int, default=250, help='To print/log after this many iterations')
+    parser.add_argument('--tbDescr', type=str, default='', help='Experiment description for tensorboard logging')
+    parser.add_argument('--savedModelDir', default=None, help='Location for saving model checkpoints during training')
+    parser.add_argument('--loadBestModel', type=str2bool, default=False, help='Load the Best Saved Model')
     parser.add_argument('--modelType', type=str, help='The Model Type to Use')
-    parser.add_argument('--toTrain', nargs='?', type=str2bool, default=True, help='Flag to train or evaluate the model')
+    parser.add_argument('--toTrain', type=str2bool, default=True, help='Flag to train or evaluate the model')
+    parser.add_argument('--fullVocab', type=str2bool, default=True, help='Use the full vocab or generate vocab based only upon the data used for training')
+    parser.add_argument('--trainSize', type=int, default=128, help='Size of training data')
+    parser.add_argument('--valSize', type=int, default=16, help='Size of validation data')
+    parser.add_argument('--tfThresh', type=float, default=0.0, help='Amount of time to not do teacher forcing during training')
+    parser.add_argument('--beamSize', type=int, default=0, help='Beam size for beam search. 0 means no beam search')
 
     args = parser.parse_args()
     return args
@@ -183,22 +190,21 @@ def get_train_args():
 
 if __name__ == '__main__':
     args = get_train_args()
+    logger.debug(args)
 
     #random state setup (for repeatability)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     # torch.cuda.manual_seed_all(args.seed) #no need to do this
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
+    # torch.backends.cudnn.deterministic = True #not sure if need this
+    # torch.backends.cudnn.benchmark = False #not sure if need this
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    train_data, val_data, lang_train = get_data(use_full_vocab=True, cpc_codes='de', fname='data0_str_json.gz', 
-                                                train_size=128, val_size=16)
-    encoder = models.EncoderLSTMwithAttention(vocab_size=len(lang_train.desc_vocab), hidden_dim=args.hiddenDim, 
-                                num_layers=args.numLayers, bidir=True, dropout=args.dropout)
-    decoder = models.DecoderLSTMwithAttention(vocab_size=len(lang_train.abs_vocab), hidden_dim=args.hiddenDim, 
-                                num_layers=args.numLayers, dropout=args.dropout)
-    model = eval(args.modelType)(encoder, decoder)
+    train_data, val_data, lang_train = get_data(use_full_vocab=args.fullVocab, cpc_codes='de', fname='data0_str_json.gz', 
+                                                train_size=args.trainSize, val_size=args.valSize)
+    model = eval(args.modelType)(descVocabSize=len(lang_train.desc_vocab), absVocabSize=len(lang_train.abs_vocab), 
+                                hiddenDim=args.hiddenDim, numLayers=args.numLayers, dropout=args.dropout, 
+                                tfThresh=args.tfThresh, beamSize=args.beamSize)
     step = 0
     metricVal = -1
 
@@ -210,13 +216,11 @@ if __name__ == '__main__':
     #evaluate or train the model
     if not args.toTrain:
         logger.debug('Starting model evaluation for the current best model...')
-        logger.debug(args)
         evaluateModel(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
                 device=device, batch_size=args.batchSize)
     else:
         logger.debug('\nStarting model training...')
-        logger.debug(args)
-        train(model=model, train_data=train_data, val_data=val_data, 
-                    abs_idx2word=lang_train.abs_idx2word, device=device, batch_size=args.batchSize, 
-                    num_epochs=args.numEpochs, lr=args.lr, print_every_iters=args.printEveryIters, tb_descr=args.tbDescr, 
-                    savedModelDir=args.savedModelDir, step=step, bestMetricVal=metricVal)
+        train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
+        device=device, batch_size=args.batchSize, num_epochs=args.numEpochs, lr=args.lr, 
+        print_every_iters=args.printEveryIters, tb_descr=args.tbDescr, savedModelDir=args.savedModelDir, 
+        step=step, bestMetricVal=metricVal)

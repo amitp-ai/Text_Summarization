@@ -6,8 +6,8 @@ Description:
 """
 
 import os
-import pandas as pd
 import numpy as np
+import pandas as pd
 import torch
 import torch.utils.data as data
 import json
@@ -136,6 +136,7 @@ class bigPatentDataset(data.Dataset):
         self.abst = torch.from_numpy(np.concatenate(data[:,1], axis=0)).to(dtype=torch.int32)
         self.cpc = torch.from_numpy(np.stack(data[:,2], axis=0)).to(dtype=torch.int8)
         self.orig_abs = data[:,3]
+        self.orig_desc = data[:,4]
         if shuffle: self.shuffle()
         print(f'Data shape is: {self.desc.shape}, {self.abst.shape}, {self.cpc.shape}')
 
@@ -143,7 +144,7 @@ class bigPatentDataset(data.Dataset):
         return len(self.desc)
     
     def __getitem__(self, idx):
-        return (self.desc[idx], self.abst[idx], self.cpc[idx], self.orig_abs[idx])
+        return (self.desc[idx], self.abst[idx], self.cpc[idx], self.orig_abs[idx], 0) #self.orig_desc[idx])
 
     def move_to(self, device):
         self.desc = self.desc.to(device=device)
@@ -158,12 +159,13 @@ class bigPatentDataset(data.Dataset):
             self.abst = self.abst[idxs]
             self.cpc = self.cpc[idxs]
             self.orig_abs = self.orig_abs[idxs]
+            self.orig_desc = self.orig_desc[idxs]
 
     def memory_size(self):
         variables = self.__dict__.keys()
         tot_mem = 0
         for v_name in variables:
-            if v_name == 'orig_abs': continue
+            if 'orig_' in v_name: continue
             v = self.__dict__[v_name]
             temp = v.element_size() * v.nelement()
             tot_mem += temp
@@ -208,7 +210,7 @@ class Mini_Data_Language_Info(object):
         mini_df['np_abs'] = mini_df.abstract.apply(self.create_numpy_array(max_abs, self.abs_word2idx))
         cpc_dict = {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7, 'y':8}
         mini_df['np_cpc'] = mini_df.cpc_code.map(cpc_dict)
-        self.mini_data = mini_df[['np_desc', 'np_abs', 'np_cpc', 'original_abstract']].to_numpy() #this is of type object and not numpy array of type int32/float32 (it's like a ragged numpy array)
+        self.mini_data = mini_df[['np_desc', 'np_abs', 'np_cpc', 'original_abstract', 'original_description']].to_numpy() #this is of type object and not numpy array of type int32/float32 (it's like a ragged numpy array)
         print(self.mini_data.shape)
 
     def create_vocab(self, ds):

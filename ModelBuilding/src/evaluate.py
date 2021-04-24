@@ -6,7 +6,6 @@ Description:
 """
 
 import pandas as pd
-import numpy as np
 import torch
 from rouge import Rouge
 import utils
@@ -21,7 +20,7 @@ def evaluate_model(model, dataloader, abs_idx2word, device, print_example=False)
     max_num_samples = 16
     model.eval()
     with torch.no_grad():
-        for x,yt,_,yorig in dataloader:
+        for x,yt,_,yorig,_ in dataloader:
             num_samples += x.shape[0]
             x, yt = x.to(device), yt.to(device)
             y = yt[:,:-1]
@@ -72,7 +71,7 @@ def evaluate_helper(y, ygt, yorig, abs_idx2word, print_example):
     return res
 
 
-def eval_single_batch(h0, c0, decoder, predMaxLen, yEnc=None):
+def eval_single_batch(h0, c0, decoder, predMaxLen, yEnc=None, encMask=None):
     """ Greedy function for next word prediciton """
     device=h0.device
     start_token = 3*torch.ones(size=(1,1), dtype=torch.int32, device=device)
@@ -84,7 +83,7 @@ def eval_single_batch(h0, c0, decoder, predMaxLen, yEnc=None):
     while yprev != stop_token and yprev != pad_token and len(predictions) < predMaxLen:
         # yprev: 1x1, ynxt: 1xVx1, hprev/hnxt: Nx1xH, cprev/cnxt: Nx1xH
         if yEnc is not None:
-            ynxt, (hnxt, cnxt) = decoder(yprev, (hprev, cprev), yEnc)
+            ynxt, (hnxt, cnxt) = decoder(yprev, (hprev, cprev), yEnc, encMask)
         else:
             ynxt, (hnxt, cnxt) = decoder(yprev, (hprev, cprev))
         hprev, cprev = hnxt, cnxt
@@ -93,8 +92,13 @@ def eval_single_batch(h0, c0, decoder, predMaxLen, yEnc=None):
     return torch.cat(predictions, dim=1) #1xL
 
 
-def eval_single_batch_beamsearch(h0, c0, decoder, predMaxLen, yEnc=None, beamSize=3):
-    """ Next word prediction using beam search: this method is inbetween the greedy and the optimal approach """
+def eval_single_batch_beamsearch(h0, c0, decoder, predMaxLen, yEnc=None, encMask=None, beamSize=3, maxNumHyp=10):
+    """ Next word prediction using beam search: this method is inbetween the greedy and the optimal approach.
+        The priority score is based upon the probability of a sentence, and since longer senteces will have lower probability 
+        than shorter ones, we normalize the priority score by dividing by tIter (i.e. sentence length).
+
+        We are actually using negative log probability as we are using a min type priority queue.
+    """
     device=h0.device
     start_token = 3*torch.ones(size=(1,1), dtype=torch.int32, device=device)
     stop_token = 4*torch.ones(size=(1,1), dtype=torch.int32, device=device)
@@ -102,57 +106,64 @@ def eval_single_batch_beamsearch(h0, c0, decoder, predMaxLen, yEnc=None, beamSiz
     hprev, cprev = h0, c0
     yprev = start_token
     yprevs = []
-    priorityScore = 0.0
-    pqueue = queue.PriorityQueue(maxsize=beamSize**2) #this is a min priority queue
+    negLogProb = 0.0
+    pqueue = queue.PriorityQueue(maxsize=beamSize) #this is a min priority queue
+    completedHyp_pqueue = queue.PriorityQueue(maxsize=maxNumHyp+beamSize)
     '''
     Need tie breaker b'cse of the way pqueue works is say the item is (a,b,c), so when comparing two items 
     if a is equal, then it will compare b, if b is equal then compare c and so forth. 
     So to address the issue when it gets to comparing two tensors with one than one elements, 
     we add a counter to make sure if the first element is same between two items the second one will be unique 
     i.e. tie breaker so that it does not go to comparing the tensors. #https://stackoverflow.com/questions/39504333/
+
+    In this case we are using negLogProb/tIter as the first level priority followed by a unique number from counter as tie breaker
     '''
     pQTieBreaker = count()
     for _ in range(beamSize):
         yprevs_ = yprevs.copy()
         yprevs_.append(yprev)
-        prediction = (priorityScore, next(pQTieBreaker), (yprevs_, hprev, cprev))
+        prediction = (negLogProb/1.0, next(pQTieBreaker), negLogProb, (yprevs_, hprev, cprev))
         pqueue.put(prediction)
-    tIter = 0        
+    tIter = 1
     while tIter < predMaxLen:
-        stopCounter = 0
+        temp_pqueue = queue.PriorityQueue(maxsize=beamSize**2)
         for _ in range(beamSize):
-            priorityScore, _, (yprevs, hprev, cprev) = pqueue.get()
+            _, _, negLogProb, (yprevs, hprev, cprev) = pqueue.get()
             yprev = yprevs[-1]
             if yprev == stop_token or yprev == pad_token: 
-                stopCounter += 1
-                prediction = priorityScore, next(pQTieBreaker), (yprevs, hprev, cprev)
-                pqueue.put(prediction) #add it back to the queue
+                prediction = negLogProb/tIter, next(pQTieBreaker), negLogProb, (yprevs, hprev, cprev)
+                completedHyp_pqueue.put(prediction) #add it to the completed hypotheses' queue
                 continue
             # yprev: 1x1, ynxt: 1xVx1, hprev/hnxt: Nx1xH, cprev/cnxt: Nx1xH
             if yEnc is not None:
-                ynxt, (hnxt, cnxt) = decoder(yprev, (hprev, cprev), yEnc)
+                ynxt, (hnxt, cnxt) = decoder(yprev, (hprev, cprev), yEnc, encMask)
             else:
                 ynxt, (hnxt, cnxt) = decoder(yprev, (hprev, cprev))
             hprev, cprev = hnxt, cnxt
             ynxt =  torch.nn.functional.log_softmax(ynxt, dim=1) #1xVx1
             ynxt = torch.topk(ynxt, beamSize, dim=1)
             tempYprev = ynxt.indices.to(dtype=torch.int32) #1xbeamSizex1
-            tempPscore = -1*ynxt.values #multiply by -1 as we are using min priotiry queue
+            tempPscore = -1*ynxt.values #multiply by -1 as we are using min priotiry queue (with negLogprob)
             # #random sampling for sanity checking beam search
             # tempYprev = torch.multinomial(torch.ones(ynxt.shape[1])/ynxt.shape[1], beamSize, replacement=False).unsqueeze(dim=0).unsqueeze(dim=-1).to(device)
             # tempPscore = -1*ynxt[0,tempYprev[0,:,0],0].unsqueeze(dim=0).unsqueeze(dim=-1).to(device)
             for i in range(beamSize):
-                yprev = tempYprev[:,i,:]
                 yprevs_ = yprevs.copy()
-                yprevs_.append(yprev)
-                prediction = (priorityScore+tempPscore[0,i,0].item(), next(pQTieBreaker), (yprevs_, hprev, cprev))
-                pqueue.put(prediction)
-            #keep the the top k (where k is the beamSize)
-            pqueue_ = queue.PriorityQueue(maxsize=beamSize**2) #this is a min priority queue
-            for i in range(beamSize):
-                pqueue_.put(pqueue.get())
-            pqueue = pqueue_
-        if stopCounter >= beamSize: break
+                yprevs_.append(tempYprev[:,i,:])
+                tempProb = negLogProb + tempPscore[0,i,0].item()
+                prediction = (tempProb/tIter, next(pQTieBreaker), tempProb, (yprevs_, hprev, cprev))
+                temp_pqueue.put(prediction)
+        #keep the the top k (where k is the beamSize). Note at this point pqueue should be empty
+        for i in range(beamSize):
+            if temp_pqueue.qsize() == 0: break
+            pqueue.put(temp_pqueue.get())
         tIter += 1
-    _, _, (yprevs, _, _) = pqueue.get() #get the best prediction
+        if completedHyp_pqueue.qsize() >= maxNumHyp: break
+        if pqueue.qsize() == 0: break
+    if completedHyp_pqueue.qsize() == 0 and pqueue.qsize() == 0: raise Exception('Nothing found')
+    elif completedHyp_pqueue.qsize() < maxNumHyp and pqueue.qsize() > 0:
+        for i in range(beamSize):
+            completedHyp_pqueue.put(pqueue.get())
+    _, _, _, (yprevs, _, _) = completedHyp_pqueue.get() #get the best prediction
     return torch.cat(yprevs, dim=1) #1xL
+

@@ -207,7 +207,7 @@ if __name__ == '__main__':
                                 tfThresh=args.tfThresh, beamSize=args.beamSize)
     step = 0
     metricVal = -1
-
+                
     #load best saved model
     if args.loadBestModel:
         model, step, metricVal = utils.loadModel(model, f'{args.savedModelDir}/best.pth.tar', device, return_step=True)

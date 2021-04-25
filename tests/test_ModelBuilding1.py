@@ -44,8 +44,7 @@ def test_Seq2Seq():
     y = torch.randint(1, vocab_size, size=(batch_size, max_seq_len), dtype=torch.int32)
     y, max_l = generate_data(y)    
 
-    enc = models.EncoderLSTM(vocab_size=vocab_size, hidden_dim=hidden_dim, num_layers=2, bidir=True)
-    dec = models.DecoderLSTM(vocab_size=vocab_size, hidden_dim=hidden_dim, num_layers=2)
-    model = models.Seq2Seq(enc, dec)
+    model = models.Seq2Seq(descVocabSize=vocab_size, absVocabSize=vocab_size, 
+                        hiddenDim=hidden_dim, numLayers=2, dropout=0.0, bidir=True)
     yhat = model(x,y)
-    assert list(yhat.shape) == [batch_size, dec.vocab_size, max_l], 'The output tensor\'s shape is not correct'
+    assert list(yhat.shape) == [batch_size, model.decoder.vocab_size, max_l], 'The output tensor\'s shape is not correct'

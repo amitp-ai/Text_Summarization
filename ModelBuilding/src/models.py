@@ -370,3 +370,137 @@ class EncoderLSTM(nn.Module):
         # y, lens = nn.utils.rnn.pad_packed_sequence(y, batch_first=True, padding_value=self.pad_token)
         return h
 
+############## Transformer Based Model ###########################
+
+
+class PositionalEncoding(nn.Module):
+    def __init__(self, dModel, maxLen=5000):
+        '''
+        Positional encoding to be used with transformer layer.
+        The output is sinusoidal with respect to the position (so position can be thought of a time).
+        And the frequency of this sinusoid is different for each element in the dModel dimension, so we end up with 
+        dModel number of sinusoids. The frequencies have geometric progression.
+        
+        dModel <int>: size of embedding dimension
+        '''
+        super(PositionalEncoding, self).__init__()
+        hpar = 10000.0
+        pe = torch.zeros(maxLen, dModel) #maxLen x d
+        position = torch.arange(0, maxLen, dtype=torch.float32).unsqueeze(1) #maxLen x 1
+        div_term = hpar ** (2*torch.arange(0,dModel,2)/dModel).to(dtype=torch.float32).unsqueeze(0) #1 x d/2
+
+        pe[:, 0::2] = torch.sin(position / div_term) #maxLen x d/2
+        pe[:, 1::2] = torch.cos(position / div_term) #maxLen x d/2
+        pe = pe.unsqueeze(0)  #1 x maxLen x d
+        self.register_buffer('pe', pe) #not trainable but saved with the model and moved to cpu/gpu with model.to()
+
+    def forward(self, x):
+        '''x: B x Len'''
+        x = torch.zeros_like(x).unsqueeze(-1) + self.pe[:, :x.size(1), :] #B x len x d
+        return x
+
+
+class Seq2SeqwithXfmr(nn.Module):
+    """
+    This is seq2seq model using Transformer network.
+    """
+    def __init__(self, descVocabSize, absVocabSize, hiddenDim=200, numLayers=6, dropout=0.0, tfThresh=0.0, beamSize=0):
+        super(Seq2SeqwithXfmr, self).__init__()
+        self.predMaxLen = 150
+        self.encMaxLen = 4000
+        self.pad_token = 0
+        self.numHeads=4
+        self.tfThresh = tfThresh
+        self.beamSize = beamSize
+        self.hidDim = hiddenDim
+        self.embDim = hiddenDim
+        self.encEmbedding = nn.Embedding(descVocabSize, self.embDim, padding_idx=self.pad_token)
+        self.encPos = PositionalEncoding(dModel=self.embDim, maxLen=self.encMaxLen)
+        self.decEmbedding = nn.Embedding(absVocabSize, self.embDim, padding_idx=self.pad_token)
+        self.decPos = PositionalEncoding(dModel=self.embDim, maxLen=self.predMaxLen)
+        self.xFmrLyr = nn.Transformer(d_model=hiddenDim, nhead=self.numHeads, num_encoder_layers=numLayers, 
+                                    num_decoder_layers=numLayers, dim_feedforward=hiddenDim, 
+                                    dropout=dropout, activation='relu')
+        self.outPrj = nn.Linear(hiddenDim, absVocabSize)
+        # _resetParams() #not needed as the transformer layer does so inside it
+
+    def _resetParams(self):
+        for i, p in enumerate(self.parameters()):
+            if p.dim() > 1:
+                torch.nn.init.xavier_uniform_(p)
+
+    def getCausalityMask(self, sz):
+        '''
+        Based upon: https://pytorch.org/docs/stable/generated/torch.nn.Transformer.html#torch.nn.Transformer
+        generate_square_subsequent_mask(sz)
+        '''
+        mask = (torch.triu(torch.ones(sz, sz)) == 1).transpose(0, 1)
+        largeNegNum = float('-inf')
+        mask = mask.float().masked_fill(mask == 0, largeNegNum).masked_fill(mask == 1, float(0.0))
+        return mask
+
+    def forward(self, x, y):
+        '''
+        x is of shape batch x Ldesc
+        y is of shape batch x Labs
+        '''
+        device = x.device
+
+        xMask = (x != self.pad_token).unsqueeze(-1) #B x Ldesc x 1
+        x = self.encEmbedding(x) + self.encPos(x) #B x Lenc x E
+        x = x * xMask #zero out all the inputs corresponding to pad tokens
+        x = x.transpose(0,1) #Lenc x B x E
+
+        yMask = (y != self.pad_token).unsqueeze(-1) #B x Labs x 1
+        y = self.decEmbedding(y) + self.decPos(y) #B x Labs x E
+        y = y * yMask #zero out all the inputs corresponding to pad tokens
+        y = y.transpose(0,1)  #Ldec x B x E
+
+        '''
+        Transformer dimensions:
+            src: (S, B, E), tgt: (T, B, E), src_mask: (S, S), tgt_mask: (T, T), memory_mask: (T, S), src_key_padding_mask: (B, S), tgt_key_padding_mask: (B, T), memory_key_padding_mask: (B, S)
+        '''
+        Lenc, B, _ = x.shape
+        Ldec = y.shape[0]
+        srcMask = None #bcse causality does not apply (so attend to everything)
+        tgtMask = self.getCausalityMask(Ldec).to(device=device) #causality mask for the decoder
+        memMask = None #bcse causality does not apply (so attend to everything)
+        srcKeyPadMask = xMask.logical_not().squeeze(-1) #B x Ldesc
+        tgtKeyPadMask = yMask.logical_not().squeeze(-1) #B x Labs
+        memKeyPadMask = srcKeyPadMask #.clone().detach() #B x Ldesc
+
+        # output = self.xFmrLyr(src=x, tgt=y)
+        output = self.xFmrLyr(src=x, tgt=y, src_mask=srcMask, tgt_mask=tgtMask, memory_mask=memMask, src_key_padding_mask=srcKeyPadMask, tgt_key_padding_mask=tgtKeyPadMask, memory_key_padding_mask=memKeyPadMask) #Ldec x B x H
+        output = output.transpose(0,1) #B x Ldec x H
+        output = self.outPrj(output) #B x Ldec x V
+        output = output.transpose(1,2) #B x V x Ldec  (need to do this for crossentropy loss. But no need to do softmax as cross entropy loss does it.)
+        return output
+
+
+    def evaluate(self, x):
+        '''
+        x is of shape batch x Lenc.
+        This function can be optimized by only calling the decoder inside the transformer and not the encoder every time.
+        '''
+        device = x.device
+        B = x.shape[0]
+        startToken = 3*torch.ones(size=(1,1), dtype=torch.int32, device=device)
+        stopToken = 4*torch.ones(size=(1,1), dtype=torch.int32, device=device)
+        padToken = 0*torch.ones(size=(1,1), dtype=torch.int32, device=device)
+        predictions = []
+        for b in range(B):
+            yprevs = startToken
+            while yprevs[:,-1:] != stopToken and yprevs[:,-1:] != padToken and yprevs.shape[1] < self.predMaxLen:
+                y = self(x[b:b+1,:], yprevs) #1 x V x Ldec
+                y = torch.argmax(y, dim=1).to(dtype=torch.int32) #1 x Ldec
+                yprevs = torch.cat((yprevs, y[:,-1:]), dim=1) #1 x Ldec        
+            predictions.append(yprevs)
+
+        #pad predictions (inorder to convert into a tensor)
+        # predictions, lens = nn.utils.rnn.pad_packed_sequence(predictions, batch_first=True, padding_value=decoder.pad_token) #BxL
+        max_len = max([p.shape[1] for p in predictions])
+        predictions_pad = torch.zeros(size=(B,max_len), dtype=torch.int32, device=device) #BxLdec
+        for b in range(B):
+            n = predictions[b].shape[1]
+            predictions_pad[b:b+1,:n] = predictions[b]
+        return predictions_pad #B x Ldec

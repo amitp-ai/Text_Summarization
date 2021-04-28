@@ -14,6 +14,7 @@ import json
 import logging
 import queue
 import shutil
+import torch.autograd.profiler as profiler
 
 def create_logger(fileName, logDir='logs/'):
     '''
@@ -361,3 +362,53 @@ def loadModel(model, checkpointPath, device, return_step=True):
         return model, step, metricVal
 
     return model
+
+''' ######################################### '''
+
+#!pip install nvidia-ml-py3
+# import nvidia_smi
+def GPU_Memory_Usage():
+    '''
+    # print('nvidia-smi:')
+    nvidia_smi.nvmlInit()
+    handle = nvidia_smi.nvmlDeviceGetHandleByIndex(0)
+    # card id 0 hardcoded here, there is also a call to get all available card ids, so we could iterate
+    mem_res = nvidia_smi.nvmlDeviceGetMemoryInfo(handle)
+    print(f'memory used: {mem_res.used / (1024**3)} (GiB) i.e. {100 * (mem_res.used / mem_res.total):.3f}%') # usage in GiB/percentage
+    '''
+
+    print('Pytorch memory info:')
+    print(f'memory_allocated: {torch.cuda.memory_allocated(device=None)/1e6}MB')
+    print(f'memory_cached: {torch.cuda.memory_cached(device=None)/1e6}MB')
+
+
+def getModelInfo(model):
+    for n,m in model.named_children():
+        num_params = 0
+        for p in m.parameters():
+            if p.requires_grad:
+                num_params += p.numel()
+        print(f'{n}: {num_params} parameters')
+
+
+def profileModel(model, data, devName='cuda'):
+    '''to profile a Pytorch model'''
+    #data prep
+    device = torch.device(devName)
+    batch = 6
+    data = data[:batch]
+    x,y = data[0].to(device), data[1].to(device)
+    model = model.to(device=device)
+    useCuda = True if devName=='cuda' else False
+
+
+    #compute profile
+    with profiler.profile(use_cuda=useCuda, record_shapes=True) as prof:
+        with profiler.record_function("Model Forward Pass"):
+            model(x, y)
+    print(prof.key_averages(group_by_input_shape=True).table(sort_by=f"{devName}_time_total", row_limit=10, top_level_events_only=False))
+
+    #memory profile
+    with profiler.profile(use_cuda=useCuda, profile_memory=True, record_shapes=True) as prof:
+        model(x, y) 
+    print(prof.key_averages().table(sort_by=f"{devName}_memory_usage", row_limit=10, top_level_events_only=False))

@@ -10,6 +10,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.optim.lr_scheduler as lrSched
 import torch.utils.data as data
 from torch.utils.tensorboard import SummaryWriter
 import utils
@@ -22,7 +23,7 @@ import argparse
 logger = utils.create_logger('train.log')
 
 def train(model, train_data, val_data, abs_idx2word, device, batch_size, 
-        num_epochs, print_every_iters, lr, tb_descr, savedModelDir=None, step=0, bestMetricVal=None):
+        num_epochs, print_every_iters, lr, tb_descr, savedModelDir=None, step=0, bestMetricVal=None, l2Reg=0.0):
     '''This is the main function for model training'''
 
     #data setup
@@ -35,7 +36,21 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size,
     model = model.to(device=device)
 
     #optimizer
-    optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=l2Reg)
+
+    #lr scheduler
+    def lrLambdaFunc(step):
+        mult = 1
+        if step > 5000: 
+            mult=0.8
+        elif step > 10000: 
+            mult=0.7
+        elif step > 20000:
+            mult=0.5
+        elif step > 30000:
+            mult=0.25
+        return mult
+    scheduler = lrSched.LambdaLR(optimizer, lrLambdaFunc) #lr decay
 
     #tensorboard setup
     logdir = f"runs/seq2seqWithAtten/{datetime.now().strftime('%Y%m%d-%H%M%S')}_lr-{lr}_{tb_descr}"
@@ -62,8 +77,10 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size,
             loss = F.cross_entropy(y, ygt.to(torch.int64))
             loss.backward()
             optimizer.step()
+            lrRate = optimizer.state_dict()['param_groups'][0]['lr']
+            
             if (step % print_every_iters) == 0:
-                logger.debug(f'After Iteration {step}, Loss is: {loss.item():.6f}')
+                logger.debug(f'After Iteration {step}: LR is {lrRate} and Loss is {loss.item():.6f}')
                 #evaluate on training data
                 logger.debug(f'\tModel eval on training data after iteration {step}...')
                 r1, r2, rl = evaluate.evaluate_model(model, train_dataloader, abs_idx2word, device)
@@ -78,8 +95,12 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size,
 
                 #save model checkpoint
                 ckptSaver.save(step=step, model=model, metricVal=r1, device=device)
+                
             #log the running loss
             tb_writer.add_scalar('Training Loss', loss.item(), step)
+
+            # LR scheduler
+            scheduler.step() #call lr scheduler every iteration
             step += 1
 
     #final model evaluation and saving checkpoint
@@ -97,14 +118,12 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size,
     tb_writer.close()
 
 
-def evaluateModel(model, train_data, val_data, abs_idx2word, device, batch_size):
+def evaluateModel(model, val_data, abs_idx2word, device, batch_size):
     """ To evaluate the model """
     #modify abs_idx2word by removing pad tokens so as to correctly calculate Reouge scores
     abs_idx2word[0] = ''
 
     #data setup
-    train_data.move_to(torch.device('cpu')) #keep data on cpu
-    train_dataloader = data.DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=0) #set num_workers to #cpu cores?? But 0 seems fastest in my experimentation
     val_data.move_to(torch.device('cpu')) #keep data on cpu
     val_dataloader = data.DataLoader(val_data, batch_size=batch_size, shuffle=True, num_workers=0)
     #model instantiation
@@ -216,8 +235,9 @@ if __name__ == '__main__':
     #evaluate or train the model
     if not args.toTrain:
         logger.debug('Starting model evaluation for the current best model...')
-        evaluateModel(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
+        evaluateModel(model=model, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
                 device=device, batch_size=args.batchSize)
+        # utils.profileModel(model, val_data, devName='cuda' if torch.cuda.is_available() else 'cpu')
     else:
         logger.debug('\nStarting model training...')
         train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 

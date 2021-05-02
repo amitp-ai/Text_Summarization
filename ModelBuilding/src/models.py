@@ -368,7 +368,7 @@ class EncoderLSTM(nn.Module):
         h0,c0 = torch.zeros(N,B,H).to(device), torch.zeros(N,B,H).to(device) #B is second term even though have batch_first=True (which only applies to input)
         y,(h,c) = self.LSTM(x, (h0,c0))
         # y, lens = nn.utils.rnn.pad_packed_sequence(y, batch_first=True, padding_value=self.pad_token)
-        return h
+        return h #(N,B,H)
 
 ############## Transformer Based Model ###########################
 
@@ -551,6 +551,7 @@ class Seq2SeqwithXfmrMemEfficient(nn.Module):
         self.beamSize = beamSize
         self.hidDim = hiddenDim
         self.embDim = hiddenDim
+        self.embMult = 4 #hiddenDim (hiddenDim seems to work worse)
         self.dropout = dropout
         self.numLayers = numLayers
         self.decNumLayers = numLayers+2
@@ -568,8 +569,13 @@ class Seq2SeqwithXfmrMemEfficient(nn.Module):
                                                 dim_feedforward=self.hidDim, dropout=self.dropout, activation='relu')
         decoderNorm = nn.LayerNorm(self.embDim)
         self.decoder = nn.TransformerDecoder(decoder_layer=decoderLayer, num_layers=self.decNumLayers, norm=decoderNorm)
-        # self.outPrj = nn.Linear(self.hidDim, absVocabSize)
-        self.outPrj = reuseEmbeddings(self.decEmbedding) #(speeds up training) but this only works if embDim == hiddenDim
+
+        weightTying = False #not tying weights performs better (trains faster and has better validation score even for the same training loss)
+        if weightTying:
+            assert self.embDim == self.hidDim, 'Can only do weight tying if Decoder Embeddings dimension and Hidden dimension are equal'
+            self.outPrj = reuseEmbeddings(self.decEmbedding) #(speeds up training) but this only works if embDim == hiddenDim
+        else:
+            self.outPrj = nn.Linear(self.hidDim, absVocabSize)
 
         self._resetParameters()
         # utils.getModelInfo(self)
@@ -598,7 +604,7 @@ class Seq2SeqwithXfmrMemEfficient(nn.Module):
         ''' x is of shape : B x Lenc'''
         def helper(xsub):
             xMask = (xsub != self.pad_token).unsqueeze(-1) #B x Lenc/n x 1
-            xsub = self.encEmbedding(xsub)*np.sqrt(self.embDim) + self.encPos(xsub) #B x Lenc/n x E
+            xsub = self.encEmbedding(xsub)*np.sqrt(self.embMult) + self.encPos(xsub) #B x Lenc/n x E
             xsub = xsub * xMask #zero out all the inputs corresponding to pad tokens
             xsub= xsub.transpose(0,1) #Lenc/n x B x E
 
@@ -609,17 +615,21 @@ class Seq2SeqwithXfmrMemEfficient(nn.Module):
 
             return memory, srcKeyPadMask
 
+        numSplits, overLap = 4, 100
         Lenc = x.size(1)
-        split = Lenc//2
+        split = Lenc//numSplits
+        memory = []
+        memKeyPadMask = []
 
-        x1 = x[:,:split] #B x Lenc/2
-        memory1, src1KeyPadMask = helper(x1)
+        for i in range(numSplits):
+            strt, stp = i*split, (i+1)*split + overLap
+            xTmp = x[:,strt:stp] #B x Lenc/n
+            memoryTmp, srcKeyPadMaskTmp = helper(xTmp)
+            memory.append(memoryTmp)
+            memKeyPadMask.append(srcKeyPadMaskTmp)
 
-        x2 = x[:,split:] #B x Lenc/2
-        memory2, src2KeyPadMask = helper(x2)
-
-        memory = torch.cat((memory1, memory2), dim=0) #Lenc x B x E
-        memKeyPadMask = torch.cat((src1KeyPadMask,src2KeyPadMask), dim=1) #B x Lenc
+        memory = torch.cat(memory, dim=0) #Lenc x B x E
+        memKeyPadMask = torch.cat(memKeyPadMask, dim=1) #B x Lenc
         memMask = None #bcse causality does not apply (so attend to everything)
 
         return memory, memKeyPadMask, memMask
@@ -639,7 +649,7 @@ class Seq2SeqwithXfmrMemEfficient(nn.Module):
         memory, memKeyPadMask, memMask = self.runEncoder(x) #memory shape is: Lenc x B x E
 
         yMask = (y != self.pad_token).unsqueeze(-1) #B x Ldec x 1
-        y = self.decEmbedding(y)*np.sqrt(self.embDim) + self.decPos(y) #B x Ldec x E
+        y = self.decEmbedding(y)*np.sqrt(self.embMult) + self.decPos(y) #B x Ldec x E
         y = y * yMask #zero out all the inputs corresponding to pad tokens
         y = y.transpose(0,1)  #Ldec x B x E
 

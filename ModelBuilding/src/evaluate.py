@@ -179,7 +179,7 @@ def evaluateXfmrSingleBatch(xFmrSeq2Seq, memory, memMask, memKeyPadMask):
     yprevs = startToken #b x Ldec
     while yprevs[:,-1:] != stopToken and yprevs[:,-1:] != padToken and yprevs.shape[1] < xFmrSeq2Seq.predMaxLen:
         yMask = (yprevs != xFmrSeq2Seq.pad_token).unsqueeze(-1) #b x Labs x 1
-        y = xFmrSeq2Seq.decEmbedding(yprevs)*np.sqrt(xFmrSeq2Seq.embDim) + xFmrSeq2Seq.decPos(yprevs) #b x Labs x E
+        y = xFmrSeq2Seq.decEmbedding(yprevs)*np.sqrt(xFmrSeq2Seq.embMult) + xFmrSeq2Seq.decPos(yprevs) #b x Labs x E
         y = y * yMask #zero out all the inputs corresponding to pad tokens
         y = y.transpose(0,1)  #Ldec x b x E
         Ldec = y.shape[0]
@@ -239,7 +239,7 @@ def evaluateXfmrSingleBatchBeamSearch(xFmrSeq2Seq, memory, memMask, memKeyPadMas
             # yprev: 1x1, ynxt: 1xVx1, hprev/hnxt: Nx1xH, cprev/cnxt: Nx1xH
 
             yMask = (yprevs != xFmrSeq2Seq.pad_token).unsqueeze(-1) #b x Labs x 1
-            y = xFmrSeq2Seq.decEmbedding(yprevs)*np.sqrt(xFmrSeq2Seq.embDim) + xFmrSeq2Seq.decPos(yprevs) #b x Labs x E
+            y = xFmrSeq2Seq.decEmbedding(yprevs)*np.sqrt(xFmrSeq2Seq.embMult) + xFmrSeq2Seq.decPos(yprevs) #b x Labs x E
             y = y * yMask #zero out all the inputs corresponding to pad tokens
             y = y.transpose(0,1)  #Ldec x b x E
             Ldec = y.shape[0]

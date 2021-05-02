@@ -40,15 +40,16 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size,
 
     #lr scheduler
     def lrLambdaFunc(step):
-        mult = 1
-        if step > 5000: 
-            mult=0.8
-        elif step > 10000: 
-            mult=0.7
-        elif step > 20000:
+        if step < 2500: 
+            mult=1.0
+        elif step < 5000: 
+            mult=0.75
+        elif step < 7500:
             mult=0.5
-        elif step > 30000:
+        elif step < 10000:
             mult=0.25
+        else:
+            mult=0.1
         return mult
     scheduler = lrSched.LambdaLR(optimizer, lrLambdaFunc) #lr decay
 
@@ -80,7 +81,7 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size,
             lrRate = optimizer.state_dict()['param_groups'][0]['lr']
             
             if (step % print_every_iters) == 0:
-                logger.debug(f'After Iteration {step}: LR is {lrRate} and Loss is {loss.item():.6f}')
+                logger.debug(f'After Iteration {step}: LR is {lrRate:.6f} and Loss is {loss.item():.6f}')
                 #evaluate on training data
                 logger.debug(f'\tModel eval on training data after iteration {step}...')
                 r1, r2, rl = evaluate.evaluate_model(model, train_dataloader, abs_idx2word, device)

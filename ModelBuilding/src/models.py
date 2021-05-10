@@ -8,10 +8,9 @@ Description:
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import numpy as np
 import utils
 import evaluate
-import numpy as np
-
 
 def SummaryGeneration(hinit_dec, c0, decoder, predMaxLen, yEnc=None, encMask=None, beamSize=0):
     """ This method sequentially generates the summary """

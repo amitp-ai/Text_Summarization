@@ -13,13 +13,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.data as data
 from torch.utils.tensorboard import SummaryWriter
-import utils
-import models
 from datetime import datetime
-import evaluate
 import copy
 import argparse
-
+import utils
+import models
+import evaluate
 
 def train(model, train_data, val_data, abs_idx2word, device, batch_size, 
         num_epochs, print_every_iters, lr, tb_descr, seed=0):

@@ -1,5 +1,13 @@
+"""
+Author:
+    Amit Patel (amitpatel.gt@gmail.com)
+Description:
+    This is used only for testing
+"""
+
 import pytest
 import torch
+# from ..ModelBuilding.src import models
 import sys
 sys.path.append('../ModelBuilding/src')
 import models

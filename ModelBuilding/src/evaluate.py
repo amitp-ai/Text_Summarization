@@ -9,9 +9,9 @@ import pandas as pd
 import numpy as np
 import torch
 from rouge import Rouge
-import utils
 import queue
 from itertools import count
+import utils
 
 logger = utils.create_logger('evaluate.log')
 

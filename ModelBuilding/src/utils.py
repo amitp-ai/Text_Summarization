@@ -16,12 +16,14 @@ import queue
 import shutil
 import torch.autograd.profiler as profiler
 
-def create_logger(fileName, logDir='logs/'):
+def create_logger(fileName, logDir=None):
     '''
     create logger and add to it a file handler and a stream handler
     This will be helpful during production
     (if calling from Jupyter notebook and seeing unexpected logging behavior, restart the kernel)
     '''
+    if not logDir:
+        logDir = os.path.join('/', 'content', 'drive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Text_Summarization_UCSD', 'ModelBuilding', 'logs')
     #create logger and log everything (debug and above)
     logger = logging.getLogger(fileName.strip('.log'))
     logger.setLevel(logging.DEBUG)

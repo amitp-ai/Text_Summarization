@@ -13,12 +13,13 @@ import torch.nn.functional as F
 import torch.optim.lr_scheduler as lrSched
 import torch.utils.data as data
 from torch.utils.tensorboard import SummaryWriter
-import utils
-import models
 from datetime import datetime
-import evaluate
 import copy
 import argparse
+import utils
+import models
+import evaluate
+
 
 logger = utils.create_logger('train.log')
 

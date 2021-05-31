@@ -34,3 +34,7 @@ git_repo_manager.ipynb
 
 #log files
 **/logs*
+
+#MLOps folder things to ignore
+**/Data/
+**/SavedModels/

@@ -1,0 +1,64 @@
+Inference:
+    Models:
+        Seq2SeqwithXfmrMemEfficient:
+            predMaxLen: 150
+            encMaxLen: 4000
+            embMult: 4
+    OtherParams:
+        padToken: 0
+        seed: 0
+        fullVocab: true #Use the full vocab or generate vocab based only upon the data used for training
+        cpcCodes: "de"
+        fname: "data0_str_json.gz"
+        trainSize: 500
+        valSize: 16
+
+
+Train:
+    Models:
+        Seq2SeqwithXfmrMemEfficient:
+            predMaxLen: 150
+            encMaxLen: 4000
+            embMult: 4
+    OtherParams:
+        padToken: 0
+        seed: 0
+        fullVocab: true #Use the full vocab or generate vocab based only upon the data used for training
+        cpcCodes: "de"
+        fname: "data0_str_json.gz"
+        trainSize: 500
+        valSize: 16
+        printEveryIters: 500
+        l2Reg: 0.0
+
+
+Unit_Tests:
+    Models:
+        Seq2SeqwithXfmrMemEfficient:
+            predMaxLen: 150
+            encMaxLen: 800
+            hiddenDim: 8
+            embMult: 4
+            numHeads: 4
+            dropout: 0.0
+            numLayers: 6
+            decNumLayers: 8
+            targetLen: 1100
+            evalPredLen: 150 #for seed 0
+    OtherParams:
+        padToken: 0
+        seed: 0
+        batchSize: 2
+        vocabSize: 10
+        beamSize: 0 #3
+        fullVocab: true
+        cpcCodes: "de"
+        fname: "data0_str_json.gz"
+        trainSize: 4
+        valSize: 4
+        numEpochs: 2
+        lr: 0.001
+        printEveryIters: 2
+        l2Reg: 0.0
+        savedModelBaseName: MODEL79 #used for training
+        loadModelName: 'MODEL7_best.pth.tar' #used for inference

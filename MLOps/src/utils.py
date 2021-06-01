@@ -16,6 +16,8 @@ import queue
 import shutil
 import torch.autograd.profiler as profiler
 import yaml
+import csv
+
 
 PARENT_DIR = './'
 
@@ -26,7 +28,6 @@ def create_logger(fileName, logDir=None, stdOut=True):
     (if calling from Jupyter notebook and seeing unexpected logging behavior, restart the kernel)
     '''
     if not logDir:
-        # logDir = os.path.join('/', 'content', 'drive', 'My Drive', 'Colab Notebooks', 'UCSDX_MLE_Bootcamp', 'Text_Summarization_UCSD', 'ModelBuilding', 'logs')
         logDir = PARENT_DIR + 'logs'
     #create logger and log everything (debug and above)
     logger = logging.getLogger(fileName.strip('.log'))
@@ -455,3 +456,31 @@ def get_data(use_full_vocab, cpc_codes, fname, train_size, val_size, logger):
     val_data = bigPatentDataset(lang_val.mini_data, shuffle=True)
 
     return train_data, val_data, lang_train
+
+
+class CSVLogger(object):
+    """
+        This class is used for logging data into a CSV file during inference.
+    """
+    def __init__(self):
+        self.data = {}
+        self.columns = []
+
+    def __getitem__(self, key):
+        return self.data[key]
+
+    def __setitem__(self, key, value):
+        self.data[key] = value
+        self.columns.append(key)
+    
+    def toCSV(self, fname):
+        if not os.path.exists(fname):
+            f = open(fname, 'w')
+            writer = csv.DictWriter(f, fieldnames = self.columns)
+            writer.writeheader()
+        else:
+            f = open(fname, 'a')
+            writer = csv.DictWriter(f, fieldnames = self.columns)
+        writer.writerows([self.data])
+        f.close()
+

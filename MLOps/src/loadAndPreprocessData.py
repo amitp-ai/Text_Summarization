@@ -38,13 +38,13 @@ import utils
 PARENT_DIR = './'
 def getData(inputTextFile, cpc_codes, logger):
     '''
-    Function to input and preprocess the input text
+    Function to input and preprocess the input text (assuming one example at a time i.e. not in a batch)
     args:
         inputTextFile: json file containing the input text to be summarized. 
                         "Description" key is for description. 
                         An optional 'Target_Summary' key-value pair can also be provided.
         cpc_codes: string for cpc code e.g. 'd' or 'e' or even 'de'
-        logger: to log different things
+        logger: to log different things in a CSV file
     '''
     desc_vocab = utils.load_json(file_name = f"{PARENT_DIR}Data/Training/Dicts/desc_vocab_final_{cpc_codes}_after_preprocess_text.json")
     abs_vocab = utils.load_json(file_name = f"{PARENT_DIR}Data/Training/Dicts/abs_vocab_final_{cpc_codes}_after_preprocess_text.json")
@@ -53,37 +53,36 @@ def getData(inputTextFile, cpc_codes, logger):
     abs_word2idx = utils.load_json(file_name = f'{PARENT_DIR}Data/Training/Dicts/abs_{cpc_codes}_word2idx.json')
     # desc_idx2word = utils.load_json(file_name = f'{PARENT_DIR}Data/Training/Dicts/desc_{cpc_codes}_idx2word.json', ifIdx2Word=True)
     
-    loggingData = {}
     inputText = utils.load_json(f"Data/{inputTextFile}")
     desc = inputText['Description']
-    loggingData['Desc_Orig'] = desc
+    logger['Desc_Orig'] = desc
 
     desc = Text_PreProcessing(desc)
-    loggingData['Desc_AfterPreProcess'] = desc
+    logger['Desc_AfterPreProcess'] = desc
 
     desc = desc + ['--stop--'] #add stop token
     desc = utils.create_numpy_array(len(desc), desc_word2idx)(desc)
-    tgtSmry = None
 
     if 'Target_Summary' in inputText:
         tgtSmry = inputText['Target_Summary']
-        loggingData['TgtSmry_Original'] = tgtSmry
+        logger['TgtSmry_Original'] = tgtSmry
 
         tgtSmry = Text_PreProcessing(tgtSmry)
-        loggingData['TgtSmry_AfterPreProcess'] = tgtSmry
+        logger['TgtSmry_AfterPreProcess'] = tgtSmry
 
         tgtSmry = ['--start--'] + tgtSmry + ['--stop--'] #add stop token
         tgtSmry = utils.create_numpy_array(len(tgtSmry), abs_word2idx)(tgtSmry)
-        
-    Data = utils.InferenceDataset(desc, tgtSmry)
-    logger.debug(f'Description Data shape is: {list(Data.desc.shape)}')
-    if Data.tgtSmry is not None: logger.debug(f'Target Summary Data shape is: {list(Data.tgtSmry.shape)}')    
-    logger.debug(loggingData)
+    else:
+        tgtSmry = None
+        logger['TgtSmry_Original'] = tgtSmry
+        logger['TgtSmry_AfterPreProcess'] = tgtSmry
 
+
+    Data = utils.InferenceDataset(desc, tgtSmry)
     # get_mini_df
     # Mini_Data_Language_Info
 
-    return Data, len(desc_vocab), len(abs_vocab), abs_idx2word
+    return Data, len(desc_vocab), len(abs_vocab), abs_idx2word, logger
 
 
 nlp = spacy.blank("en") #spacy is faster than nltk for word_tokenizing at least

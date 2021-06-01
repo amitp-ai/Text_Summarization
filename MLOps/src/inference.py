@@ -6,20 +6,18 @@ Description:
 """
 
 import torch
-import torch.utils.data as data
 import argparse
 import utils
 import models
-import evaluate
-import json
-import pandas as pd
 import loadAndPreprocessData
+import pandas as pd
+import os
+from rouge import Rouge
+import time
 
 PARENT_DIR = './'
-logger = utils.create_logger('inference.log', stdOut=True)
 
-
-def modelInference(model, descData, abs_idx2word, device):
+def modelInference(model, descData, abs_idx2word, device, logger):
     """ To evaluate the model on a single input at a time ***(i.e. not batched input)
     descData is of shape: 1xSeqLen ***"""
 
@@ -27,19 +25,29 @@ def modelInference(model, descData, abs_idx2word, device):
     # descData.move_to(torch.device('cpu')) #keep data on cpu
 
     model = model.to(device=device)
-    logger.debug(f'\tModel inference...')
-
     model.eval()
     with torch.no_grad():
         x,ytgt = descData[0:1]
-        logger.debug(x.shape)
-        x = x.to(device).to(torch.int64)
-        y = model.evaluate(x) #y is an int32 tensor of shape 1xVxL (where V is the size of abstract vocabulary) 
-        logger.debug(y.shape)
+        logger['Description_Length'] = x.shape[1]-1 #remove stop token
+        x = x.to(device).to(torch.int32)
+        y = model.evaluate(x) #y is an int32 tensor of shape 1xL 
+        logger['Prediction_Length'] = y.shape[1]-2 #remove start and stop tokens
         pred = pd.Series(y[0,:]).map(abs_idx2word).tolist()
-        pred = ' '.join(pred)
+        pred = ' '.join(pred[1:-1]) #remove start and stop tokens
+        logger['Prediction_Summary'] = pred
+        rouge_score = None
+        if ytgt != None:
+            rouge_evaluator = Rouge()
+            target = logger['TgtSmry_AfterPreProcess']
+            target = ' '.join(target)
+            rouge_score = rouge_evaluator.get_scores(pred, target) #pred is the first argument (https://pypi.org/project/rouge/)
+        logger['Rouge_Scores'] = rouge_score 
+
     # model.train()
-    logger.debug(f'Prediction is\n{pred}')
+    
+    #also log in csv
+    # if not os.
+    logger.toCSV(PARENT_DIR+'Data/inference.csv')
 
 
 def get_args():
@@ -62,7 +70,9 @@ def get_args():
 
 if __name__ == '__main__':
     args = get_args()
-    logger.debug(args)
+    logger = utils.CSVLogger()
+    logger['Time_Stamp'] = time.strftime("%H:%M:%S on %Y/%m/%d")
+    logger['args'] = args
     config = utils.read_params(args.configPath)['Inference']
     cfgParams = config['OtherParams']
     cfgModel = config['Models'][args.modelType]
@@ -73,8 +83,10 @@ if __name__ == '__main__':
     torch.cuda.manual_seed_all(cfgParams['seed']) #no need to do this (#ignored if GPU not available)
     # torch.backends.cudnn.benchmark = False #not sure if need this
 
+    #this is the inference pipeline
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    descData, descVocabSize, absVocabSize, absIdx2Word = loadAndPreprocessData.getData(inputTextFile=args.inputTextFile, cpc_codes=cfgParams['cpcCodes'], logger=logger)
+    descData, descVocabSize, absVocabSize, absIdx2Word, logger = loadAndPreprocessData.getData(inputTextFile=args.inputTextFile, 
+                                                        cpc_codes=cfgParams['cpcCodes'], logger=logger)
     model = eval('models.'+args.modelType)(descVocabSize=descVocabSize, absVocabSize=absVocabSize, 
                                 beamSize=args.beamSize, embMult=cfgModel['embMult'], predMaxLen=cfgModel['predMaxLen'], 
                                 encMaxLen=cfgModel['encMaxLen'], pad_token=cfgParams['padToken'], 
@@ -83,11 +95,10 @@ if __name__ == '__main__':
 
     #load model
     model, step, metricVal = utils.loadModel(model, f'{args.loadModelName}', device, return_step=True)
-    logger.debug(f'Loaded {args.loadModelName} model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}')
+    logger['Model_Info'] = f'Loaded {args.loadModelName} model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}'
 
     #evaluate
-    logger.debug('Starting model inference for the loaded model...')
-    modelInference(model=model, descData=descData, abs_idx2word=absIdx2Word, device=device)
+    print('Running Inference...')
+    modelInference(model=model, descData=descData, abs_idx2word=absIdx2Word, device=device, logger=logger)
     # utils.profileModel(model, val_data, devName='cuda' if torch.cuda.is_available() else 'cpu')
-    logger.debug('\n******************************************************************************\n')
 

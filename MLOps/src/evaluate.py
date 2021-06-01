@@ -173,9 +173,9 @@ def eval_single_batch_beamsearch(h0, c0, decoder, predMaxLen, yEnc=None, encMask
 def evaluateXfmrSingleBatch(xFmrSeq2Seq, memory, memMask, memKeyPadMask):
     """ Greedy function for next word prediciton for Transformer based model. Batch size (b) is 1 for this function. """
     device = memory.device
-    startToken = 3*torch.ones(size=(1,1), dtype=torch.int64, device=device)
-    stopToken = 4*torch.ones(size=(1,1), dtype=torch.int64, device=device)
-    padToken = 0*torch.ones(size=(1,1), dtype=torch.int64, device=device)
+    startToken = 3*torch.ones(size=(1,1), dtype=torch.int32, device=device)
+    stopToken = 4*torch.ones(size=(1,1), dtype=torch.int32, device=device)
+    padToken = 0*torch.ones(size=(1,1), dtype=torch.int32, device=device)
     yprevs = startToken #b x Ldec
     while yprevs[:,-1:] != stopToken and yprevs[:,-1:] != padToken and yprevs.shape[1] < xFmrSeq2Seq.predMaxLen:
         yMask = (yprevs != xFmrSeq2Seq.pad_token).unsqueeze(-1) #b x Labs x 1
@@ -190,7 +190,7 @@ def evaluateXfmrSingleBatch(xFmrSeq2Seq, memory, memMask, memKeyPadMask):
                         tgt_key_padding_mask=tgtKeyPadMask, memory_key_padding_mask=memKeyPadMask) #Ldec x b x H
         y = y.transpose(0,1) #b x Ldec x H
         y = xFmrSeq2Seq.outPrj(y) #b x Ldec x V
-        y = torch.argmax(y, dim=2).to(dtype=torch.int64) #b x Ldec
+        y = torch.argmax(y, dim=2).to(dtype=torch.int32) #b x Ldec
         yprevs = torch.cat((yprevs, y[:,-1:]), dim=1) #b x Ldec        
     return yprevs
 
@@ -205,9 +205,9 @@ def evaluateXfmrSingleBatchBeamSearch(xFmrSeq2Seq, memory, memMask, memKeyPadMas
         We are actually using negative log probability as we are using a min type priority queue.
     """
     device=memory.device
-    start_token = 3*torch.ones(size=(1,1), dtype=torch.int64, device=device)
-    stop_token = 4*torch.ones(size=(1,1), dtype=torch.int64, device=device)
-    pad_token = 0*torch.ones(size=(1,1), dtype=torch.int64, device=device)
+    start_token = 3*torch.ones(size=(1,1), dtype=torch.int32, device=device)
+    stop_token = 4*torch.ones(size=(1,1), dtype=torch.int32, device=device)
+    pad_token = 0*torch.ones(size=(1,1), dtype=torch.int32, device=device)
     yprev = start_token
     negLogProb = 0.0
     pqueue = queue.PriorityQueue(maxsize=beamSize) #this is a min priority queue
@@ -253,7 +253,7 @@ def evaluateXfmrSingleBatchBeamSearch(xFmrSeq2Seq, memory, memMask, memKeyPadMas
             y = xFmrSeq2Seq.outPrj(y) #b x 1 x V
             y = torch.nn.functional.log_softmax(y, dim=2) #b x 1 x V
             y = torch.topk(y, beamSize, dim=2)
-            tempYprev = y.indices.to(dtype=torch.int64) #b x 1 x beamSize
+            tempYprev = y.indices.to(dtype=torch.int32) #b x 1 x beamSize
             tempPscore = -1*y.values #multiply by -1 as we are using min priotiry queue (with negLogprob)
             # #random sampling for sanity checking beam search
             # tempYprev = torch.multinomial(torch.ones(ynxt.shape[1])/ynxt.shape[1], beamSize, replacement=False).unsqueeze(dim=0).unsqueeze(dim=-1).to(device)

@@ -23,7 +23,7 @@ def generate_data(batch_size, max_seq_len, vocab_size, seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed) #ignored if GPU not available
 
-    x = torch.randint(1, vocab_size, size=(batch_size, max_seq_len), dtype=torch.int64)
+    x = torch.randint(1, vocab_size, size=(batch_size, max_seq_len), dtype=torch.int32)
     max_l = 0
     for b in range(batch_size):
         l = torch.randint(1, max_seq_len, size=(1,)).item()

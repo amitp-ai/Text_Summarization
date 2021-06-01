@@ -120,6 +120,22 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epo
     # tb_writer.close()
 
 
+def evaluateModel(model, val_data, abs_idx2word, device, batch_size):
+    """ To evaluate the model """
+    #modify abs_idx2word by removing pad tokens so as to correctly calculate Reouge scores
+    abs_idx2word[0] = ''
+
+    #data setup
+    val_data.move_to(torch.device('cpu')) #keep data on cpu
+    val_dataloader = data.DataLoader(val_data, batch_size=batch_size, shuffle=True, num_workers=0)
+    #model instantiation
+    model = model.to(device=device)
+    #evaluation
+    logger.debug(f'\tModel eval on validation data...')
+    r1, r2, rl = evaluate.evaluate_model(model, val_dataloader, abs_idx2word, device, print_example=True)
+    logger.debug(f'\nRouge-1 is {r1:.4f}, Rouge-2 is {r2:.4f}, and Rouge-l is {rl:.4f}')
+
+
 
 def str2bool(v):
     if isinstance(v, bool):
@@ -136,7 +152,7 @@ def get_train_args():
     parser = argparse.ArgumentParser('Train a Text Summarization Model')
 
     # parser.add_argument('--hiddenDim', nargs='?', type=int, default=50, help='The size of the hidden dimension to be used for all layers')
-    parser.add_argument('--hiddenDim', type=int, default=50, help='The size of the hidden dimension to be used for all layers')
+    parser.add_argument('--hiddenDim', type=int, default=128, help='The size of the hidden dimension to be used for all layers')
     parser.add_argument('--numLayers', type=int, default=2, help='The number of Enc layers')
     parser.add_argument('--decNumLayers', type=int, default=4, help='The number of Dec layers')
     parser.add_argument('--numHeads', type=int, default=4, help='The number of Mutihead Attention Heads')
@@ -184,8 +200,15 @@ if __name__ == '__main__':
         model, step, metricVal = utils.loadModel(model, f'{args.savedModelBaseName}_best.pth.tar', device, return_step=True)
         logger.debug(f'Loaded the current best model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}')
 
-    logger.debug('\nStarting model training...')
-    train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
-        device=device, batch_size=args.batchSize, num_epochs=args.numEpochs, lr=args.lr, 
-        print_every_iters=cfgParams['printEveryIters'], savedModelBaseName=args.savedModelBaseName, 
-        step=step, bestMetricVal=metricVal, l2Reg=cfgParams['l2Reg'])
+    #evaluate or train the model
+    if cfgParams['toTrain']:
+        logger.debug('\nStarting model training...')
+        train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
+            device=device, batch_size=args.batchSize, num_epochs=args.numEpochs, lr=args.lr, 
+            print_every_iters=cfgParams['printEveryIters'], savedModelBaseName=args.savedModelBaseName, 
+            step=step, bestMetricVal=metricVal, l2Reg=cfgParams['l2Reg'])
+    else:
+        logger.debug('Starting model evaluation for the current best model...')
+        evaluateModel(model=model, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
+                device=device, batch_size=args.batchSize)
+        # utils.profileModel(model, val_data, devName='cuda' if torch.cuda.is_available() else 'cpu')

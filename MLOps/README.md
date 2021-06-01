@@ -9,16 +9,20 @@ python setup.py sdist bdist_wheel
 
 ## Unit Testing
 Run all commands from `Production` directory
-e.g. `python -m pytest -s ./test/`
-			`python ./src/train.py`
-			`python ./test/test_train.py`
+e.g. `python -m pytest -s ./test/`  
+     `python ./src/train.py`  
+	 `python ./test/test_train.py`
+			
 ##Training
-python ./src/train.py --hiddenDim 128 --numLayers 2 --batchSize 24 --numEpochs 100 --lr 1e-3 --dropout 0.0 \
-                      --savedModelDir './SavedModels/MODEL_7' --modelType 'Seq2SeqwithXfmrMemEfficient' \ 
-                      --loadBestModel False --beamSize 0 --configPath './config.yaml'
+python ./src/train.py --hiddenDim 128 --numLayers 2 --decNumLayers 4 --numHeads 4 --batchSize 24 \
+--numEpochs 100 --lr 1e-3 --dropout 0.0 --savedModelBaseName 'MODEL7' --modelType 'Seq2SeqwithXfmrMemEfficient' \ 
+--loadBestModel False --beamSize 0 --configPath './config.yaml'
+
 
 ##Inference
-python ./src/inference.py --hiddenDim 128 --numLayers 2 --dropout 0.0 \--inputTextFile 'inferenceData.json' --modelType 'Seq2SeqwithXfmrMemEfficient' \--loadModelName 'MODEL7_step_20500.pth.tar' --beamSize 0 --configPath './config.yaml'
+python ./src/inference.py --hiddenDim 128 --numLayers 2 --decNumLayers 4 --numHeads 4 \
+--dropout 0.0 --inputTextFile 'inferenceData.json' --modelType 'Seq2SeqwithXfmrMemEfficient' \
+--loadModelName 'MODEL7_step_20500.pth.tar' --beamSize 0 --configPath './config.yaml'
 
 ##OLD STUFF
 !python ./src/train.py --hiddenDim 128 --numLayers 2 --batchSize 24 --numEpochs 100 --lr 1e-3 --dropout 0.0 \

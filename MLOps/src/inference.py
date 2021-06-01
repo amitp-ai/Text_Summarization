@@ -16,7 +16,7 @@ import pandas as pd
 import loadAndPreprocessData
 
 PARENT_DIR = './'
-logger = utils.create_logger('inference.log', stdOut=False)
+logger = utils.create_logger('inference.log', stdOut=True)
 
 
 def modelInference(model, descData, abs_idx2word, device):

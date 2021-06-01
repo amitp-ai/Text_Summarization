@@ -16,7 +16,7 @@ import sys
 sys.path.append(f'{PARENT_DIR}src')
 import train
 import utils
-import test_models
+import models
 
 def test_dataCollection():
     """This is slow to run!"""
@@ -38,30 +38,36 @@ def test_training():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     config = utils.read_params(CONFIGFILE)['Unit_Tests']
-    xfmrModel = test_models.build_model(config, device)
-
     seed = config['OtherParams']['seed']
     batch_size, vocab_size = config['OtherParams']['batchSize'], config['OtherParams']['vocabSize']
     max_seq_len = config['Models']['Seq2SeqwithXfmrMemEfficient']['encMaxLen']
     hidden_dim = config['Models']['Seq2SeqwithXfmrMemEfficient']['hiddenDim']
-
-    logger.debug("Testing runEncoder...")
-    x, max_l = test_models.generate_data(batch_size, max_seq_len, vocab_size, seed)    
-    h,_,_ = xfmrModel.runEncoder(x.to(device))
-
     logger.debug('Testing the training loop...')
+    cfgModel = config['Models']['Seq2SeqwithXfmrMemEfficient']
     config = config['OtherParams']
     train_data, val_data, lang_train = utils.get_data(use_full_vocab=config['fullVocab'], 
             cpc_codes=config['cpcCodes'], fname=config['fname'], 
             train_size=config['trainSize'], val_size=config['valSize'], logger=logger)
 
+
+    # model = test_models.build_model(config, device)
+    model = models.Seq2SeqwithXfmrMemEfficient(descVocabSize=len(lang_train.desc_vocab), 
+        absVocabSize=len(lang_train.abs_vocab), beamSize=config['beamSize'], embMult=cfgModel['embMult'], 
+        predMaxLen=cfgModel['predMaxLen'], encMaxLen=cfgModel['encMaxLen'], pad_token=config['padToken'], 
+        hiddenDim=cfgModel['hiddenDim'], numLayers=cfgModel['numLayers'], dropout=cfgModel['dropout'],
+        numHeads=cfgModel['numHeads'], decNumLayers=cfgModel['decNumLayers'])
     #load model
-    model, step, metricVal = utils.loadModel(xfmrModel, f"{config['loadModelName']}", device, return_step=True)
+    step, metricVal = 0, -1
+    model, step, metricVal = utils.loadModel(model, f"{config['loadModelName']}", device, return_step=True)
 
     #train model
-    # out = xfmrModel(x.to(device),y.to(device))
+    # out = model(x.to(device),y.to(device))
+    logger.debug('Starting model training...')
     train.train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
         device=device, batch_size=config['batchSize'], num_epochs=config['numEpochs'], lr=config['lr'], 
         print_every_iters=config['printEveryIters'], savedModelBaseName=config['savedModelBaseName'], 
         step=step, bestMetricVal=metricVal, l2Reg=config['l2Reg'])
 
+    logger.debug('Starting model evaluation...')
+    train.evaluateModel(model=model, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
+            device=device, batch_size=config['batchSize'])

@@ -1,5 +1,5 @@
 '''
-Load data
+Load and preprocess data
 '''
 ## Data Cleaning/Pre-Processing
 
@@ -30,6 +30,9 @@ It seems to be giving the best results.
 So that is what we will use; and as a side benefit, it is significantly faster than spacy or nltk.
 """
 
+import unicodedata
+import re
+import spacy
 import utils
 
 PARENT_DIR = './'
@@ -83,55 +86,52 @@ def getData(inputTextFile, cpc_codes, logger):
     return Data, len(desc_vocab), len(abs_vocab), abs_idx2word
 
 
-# import unicodedata
-# import re
-# import spacy
-# nlp = spacy.blank("en") #spacy is faster than nltk for word_tokenizing at least
-# REPLACEMENT_STRING = '--oov--'
-# def get_abbreviations(text_list):
-#     '''
-#     e.g. 'i',' ','.', 'e', ' ', '.' => 'i.e.'
-#     There are even numbers like 1 . 3 => 1.3 then convert it to #number#
-#     Wasn't 100% successful with Regex... Hence this Python function
-#     The raw data has abbreviations broken into separate tokens. This function will combine them properly.
-#     Input (text_list): list of string
-#     output (text_list): list of string
-#     '''
-#     alphabets = set(c for c in 'abcdefghijklmnopqrstuvwxyz') #make it a set for fast access
-#     i = 0
-#     while i+1 < len(text_list):
-#         k = 0
-#         while i+k+1 < len(text_list) and text_list[i+k] in alphabets and text_list[i+k+1] == '.':
-#             k += 2
-#         k -= 2
-#         if k > 0:
-#             text_list[i] = ''.join(text_list[i:i+k+2])
-#             text_list[i+1:i+k+2] = ['']*(k+1)
-#             i += (k+1)+1 #note this means i will really be (k+1)+2 as there is i+=1 below
-#         i += 1
-#     text_list = [t for t in text_list if t != '']
-#     return text_list
+nlp = spacy.blank("en") #spacy is faster than nltk for word_tokenizing at least
+REPLACEMENT_STRING = '--oov--'
+def get_abbreviations(text_list):
+    '''
+    e.g. 'i',' ','.', 'e', ' ', '.' => 'i.e.'
+    There are even numbers like 1 . 3 => 1.3 then convert it to #number#
+    Wasn't 100% successful with Regex... Hence this Python function
+    The raw data has abbreviations broken into separate tokens. This function will combine them properly.
+    Input (text_list): list of string
+    output (text_list): list of string
+    '''
+    alphabets = set(c for c in 'abcdefghijklmnopqrstuvwxyz') #make it a set for fast access
+    i = 0
+    while i+1 < len(text_list):
+        k = 0
+        while i+k+1 < len(text_list) and text_list[i+k] in alphabets and text_list[i+k+1] == '.':
+            k += 2
+        k -= 2
+        if k > 0:
+            text_list[i] = ''.join(text_list[i:i+k+2])
+            text_list[i+1:i+k+2] = ['']*(k+1)
+            i += (k+1)+1 #note this means i will really be (k+1)+2 as there is i+=1 below
+        i += 1
+    text_list = [t for t in text_list if t != '']
+    return text_list
 
 
-# def remove_tokens_with_letters_and_numbers(text_list):
-#     """
-#     E.g. 'this1234'
-#     The below regex does this but it doesn't work 100% of the time and it is slower. Hence this Python function.
-#         #to get rid of tokens with numbers and letters in it
-#         myRegEx3 = re.compile(r'((\d+[a-z]+\d+)|([a-z]+\d+[a-z]+)|([a-z]+\d+)|(\d+[a-z]+))')
-#         text = myRegEx3.sub(REPLACEMENT_STRING, text)
-#     """
-#     for i in range(len(text_list)):
-#         t = text_list[i]
-#         if any(c.isdigit() for c in t) and any(c.isalpha() for c in t):
-#             text_list[i] = REPLACEMENT_STRING
-#     return text_list
+def remove_tokens_with_letters_and_numbers(text_list):
+    """
+    E.g. 'this1234'
+    The below regex does this but it doesn't work 100% of the time and it is slower. Hence this Python function.
+        #to get rid of tokens with numbers and letters in it
+        myRegEx3 = re.compile(r'((\d+[a-z]+\d+)|([a-z]+\d+[a-z]+)|([a-z]+\d+)|(\d+[a-z]+))')
+        text = myRegEx3.sub(REPLACEMENT_STRING, text)
+    """
+    for i in range(len(text_list)):
+        t = text_list[i]
+        if any(c.isdigit() for c in t) and any(c.isalpha() for c in t):
+            text_list[i] = REPLACEMENT_STRING
+    return text_list
 
 
-# def Clean_Text_Post_Tokenization(text_list):
-#     text_list = remove_tokens_with_letters_and_numbers(text_list)
-#     text_list = get_abbreviations(text_list)
-#     return text_list
+def Clean_Text_Post_Tokenization(text_list):
+    text_list = remove_tokens_with_letters_and_numbers(text_list)
+    text_list = get_abbreviations(text_list)
+    return text_list
 
 
 def Word_Tokenize(text):
@@ -148,50 +148,50 @@ def Word_Tokenize(text):
     return text
 
 
-# def remove_accented_chars(text):
-#     #remove characters like 'Sómě Áccěntěd těxt'
-#     text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8', 'ignore')
-#     return text
+def remove_accented_chars(text):
+    #remove characters like 'Sómě Áccěntěd těxt'
+    text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8', 'ignore')
+    return text
 
 
-# def Clean_Text(text):
-#     #convert to raw string
-#     text = text.encode('unicode-escape').decode()
+def Clean_Text(text):
+    #convert to raw string
+    text = text.encode('unicode-escape').decode()
 
-#     # #get rid of parenthesis (no don't do this! Keep parenthesis)
-#     # myRegEx0 = re.compile(r'[\[\(] (\w+) [\]\)]')
-#     # text = myRegEx0.sub(r'\1', text)
+    # #get rid of parenthesis (no don't do this! Keep parenthesis)
+    # myRegEx0 = re.compile(r'[\[\(] (\w+) [\]\)]')
+    # text = myRegEx0.sub(r'\1', text)
 
-#     # address cases where there is no space between punctuations e.g. ').' => ')' '.'
-#     myRegEx0 = re.compile(r'([\.\,\:\;])?([\]\)\}\>])([\.\,\:\;])') 
-#     text = myRegEx0.sub(r'\1 \2 \3', text)
+    # address cases where there is no space between punctuations e.g. ').' => ')' '.'
+    myRegEx0 = re.compile(r'([\.\,\:\;])?([\]\)\}\>])([\.\,\:\;])') 
+    text = myRegEx0.sub(r'\1 \2 \3', text)
 
-#     #to get rid of tokens with multiples of punctuations e.g. '&#;' (**do this second**)
-#     myRegEx1 = re.compile(r'[\&\,\;\:\\\/\?\!\+\=\%\$\#\.\(\)\{\}\[\]\-\*\@\^\|\~]{2,}')
-#     text = myRegEx1.sub(REPLACEMENT_STRING, text)
+    #to get rid of tokens with multiples of punctuations e.g. '&#;' (**do this second**)
+    myRegEx1 = re.compile(r'[\&\,\;\:\\\/\?\!\+\=\%\$\#\.\(\)\{\}\[\]\-\*\@\^\|\~]{2,}')
+    text = myRegEx1.sub(REPLACEMENT_STRING, text)
 
-#     #to get rid of very long underscores e.g. 'Fig1____________________Results'
-#     myRegEx2 = re.compile(r'\S*_(_)+_\S*')
-#     text = myRegEx2.sub(REPLACEMENT_STRING, text)
+    #to get rid of very long underscores e.g. 'Fig1____________________Results'
+    myRegEx2 = re.compile(r'\S*_(_)+_\S*')
+    text = myRegEx2.sub(REPLACEMENT_STRING, text)
 
-#     #to get rid of unicode characters e.g. 'u\1895'
-#     myRegEx3 = re.compile(r'\S*\\[a-z]\w+\S*')
-#     text = myRegEx3.sub(REPLACEMENT_STRING, text)
+    #to get rid of unicode characters e.g. 'u\1895'
+    myRegEx3 = re.compile(r'\S*\\[a-z]\w+\S*')
+    text = myRegEx3.sub(REPLACEMENT_STRING, text)
 
-#     #these are cases where --oov-- is with other characters without space and the regex to remove them in one shot is complex and slow. 
-#     #So this takes care of such issues e.g. (st--oov--wv)
-#     myRegEx4 = re.compile(r'\S*(--oov--)\S*')
-#     text = myRegEx4.sub(REPLACEMENT_STRING, text)
+    #these are cases where --oov-- is with other characters without space and the regex to remove them in one shot is complex and slow. 
+    #So this takes care of such issues e.g. (st--oov--wv)
+    myRegEx4 = re.compile(r'\S*(--oov--)\S*')
+    text = myRegEx4.sub(REPLACEMENT_STRING, text)
 
     
-#     #replace all numbers with a single token as well as floating point numbers (**only do this at the very end**)
-#     number_replacement = ' --#number#-- '
-#     myRegEx5 = re.compile(r'\d+ \. \d+')
-#     text = myRegEx5.sub(number_replacement, text)
-#     myRegEx6 = re.compile(r'\s+\d+\s+')
-#     text = myRegEx6.sub(number_replacement, text)
+    #replace all numbers with a single token as well as floating point numbers (**only do this at the very end**)
+    number_replacement = ' --#number#-- '
+    myRegEx5 = re.compile(r'\d+ \. \d+')
+    text = myRegEx5.sub(number_replacement, text)
+    myRegEx6 = re.compile(r'\s+\d+\s+')
+    text = myRegEx6.sub(number_replacement, text)
 
-#     return text
+    return text
 
 
 def Text_PreProcessing(text):
@@ -201,8 +201,8 @@ def Text_PreProcessing(text):
     Output: list of str
     '''
     text = text.lower()
-    # text = remove_accented_chars(text)
-    # text = Clean_Text(text)
+    text = remove_accented_chars(text)
+    text = Clean_Text(text)
     text = Word_Tokenize(text)
-    # text = Clean_Text_Post_Tokenization(text)
+    text = Clean_Text_Post_Tokenization(text)
     return text

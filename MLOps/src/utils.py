@@ -269,7 +269,7 @@ class CheckpointSaver(object):
     def __init__(self, savedModelBaseName, metricName, maximizeMetric, logger, maxCheckpoints=3, bestVal=None):
         super(CheckpointSaver, self).__init__()
 
-        self.baseModelName = f"./SaveModels/{savedModelBaseName}"
+        self.baseModelName = f"./SavedModels/{savedModelBaseName}"
         self.maxCheckpoints = maxCheckpoints
         self.metricName = metricName
         self.maximizeMetric = maximizeMetric

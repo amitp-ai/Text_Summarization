@@ -32,7 +32,6 @@ def generate_data(batch_size, max_seq_len, vocab_size, seed):
     return x, max_l
 
 def build_model(config, device):
-
     hiddenDim = config['Models']['Seq2SeqwithXfmrMemEfficient']['hiddenDim']
     numHeads = config['Models']['Seq2SeqwithXfmrMemEfficient']['numHeads']
     embMult = config['Models']['Seq2SeqwithXfmrMemEfficient']['embMult']

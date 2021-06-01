@@ -30,20 +30,21 @@ Train:
         valSize: 16
         printEveryIters: 500
         l2Reg: 0.0
+        toTrain: true #Flag to train or evaluate the model
 
 
 Unit_Tests:
     Models:
         Seq2SeqwithXfmrMemEfficient:
             predMaxLen: 150
-            encMaxLen: 800
-            hiddenDim: 8
+            encMaxLen: 4000 #800
+            hiddenDim: 128 #8
             embMult: 4
             numHeads: 4
             dropout: 0.0
-            numLayers: 6
-            decNumLayers: 8
-            targetLen: 1100
+            numLayers: 2 #6
+            decNumLayers: 4 #8
+            targetLen: 4300 #for assertion in test_models.py
             evalPredLen: 150 #for seed 0
     OtherParams:
         padToken: 0

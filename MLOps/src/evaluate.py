@@ -8,7 +8,7 @@ Description:
 import pandas as pd
 import numpy as np
 import torch
-# from rouge import Rouge
+from rouge import Rouge
 import queue
 from itertools import count
 import utils

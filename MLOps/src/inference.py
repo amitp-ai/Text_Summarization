@@ -32,7 +32,7 @@ def modelInference(model, descData, abs_idx2word, device, logger):
         x = x.to(device).to(torch.int32)
         y = model.evaluate(x) #y is an int32 tensor of shape 1xL 
         logger['Prediction_Length'] = y.shape[1]-2 #remove start and stop tokens
-        pred = pd.Series(y[0,:]).map(abs_idx2word).tolist()
+        pred = pd.Series(y[0,:].cpu()).map(abs_idx2word).tolist()
         pred = ' '.join(pred[1:-1]) #remove start and stop tokens
         logger['Prediction_Summary'] = pred
         rouge_score = None
@@ -41,13 +41,10 @@ def modelInference(model, descData, abs_idx2word, device, logger):
             target = logger['TgtSmry_AfterPreProcess']
             target = ' '.join(target)
             rouge_score = rouge_evaluator.get_scores(pred, target) #pred is the first argument (https://pypi.org/project/rouge/)
-        logger['Rouge_Scores'] = rouge_score 
-
+        logger['Rouge_Scores'] = rouge_score
+        print(pred, rouge_score)
     # model.train()
-    
-    #also log in csv
-    # if not os.
-    logger.toCSV(PARENT_DIR+'Data/inference.csv')
+    return logger
 
 
 def get_args():
@@ -69,6 +66,7 @@ def get_args():
     return args
 
 if __name__ == '__main__':
+    t0 = time.time()
     args = get_args()
     logger = utils.CSVLogger()
     logger['Time_Stamp'] = time.strftime("%H:%M:%S on %Y/%m/%d")
@@ -85,20 +83,31 @@ if __name__ == '__main__':
 
     #this is the inference pipeline
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    t1 = time.time()
     descData, descVocabSize, absVocabSize, absIdx2Word, logger = loadAndPreprocessData.getData(inputTextFile=args.inputTextFile, 
                                                         cpc_codes=cfgParams['cpcCodes'], logger=logger)
+    t2 = time.time()
     model = eval('models.'+args.modelType)(descVocabSize=descVocabSize, absVocabSize=absVocabSize, 
                                 beamSize=args.beamSize, embMult=cfgModel['embMult'], predMaxLen=cfgModel['predMaxLen'], 
                                 encMaxLen=cfgModel['encMaxLen'], pad_token=cfgParams['padToken'], 
                                 hiddenDim=args.hiddenDim, numLayers=args.numLayers, dropout=args.dropout,
                                 numHeads=args.numHeads, decNumLayers=args.decNumLayers)
-
     #load model
     model, step, metricVal = utils.loadModel(model, f'{args.loadModelName}', device, return_step=True)
     logger['Model_Info'] = f'Loaded {args.loadModelName} model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}'
+    t3 = time.time()
 
     #evaluate
     print('Running Inference...')
-    modelInference(model=model, descData=descData, abs_idx2word=absIdx2Word, device=device, logger=logger)
+    logger = modelInference(model=model, descData=descData, abs_idx2word=absIdx2Word, device=device, logger=logger)
+    t4 = time.time()
     # utils.profileModel(model, val_data, devName='cuda' if torch.cuda.is_available() else 'cpu')
+
+    #log duration
+    logger['Data Loading and Preprocessing Duration (s)'] = round(t2-t1, 3)
+    logger['Model Loading Duration (s)'] = round(t3-t2, 3)
+    logger['Model Inference Duration (s)'] = round(t4-t3, 3)
+    logger['Total Inference Duration (s)'] = round(t4-t0, 3)
+    logger.toCSV(PARENT_DIR+'Data/inference.csv')
+
 

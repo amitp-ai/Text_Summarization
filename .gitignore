@@ -38,3 +38,6 @@ git_repo_manager.ipynb
 #MLOps folder things to ignore
 **/Data/
 **/SavedModels/
+
+#WandB files
+**/wandb/

@@ -19,6 +19,8 @@ import argparse
 import utils
 import models
 import evaluate
+import wandb
+wandb.login()
 
 logger = utils.create_logger('train.log')
 
@@ -51,7 +53,7 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epo
         else:
             mult=0.1
         return mult
-    scheduler = lrSched.LambdaLR(optimizer, lrLambdaFunc) #lr decay
+    LR_scheduler = lrSched.LambdaLR(optimizer, lrLambdaFunc) #lr decay
 
     # #tensorboard setup
     # logdir = f"runs/seq2seqWithAtten/{datetime.now().strftime('%Y%m%d-%H%M%S')}_lr-{lr}_{tb_descr}"
@@ -82,18 +84,14 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epo
             lrRate = optimizer.state_dict()['param_groups'][0]['lr']
             
             if (step % print_every_iters) == 0:
-                logger.debug(f'After Iteration {step}: LR is {lrRate:.6f} and Loss is {loss.item():.6f}')
+                wandb.log({'Learning Rate': lrRate, 'Loss': loss.item()}, step=step)
                 #evaluate on training data
-                logger.debug(f'\tModel eval on training data after iteration {step}...')
                 r1, r2, rl = evaluate.evaluate_model(model, train_dataloader, abs_idx2word, device)
-                logger.debug(f'\t\tRouge-1 is {r1:.4f}, Rouge-2 is {r2:.4f}, and Rouge-l is {rl:.4f}')
-                # tb_writer.add_scalars('Training Data Rouge Scores', {'rouge-1':r1, 'rouge-2':r2, 'rouge-l':rl}, step)
+                wandb.log({'Train_Rouge-1': r1, 'Train_Rouge-2': r2,'Train_Rouge-l': rl}, step=step)
 
                 #evaluate on validation data
-                logger.debug(f'\tModel eval on validation data after iteration {step}...')
                 r1, r2, rl = evaluate.evaluate_model(model, val_dataloader, abs_idx2word, device)
-                logger.debug(f'\t\tRouge-1 is {r1:.4f}, Rouge-2 is {r2:.4f}, and Rouge-l is {rl:.4f}')
-                # tb_writer.add_scalars('Validation Data Rouge Scores', {'rouge-1':r1, 'rouge-2':r2, 'rouge-l':rl}, step)
+                wandb.log({'Val_Rouge-1': r1, 'Val_Rouge-2': r2,'Val_Rouge-l': rl}, step=step)
 
                 #save model checkpoint
                 ckptSaver.save(step=step, model=model, metricVal=r1, device=device)
@@ -102,22 +100,24 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epo
             # tb_writer.add_scalar('Training Loss', loss.item(), step)
 
             # LR scheduler
-            scheduler.step() #call lr scheduler every iteration
+            LR_scheduler.step() #call lr scheduler every iteration
             step += 1
 
     #final model evaluation and saving checkpoint
-    logger.debug(f'\nModel eval on validation data after final iteration...')
     r1, r2, rl = evaluate.evaluate_model(model, val_dataloader, abs_idx2word, device, print_example=True)
-    logger.debug(f'\n\tRouge-1 is {r1:.4f}, Rouge-2 is {r2:.4f}, and Rouge-l is {rl:.4f}')
+    wandb.summary['Final_Val_Rouge-1'] = r1
+    wandb.summary['Final_Val_Rouge-2'] = r2
+    wandb.summary['Final_Val_Rouge-l'] = rl
     ckptSaver.save(step=step, model=model, metricVal=r1, device=device)
     
     #visualize the model
-    with torch.no_grad():
-        x = torch.randint(0, 10, size=(3,5)).to(device=device, dtype=torch.int32)
-        yt = torch.randint(0, 10, size=(3,5)).to(device=device, dtype=torch.int32)
-        # tb_writer.add_graph(model, (x,yt), verbose=False) #write to tensorboard
-    # tb_writer.flush()
-    # tb_writer.close()
+    #use wandb
+    # with torch.no_grad():
+    #     x = torch.randint(0, 10, size=(3,5)).to(device=device, dtype=torch.int32)
+    #     yt = torch.randint(0, 10, size=(3,5)).to(device=device, dtype=torch.int32)
+    #     # tb_writer.add_graph(model, (x,yt), verbose=False) #write to tensorboard
+    # # tb_writer.flush()
+    # # tb_writer.close()
 
 
 def evaluateModel(model, val_data, abs_idx2word, device, batch_size):
@@ -172,43 +172,49 @@ def get_train_args():
 
 if __name__ == '__main__':
     args = get_train_args()
-    logger.debug(args)
     config = utils.read_params(args.configPath)['Train']
     cfgParams = config['OtherParams']
     cfgModel = config['Models'][args.modelType]
+    config = {}
+    config.update(cfgParams)
+    config.update(cfgModel)
+    config.update(vars(args))
+    logger.debug(config)
+    wandb.init(project="Text-Summarization", notes="wandb experimentation", tags=["expt1", "simple_stuff"], config=config, save_code=True)
+    config = wandb.config
 
     #random state setup (for repeatability)
-    np.random.seed(cfgParams['seed'])
+    np.random.seed(config['seed'])
     torch.backends.cudnn.deterministic = True #not sure if need this (#ignored if GPU not available)
-    torch.manual_seed(cfgParams['seed'])
-    torch.cuda.manual_seed_all(cfgParams['seed']) #no need to do this (#ignored if GPU not available)
+    torch.manual_seed(config['seed'])
+    torch.cuda.manual_seed_all(config['seed']) #no need to do this (#ignored if GPU not available)
     # torch.backends.cudnn.benchmark = False #not sure if need this
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    train_data, val_data, lang_train = utils.get_data(use_full_vocab=cfgParams['fullVocab'], 
-                            cpc_codes=cfgParams['cpcCodes'], fname=cfgParams['fname'], 
-                            train_size=cfgParams['trainSize'], val_size=cfgParams['valSize'], logger=logger)
-    model = eval('models.'+args.modelType)(descVocabSize=len(lang_train.desc_vocab), absVocabSize=len(lang_train.abs_vocab), 
-                                beamSize=args.beamSize, embMult=cfgModel['embMult'], predMaxLen=cfgModel['predMaxLen'], 
-                                encMaxLen=cfgModel['encMaxLen'], pad_token=cfgParams['padToken'], 
-                                hiddenDim=args.hiddenDim, numLayers=args.numLayers, dropout=args.dropout,
-                                numHeads=args.numHeads, decNumLayers=args.decNumLayers)
+    train_data, val_data, lang_train = utils.get_data(use_full_vocab=config['fullVocab'], 
+                            cpc_codes=config['cpcCodes'], fname=config['fname'], 
+                            train_size=config['trainSize'], val_size=config['valSize'], logger=logger)
+    model = eval('models.'+config.modelType)(descVocabSize=len(lang_train.desc_vocab), absVocabSize=len(lang_train.abs_vocab), 
+                                beamSize=config.beamSize, embMult=config['embMult'], predMaxLen=config['predMaxLen'], 
+                                encMaxLen=config['encMaxLen'], pad_token=config['padToken'], 
+                                hiddenDim=config.hiddenDim, numLayers=config.numLayers, dropout=config.dropout,
+                                numHeads=config.numHeads, decNumLayers=config.decNumLayers)
     step = 0
     metricVal = -1
     #load best saved model
-    if args.loadBestModel:
-        model, step, metricVal = utils.loadModel(model, f'{args.savedModelBaseName}_best.pth.tar', device, return_step=True)
+    if config.loadBestModel:
+        model, step, metricVal = utils.loadModel(model, f'{config.savedModelBaseName}_best.pth.tar', device, return_step=True)
         logger.debug(f'Loaded the current best model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}')
 
     #evaluate or train the model
-    if cfgParams['toTrain']:
+    if config['toTrain']:
         logger.debug('\nStarting model training...')
         train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
-            device=device, batch_size=args.batchSize, num_epochs=args.numEpochs, lr=args.lr, 
-            print_every_iters=cfgParams['printEveryIters'], savedModelBaseName=args.savedModelBaseName, 
-            step=step, bestMetricVal=metricVal, l2Reg=cfgParams['l2Reg'])
+            device=device, batch_size=config.batchSize, num_epochs=config.numEpochs, lr=config.lr, 
+            print_every_iters=config['printEveryIters'], savedModelBaseName=config.savedModelBaseName, 
+            step=step, bestMetricVal=metricVal, l2Reg=config['l2Reg'])
     else:
         logger.debug('Starting model evaluation for the current best model...')
         evaluateModel(model=model, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
-                device=device, batch_size=args.batchSize)
+                device=device, batch_size=config.batchSize)
         # utils.profileModel(model, val_data, devName='cuda' if torch.cuda.is_available() else 'cpu')

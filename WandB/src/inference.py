@@ -14,6 +14,8 @@ import pandas as pd
 import os
 from rouge import Rouge
 import time
+import wandb
+wandb.login()
 
 PARENT_DIR = './'
 
@@ -67,34 +69,43 @@ def get_args():
 
 if __name__ == '__main__':
     t0 = time.time()
-    args = get_args()
+    args = vars(get_args())
     logger = utils.CSVLogger()
     logger['Time_Stamp'] = time.strftime("%H:%M:%S on %Y/%m/%d")
     logger['args'] = args
-    config = utils.read_params(args.configPath)['Inference']
+    config = utils.read_params(args['configPath'])['Inference']
     cfgParams = config['OtherParams']
-    cfgModel = config['Models'][args.modelType]
+    cfgModel = config['Models'][args['modelType']]
+    config = cfgParams
+    config.update(cfgModel)
+    config.update(args)
+
+    wandbRun = wandb.init(project="Text-Summarization", notes="wandb for inference", tags=["Inference"], 
+        config=config, save_code=False, job_type='expt', group='Inference')
+    config = wandbRun.config
 
     #random state setup (for repeatability)
     torch.backends.cudnn.deterministic = True #not sure if need this (#ignored if GPU not available)
-    torch.manual_seed(cfgParams['seed'])
-    torch.cuda.manual_seed_all(cfgParams['seed']) #no need to do this (#ignored if GPU not available)
+    torch.manual_seed(config.seed)
+    torch.cuda.manual_seed_all(config.seed) #no need to do this (#ignored if GPU not available)
     # torch.backends.cudnn.benchmark = False #not sure if need this
 
     #this is the inference pipeline
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     t1 = time.time()
-    descData, descVocabSize, absVocabSize, absIdx2Word, logger = loadAndPreprocessData.getData(inputTextFile=args.inputTextFile, 
-                                                        cpc_codes=cfgParams['cpcCodes'], logger=logger)
+    descData, descVocabSize, absVocabSize, absIdx2Word, logger = loadAndPreprocessData.getData(inputTextFile=config.inputTextFile, 
+                                                        cpc_codes=config.cpcCodes, logger=logger)
     t2 = time.time()
-    model = eval('models.'+args.modelType)(descVocabSize=descVocabSize, absVocabSize=absVocabSize, 
-                                beamSize=args.beamSize, embMult=cfgModel['embMult'], predMaxLen=cfgModel['predMaxLen'], 
-                                encMaxLen=cfgModel['encMaxLen'], pad_token=cfgParams['padToken'], 
-                                hiddenDim=args.hiddenDim, numLayers=args.numLayers, dropout=args.dropout,
-                                numHeads=args.numHeads, decNumLayers=args.decNumLayers)
+    model = eval('models.'+config.modelType)(descVocabSize=descVocabSize, absVocabSize=absVocabSize, 
+                                beamSize=config.beamSize, embMult=config.embMult, predMaxLen=config.predMaxLen, 
+                                encMaxLen=config.encMaxLen, pad_token=config.padToken, 
+                                hiddenDim=config.hiddenDim, numLayers=config.numLayers, dropout=config.dropout,
+                                numHeads=config.numHeads, decNumLayers=config.decNumLayers)
     #load model
-    model, step, metricVal = utils.loadModel(model, f'{args.loadModelName}', device, return_step=True)
-    logger['Model_Info'] = f'Loaded {args.loadModelName} model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}'
+    print('Loading model from wandb artifact...')
+    model, step, metricVal = utils.loadWandBModelArtifact(artifactNameVer=config.loadModelName, wandbRun=wandbRun, 
+        model=model, device=device, return_step=True)
+    logger['Model_Info'] = f'Loaded {config.loadModelName} model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}'
     t3 = time.time()
 
     #evaluate
@@ -109,5 +120,11 @@ if __name__ == '__main__':
     logger['Model Inference Duration (s)'] = round(t4-t3, 3)
     logger['Total Inference Duration (s)'] = round(t4-t0, 3)
     logger.toCSV(PARENT_DIR+'Data/inference.csv')
+
+    #Also log into wandb as a summary
+    wandbRun.summary.update(logger.data)
+
+    #end wandbrun
+    wandbRun.finish()
 
 

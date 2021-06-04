@@ -391,14 +391,14 @@ def loadModel(model, checkpointPath, device, return_step, useParentDir=True):
 
     return model
 
-def loadWandBModelArtifact(artifactName, wandbRun, version, model, device):
+def loadWandBModelArtifact(artifactNameVer, wandbRun, model, device, return_step):
     """
     Load the best model from a given version
     """
-    modelArtifact = wandbRun.use_artifact(f"{artifactName}:{version}", type='model')
+    modelArtifact = wandbRun.use_artifact(artifactNameVer, type='model')
     modelDir = modelArtifact.download()
     fnameModelCkpt = f"{modelDir}/best.pt"
-    return loadModel(model, fnameModelCkpt, device, return_step=True, useParentDir=False)
+    return loadModel(model, fnameModelCkpt, device, return_step=return_step, useParentDir=False)
 
 def saveWandBDataArtifact(train_data, val_data, lang_train, dataArtifact, wandbRun):
     baseDir = f"{PARENT_DIR}Data/Training/wandbDataVersioning"

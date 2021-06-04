@@ -12,21 +12,21 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim.lr_scheduler as lrSched
 import torch.utils.data as data
-# from torch.utils.tensorboard import SummaryWriter
 from datetime import datetime
 import copy
 import argparse
 import utils
 import models
 import evaluate
+from tqdm import tqdm
 import wandb
-wandb.login()
 
+wandb.login()
 PARENT_DIR = '/content/WandB/' #'./'
 logger = utils.create_logger('train.log')
 
 def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epochs, 
-    print_every_iters, lr, savedModelBaseName, l2Reg, modelArtifact, step=0, bestMetricVal=None):
+    print_every_iters, lr, savedModelBaseName, l2Reg, modelArtifact, wandbRun, step=0, bestMetricVal=None):
     '''This is the main function for model training'''
 
     #data setup
@@ -56,10 +56,6 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epo
         return mult
     LR_scheduler = lrSched.LambdaLR(optimizer, lrLambdaFunc) #lr decay
 
-    # #tensorboard setup
-    # logdir = f"runs/seq2seqWithAtten/{datetime.now().strftime('%Y%m%d-%H%M%S')}_lr-{lr}_{tb_descr}"
-    # tb_writer = SummaryWriter(logdir)
-
     #modify abs_idx2word by removing pad tokens so as to correctly calculate Reouge scores
     abs_idx2word[0] = ''
 
@@ -72,21 +68,34 @@ def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epo
     wandbTrainTextTable = wandb.Table(columns=["Example Target", "Example Prediction", "Example Rouge Scores"])
     wandbValTextTable = wandb.Table(columns=["Example Target", "Example Prediction", "Example Rouge Scores"])
 
+    #setup the criterion
+    criterion = F.cross_entropy
+    
+    #watch the parameters and gradients of the model
+    wandbRun.watch(model, log='all', log_freq=100)
+
     step = 0
     model.train()
-    for e in range(num_epochs):
+    for e in tqdm(range(num_epochs)):
         for x,yt,_,_,_ in train_dataloader:
             x, yt = x.to(device), yt.to(device)
-            optimizer.zero_grad()
             y = yt[:,:-1] #yt starts with --start-- token and ends with --stop-- or --pad-- tokens.
             # logger.debug(y.shape, yt.shape)
+
+            #forward pass
             y = model(x, y)
             seq_len = y.shape[2]+1
             ygt = yt[:,1:seq_len]
             # logger.debug(y.shape, ygt.shape)
-            loss = F.cross_entropy(y, ygt.to(torch.int64))
+            loss = criterion(y, ygt.to(torch.int64))
+
+            #backward pass
+            optimizer.zero_grad()
             loss.backward()
+
+            #update weights
             optimizer.step()
+
             lrRate = optimizer.state_dict()['param_groups'][0]['lr']
             
             if (step % print_every_iters) == 0:
@@ -137,9 +146,8 @@ def evaluateModel(model, val_data, abs_idx2word, device, batch_size):
     model = model.to(device=device)
     #evaluation
     logger.debug(f'\tModel eval on validation data...')
-    r1, r2, rl = evaluate.evaluate_model(model, val_dataloader, abs_idx2word, device, wandbTextTable=wandbTextTable)
+    r1, r2, rl = evaluate.evaluate_model(model, val_dataloader, abs_idx2word, device)
     logger.debug(f'\nRouge-1 is {r1:.4f}, Rouge-2 is {r2:.4f}, and Rouge-l is {rl:.4f}')
-
 
 
 def str2bool(v):
@@ -175,22 +183,13 @@ def get_train_args():
     return args
 
 
-if __name__ == '__main__':
-    args = get_train_args()
-    config = utils.read_params(args.configPath)['Train']
-    cfgParams = config['OtherParams']
-    cfgModel = config['Models'][args.modelType]
-    cfg = {}
-    cfg.update(cfgParams)
-    cfg.update(cfgModel)
-    cfg.update(vars(args))
-    logger.debug(cfg)
-
+def Pipeline(cfg):
+    #Setup WandB
     wandbRun = wandb.init(project="Text-Summarization", notes="wandb experimentation", tags=["Model7", "expt"], 
     config=cfg, save_code=False, job_type='expt', group='Train')
-
     config = wandbRun.config
-    #random state setup (for repeatability)
+
+    #Random State Setup (for repeatability)
     np.random.seed(config['seed'])
     torch.backends.cudnn.deterministic = True #not sure if need this (#ignored if GPU not available)
     torch.manual_seed(config['seed'])
@@ -198,6 +197,7 @@ if __name__ == '__main__':
     # torch.backends.cudnn.benchmark = False #not sure if need this
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+    #Load Data
     if not config.loadFromArtifact:
         train_data, val_data, lang_train = utils.get_data(use_full_vocab=config['fullVocab'], 
                                 cpc_codes=config['cpcCodes'], fname=config['fname'], 
@@ -215,7 +215,7 @@ if __name__ == '__main__':
         utils.saveWandBDataArtifact(train_data=train_data, val_data=val_data, lang_train=lang_train, 
                                     dataArtifact=dataArtifact, wandbRun=wandbRun)
 
-
+    #Build and Load model
     model = eval('models.'+config.modelType)(descVocabSize=len(lang_train.desc_vocab), absVocabSize=len(lang_train.abs_vocab), 
                                 beamSize=config.beamSize, embMult=config['embMult'], predMaxLen=config['predMaxLen'], 
                                 encMaxLen=config['encMaxLen'], pad_token=config['padToken'], 
@@ -223,28 +223,24 @@ if __name__ == '__main__':
                                 numHeads=config.numHeads, decNumLayers=config.decNumLayers)
     step = 0
     metricVal = -1
-    #load best saved model
-    if config.loadBestModel:
-        if not config.loadFromArtifact:
-            model, step, metricVal = utils.loadModel(model, f'{config.savedModelBaseName}_best.pt', device, return_step=True)
-        else:
-            logger.debug('Loading model from wandb artifact...')
-            model, step, metricVal = utils.loadWandBModelArtifact(artifactName=config.savedModelBaseName, wandbRun=wandbRun, 
-                version='latest', model=model, device=device)
+    if config.loadBestModel: #load best saved model
+        logger.debug('Loading model from wandb artifact...')
+        # model, step, metricVal = utils.loadModel(model, f'{config.savedModelBaseName}_best.pt', device, return_step=True)
+        model, step, metricVal = utils.loadWandBModelArtifact(artifactNameVer=f"{config.savedModelBaseName}:latest", 
+            wandbRun=wandbRun, model=model, device=device, return_step=True)
         logger.debug(f'Loaded the current best model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}')
-
     #Artifact to save models to wandb for repeatability
     modelConfig = cfg
     modelArtifact = wandb.Artifact(name=config.savedModelBaseName, type='model',
         description=config.modelType, metadata=modelConfig)
 
-    #evaluate or train the model
+    #Train or Evaluate the Model
     if config['toTrain']:
         logger.debug('\nStarting model training...')
         train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
             device=device, batch_size=config.batchSize, num_epochs=config.numEpochs, lr=config.lr, 
             print_every_iters=config['printEveryIters'], savedModelBaseName=config.savedModelBaseName, 
-            step=step, bestMetricVal=metricVal, l2Reg=config['l2Reg'], modelArtifact=modelArtifact)
+            step=step, bestMetricVal=metricVal, l2Reg=config['l2Reg'], wandbRun=wandbRun, modelArtifact=modelArtifact)
     else:
         logger.debug('Starting model evaluation for the current best model...')
         evaluateModel(model=model, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
@@ -253,3 +249,17 @@ if __name__ == '__main__':
     
     #end wandb
     wandbRun.finish()
+
+
+if __name__ == '__main__':
+    args = get_train_args()
+    config = utils.read_params(args.configPath)['Train']
+    cfgParams = config['OtherParams']
+    cfgModel = config['Models'][args.modelType]
+    cfg = {}
+    cfg.update(cfgParams)
+    cfg.update(cfgModel)
+    cfg.update(vars(args))
+    logger.debug(cfg)
+
+    Pipeline(cfg)

@@ -63,17 +63,20 @@ def test_training():
 
     #train model
     #wandb
-    with wandb.init(project="Unit-Test", notes="train.py unit test", config=config) as wandbRun:
-        config = wandbRun.config
-        modelArtifact = wandb.Artifact(name=config.savedModelBaseName, type='model',
-            description=config.modelType, metadata=cfgModel)
-        # out = model(x.to(device),y.to(device))
-        logger.debug('Starting model training...')
-        train.train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
-            device=device, batch_size=config['batchSize'], num_epochs=config['numEpochs'], lr=config['lr'], 
-            print_every_iters=config['printEveryIters'], savedModelBaseName=config['savedModelBaseName'], 
-            step=step, bestMetricVal=metricVal, l2Reg=config['l2Reg'], wandbRun=wandbRun, modelArtifact=modelArtifact)
+    wandbRun = wandb.init(project="Unit-Test", notes="train.py unit test", config=config)
+    config = wandbRun.config
+    modelArtifact = wandb.Artifact(name=config.savedModelBaseName, type='model',
+        description=config.modelType, metadata=cfgModel)
+    
+    # out = model(x.to(device),y.to(device))
+    logger.debug('Starting model training...')
+    train.train(model=model, train_data=train_data, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
+        device=device, batch_size=config['batchSize'], num_epochs=config['numEpochs'], lr=config['lr'], 
+        print_every_iters=config['printEveryIters'], savedModelBaseName=config['savedModelBaseName'], 
+        step=step, bestMetricVal=metricVal, l2Reg=config['l2Reg'], wandbRun=wandbRun, modelArtifact=modelArtifact)
 
     logger.debug('Starting model evaluation...')
     train.evaluateModel(model=model, val_data=val_data, abs_idx2word=lang_train.abs_idx2word, 
             device=device, batch_size=config['batchSize'])
+
+    wandbRun.finish()

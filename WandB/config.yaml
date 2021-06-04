@@ -26,11 +26,12 @@ Train:
         fullVocab: true #Use the full vocab or generate vocab based only upon the data used for training
         cpcCodes: "de"
         fname: "data0_str_json.gz"
-        trainSize: 500
+        trainSize: 5000
         valSize: 16
         printEveryIters: 500
         l2Reg: 0.0
         toTrain: true #Flag to train or evaluate the model
+        loadFromArtifact: true #false #true
 
 
 Unit_Tests:
@@ -61,5 +62,7 @@ Unit_Tests:
         lr: 0.001
         printEveryIters: 2
         l2Reg: 0.0
-        savedModelBaseName: MODEL79 #used for training
+        savedModelBaseName: MODEL7 #used for training
         loadModelName: 'MODEL7_best.pth.tar' #used for inference
+        modelType: 'Seq2SeqwithXfmrMemEfficient'
+        

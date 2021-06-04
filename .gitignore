@@ -41,3 +41,4 @@ git_repo_manager.ipynb
 
 #WandB files
 **/wandb/
+**/artifacts/

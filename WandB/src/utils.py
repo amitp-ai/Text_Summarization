@@ -17,9 +17,10 @@ import shutil
 import torch.autograd.profiler as profiler
 import yaml
 import csv
+from collections import namedtuple
 
 
-PARENT_DIR = './'
+PARENT_DIR = '/content/WandB/' #'./'
 
 def create_logger(fileName, logDir=None, stdOut=True):
     '''
@@ -121,6 +122,12 @@ def load_json(file_name, ifIdx2Word=False):
         jsonDict = {int(idx):w for idx,w in jsonDict.items()} #have to do this but not sure why don't have to do this for word2idx (need to check how json load works)
     return jsonDict
 
+def save_json(fileName, jsonDict):
+    """
+    save json file
+    """
+    with open(fileName, 'w') as fh:
+        json.dump(jsonDict, fh)
 
 
 class bigPatentDataset(data.Dataset):
@@ -270,7 +277,7 @@ class CheckpointSaver(object):
     def __init__(self, savedModelBaseName, metricName, maximizeMetric, logger, maxCheckpoints=3, bestVal=None):
         super(CheckpointSaver, self).__init__()
 
-        self.baseModelName = f"./SavedModels/{savedModelBaseName}"
+        self.baseModelName = f"{PARENT_DIR}SavedModels/{savedModelBaseName}"
         self.maxCheckpoints = maxCheckpoints
         self.metricName = metricName
         self.maximizeMetric = maximizeMetric
@@ -313,14 +320,14 @@ class CheckpointSaver(object):
         }
         model.to(device) #move back to the device the model resided before moving it to cpu for ckptDict
 
-        checkpointPath = f'{self.baseModelName}_step_{step}.pth.tar'
+        checkpointPath = f'{self.baseModelName}_step_{step}.pt'
         torch.save(ckptDict, checkpointPath)
         self.logger.debug(f'Saved checkpoint: {checkpointPath}')
 
         if self.isBest(metricVal):
             # Save the best model
             self.bestVal = metricVal
-            best_path = f'{self.baseModelName}_best.pth.tar'
+            best_path = f'{self.baseModelName}_best.pt'
             shutil.copy(checkpointPath, best_path)
             self.logger.debug(f'New best checkpoint at step {step}...')
 
@@ -342,9 +349,22 @@ class CheckpointSaver(object):
                 # Avoid crashing if checkpoint has been removed or protected
                 self.logger.debug(f'Unable to remove checkpoint: {worst_ckpt}... maybe its already removed or protected')
 
+    def addChkptsToArtifact(self, modelArtifact, wandbRun):
+        """save the checkpoints to wandb"""
+        while self.ckptPaths.qsize() > 0:
+            _, ckptFname = self.ckptPaths.get()
+            # modelArtifact.metadata.update({}) #to update artifact metadata
+            fName = ckptFname[len(f"{self.baseModelName}_"):] #bcse self.baseModelName is in the beginning of ckptFname 
+            modelArtifact.add_file(ckptFname, name=fName)
+            wandbRun.save(ckptFname, base_path=PARENT_DIR)
+        bestCkptFname = f'{self.baseModelName}_best.pt'
+        modelArtifact.add_file(bestCkptFname, name='best.pt')
+        wandbRun.save(bestCkptFname, base_path=PARENT_DIR)
 
-def loadModel(model, checkpointPath, device, return_step=True):
-    """Load model parameters from disk.
+        wandbRun.log_artifact(modelArtifact)
+
+def loadModel(model, checkpointPath, device, return_step, useParentDir=True):
+    """Load model parameters from disk. (not necessary to use wandb here)
 
     Args:
         model (torch.nn.Module): Load parameters into this model.
@@ -356,7 +376,10 @@ def loadModel(model, checkpointPath, device, return_step=True):
         model (torch.nn.Module): Model loaded from checkpoint.
         step (int): Step at which checkpoint was saved. Only if `return_step`.
     """
-    ckptDict = torch.load(f"./SavedModels/{checkpointPath}", map_location=device)
+    if useParentDir:
+        ckptDict = torch.load(f"{PARENT_DIR}SavedModels/{checkpointPath}", map_location=device)
+    else:
+        ckptDict = torch.load(checkpointPath, map_location=device)
 
     # load parameters into the model
     model.load_state_dict(ckptDict['model_state'])
@@ -368,6 +391,65 @@ def loadModel(model, checkpointPath, device, return_step=True):
 
     return model
 
+def loadWandBModelArtifact(artifactName, wandbRun, version, model, device):
+    """
+    Load the best model from a given version
+    """
+    modelArtifact = wandbRun.use_artifact(f"{artifactName}:{version}", type='model')
+    modelDir = modelArtifact.download()
+    fnameModelCkpt = f"{modelDir}/best.pt"
+    return loadModel(model, fnameModelCkpt, device, return_step=True, useParentDir=False)
+
+def saveWandBDataArtifact(train_data, val_data, lang_train, dataArtifact, wandbRun):
+    baseDir = f"{PARENT_DIR}Data/Training/wandbDataVersioning"
+    fnameTrain = f"{baseDir}/train.pt"
+    fnameVal = f"{baseDir}/val.pt"
+    fnameDescVocab = f"{baseDir}/descVocab.json"
+    fnameAbsVocab = f"{baseDir}/absVocab.json"
+    fnameDescWord2Idx = f"{baseDir}/descWord2Idx.json"
+    fnameAbsWord2Idx = f"{baseDir}/absWord2Idx.json"
+    fnameDescIdx2Word = f"{baseDir}/descIdx2Word.json"
+    fnameAbsIdx2Word = f"{baseDir}/absIdx2Word.json"
+    fileNames = [fnameTrain, fnameVal, fnameDescVocab, fnameAbsVocab, fnameDescWord2Idx, \
+                    fnameAbsWord2Idx, fnameDescIdx2Word, fnameAbsIdx2Word]
+    torch.save(train_data, fnameTrain)        
+    torch.save(val_data, fnameVal)
+    save_json(fnameDescVocab, lang_train.desc_vocab)
+    save_json(fnameAbsVocab, lang_train.abs_vocab)
+    save_json(fnameDescWord2Idx, lang_train.desc_word2idx)
+    save_json(fnameAbsWord2Idx, lang_train.abs_word2idx)
+    save_json(fnameDescIdx2Word, lang_train.desc_idx2word)
+    save_json(fnameAbsIdx2Word, lang_train.abs_idx2word)
+    for fname in fileNames:
+        dataArtifact.add_file(fname)
+        wandbRun.save(fname, base_path=f"{PARENT_DIR}Data/Training")
+    wandbRun.log_artifact(dataArtifact)
+
+def loadWandBDataArtifact(artifactName, wandbRun, version):
+    dataArtifact = wandbRun.use_artifact(f"{artifactName}:{version}", type='data')
+    dataDir = dataArtifact.download()
+    fnameTrain = f"{dataDir}/train.pt"
+    fnameVal = f"{dataDir}/val.pt"
+    fnameDescVocab = f"{dataDir}/descVocab.json"
+    fnameAbsVocab = f"{dataDir}/absVocab.json"
+    fnameDescWord2Idx = f"{dataDir}/descWord2Idx.json"
+    fnameAbsWord2Idx = f"{dataDir}/absWord2Idx.json"
+    fnameDescIdx2Word = f"{dataDir}/descIdx2Word.json"
+    fnameAbsIdx2Word = f"{dataDir}/absIdx2Word.json"
+
+    train_data = torch.load(fnameTrain)
+    val_data = torch.load(fnameVal) 
+    lang_train = namedtuple('lang_train', ["desc_vocab", "abs_vocab", "desc_word2idx", "abs_word2idx", "desc_idx2word", "abs_idx2word"])
+    lang_train.desc_vocab = load_json(fnameDescVocab)
+    lang_train.abs_vocab = load_json(fnameAbsVocab)
+    lang_train.desc_word2idx = load_json(fnameDescWord2Idx)
+    lang_train.abs_word2idx = load_json(fnameAbsWord2Idx)
+    lang_train.desc_idx2word = load_json(fnameDescIdx2Word, ifIdx2Word=True)    
+    lang_train.abs_idx2word = load_json(fnameAbsIdx2Word, ifIdx2Word=True)
+    
+    return train_data, val_data, lang_train
+
+    
 ''' ######################################### '''
 
 #!pip install nvidia-ml-py3

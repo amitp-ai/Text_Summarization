@@ -12,14 +12,16 @@ from rouge import Rouge
 import queue
 from itertools import count
 import utils
+import wandb
 
 logger = utils.create_logger('evaluate.log')
 
-def evaluate_model(model, dataloader, abs_idx2word, device, print_example=False):
+def evaluate_model(model, dataloader, abs_idx2word, device, wandbTextTable=None):
     rouge_scores = []
     num_samples = 0
     max_num_samples = 16
     model.eval()
+    print_example = True if wandbTextTable else False
     with torch.no_grad():
         for x,yt,_,yorig,_ in dataloader:
             num_samples += x.shape[0]
@@ -36,9 +38,15 @@ def evaluate_model(model, dataloader, abs_idx2word, device, print_example=False)
     rouge_1 = sum([r[0] for r in rouge_scores])/len(rouge_scores)
     rouge_2 = sum([r[1] for r in rouge_scores])/len(rouge_scores)
     rouge_l = sum([r[2] for r in rouge_scores])/len(rouge_scores)
-    if print_example:
-        logger.debug(f'Example\nPrediction\n{rouge_scores[0][3]}\nTarget\n{rouge_scores[0][4]}')
-        logger.debug(f'For this example, Rouge-1 is {rouge_scores[0][0]:.4f}, Rouge-2 is {rouge_scores[0][1]:.4f}, and Rouge-l is {rouge_scores[0][2]:.4f}')
+    if wandbTextTable:
+        col1 = f'{rouge_scores[0][4]}'
+        col2 = f'{rouge_scores[0][3]}'
+        col3 = f'Rouge-1 is {rouge_scores[0][0]:.4f}, Rouge-2 is {rouge_scores[0][1]:.4f}, and Rouge-l is {rouge_scores[0][2]:.4f}'
+        # logger.debug(col1)
+        # logger.debug(col3)
+        # wandbRun.summary["pred-example"] = col1
+        # wandbRun.summary["pred-example-rouge"] = col3
+        wandbTextTable.add_data(col1, col2, col3)
     return rouge_1, rouge_2, rouge_l
 
 

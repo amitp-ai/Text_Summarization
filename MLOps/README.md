@@ -1,4 +1,4 @@
-# Overview
+# MLOps Overview
 
 ## Installing
 Go to directory containing setup.py
@@ -8,18 +8,17 @@ python setup.py sdist bdist_wheel
 
 
 ## Unit Testing
-Run all commands from `Production` directory
+Run all commands from `MLOps` directory
 e.g. `python -m pytest -s ./test/`  
      `python ./src/train.py`  
 	 `python ./test/test_train.py`
 			
 ## Training
 python ./src/train.py --hiddenDim 128 --numLayers 2 --decNumLayers 4 --numHeads 4 --batchSize 24 \
---numEpochs 100 --lr 1e-3 --dropout 0.0 --savedModelBaseName 'MODEL7' --modelType 'Seq2SeqwithXfmrMemEfficient' \ 
---loadBestModel False --beamSize 0 --configPath './config.yaml'
-
+--numEpochs 100 --lr 1e-3 --dropout 0.0 --savedModelBaseName 'MODEL1' --modelType 'Seq2SeqwithXfmrMemEfficient' \
+--loadBestModel 'True' --beamSize 0 --configPath './config.yaml'
 
 ## Inference
 python ./src/inference.py --hiddenDim 128 --numLayers 2 --decNumLayers 4 --numHeads 4 \
 --dropout 0.0 --inputTextFile 'inferenceData.json' --modelType 'Seq2SeqwithXfmrMemEfficient' \
---loadModelName 'MODEL7_step_20500.pth.tar' --beamSize 0 --configPath './config.yaml'
+--loadModelName 'MODEL1:latest' --beamSize 0 --configPath './config.yaml'

@@ -22,7 +22,7 @@ from tqdm import tqdm
 import wandb
 
 wandb.login()
-PARENT_DIR = '/content/WandB/' #'./'
+PARENT_DIR = './'
 logger = utils.create_logger('train.log')
 
 def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epochs, 
@@ -185,8 +185,8 @@ def get_train_args():
 
 def Pipeline(cfg):
     #Setup WandB
-    wandbRun = wandb.init(project="Text-Summarization", notes="wandb experimentation", tags=["Model7", "expt"], 
-    config=cfg, save_code=False, job_type='expt', group='Train')
+    wandbRun = wandb.init(project="Text-Summarization", notes="model training", tags=["train", "learning"], 
+    config=cfg, save_code=False, job_type='MODEL1', group='Train')
     config = wandbRun.config
 
     #Random State Setup (for repeatability)

@@ -62,7 +62,7 @@ Unit_Tests:
         lr: 0.001
         printEveryIters: 2
         l2Reg: 0.0
-        savedModelBaseName: MODEL7 #used for training
-        loadModelName: 'MODEL7_best.pt' #used for inference
+        savedModelBaseName: MODEL1 #used for training
+        loadModelName: 'MODEL1_best.pt' #used for inference
         modelType: 'Seq2SeqwithXfmrMemEfficient'
         

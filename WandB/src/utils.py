@@ -20,7 +20,7 @@ import csv
 from collections import namedtuple
 
 
-PARENT_DIR = '/content/WandB/' #'./'
+PARENT_DIR = './'
 
 def create_logger(fileName, logDir=None, stdOut=True):
     '''

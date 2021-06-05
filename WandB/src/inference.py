@@ -67,8 +67,58 @@ def get_args():
     args = parser.parse_args()
     return args
 
-if __name__ == '__main__':
+def Pipeline(config, logger):
+    #Setup WandB
     t0 = time.time()
+    wandbRun = wandb.init(project="Text-Summarization", notes="model inference", tags=["Inference", "evaluation"], 
+        config=config, save_code=False, job_type='MODEL1', group='Inference')
+    config = wandbRun.config
+
+    #Random State Setup (for repeatability)
+    torch.backends.cudnn.deterministic = True #not sure if need this (#ignored if GPU not available)
+    torch.manual_seed(config.seed)
+    torch.cuda.manual_seed_all(config.seed) #no need to do this (#ignored if GPU not available)
+    # torch.backends.cudnn.benchmark = False #not sure if need this
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    #Load and Preprocess Input Data (coming from a json file)
+    t1 = time.time()
+    descData, descVocabSize, absVocabSize, absIdx2Word, logger = loadAndPreprocessData.getData(inputTextFile=config.inputTextFile, 
+                                                        cpc_codes=config.cpcCodes, logger=logger)
+    t2 = time.time()
+    
+    #Build and Load a Saved Model
+    model = eval('models.'+config.modelType)(descVocabSize=descVocabSize, absVocabSize=absVocabSize, 
+                                beamSize=config.beamSize, embMult=config.embMult, predMaxLen=config.predMaxLen, 
+                                encMaxLen=config.encMaxLen, pad_token=config.padToken, 
+                                hiddenDim=config.hiddenDim, numLayers=config.numLayers, dropout=config.dropout,
+                                numHeads=config.numHeads, decNumLayers=config.decNumLayers)
+    print('Loading model from wandb artifact...')
+    model, step, metricVal = utils.loadWandBModelArtifact(artifactNameVer=config.loadModelName, wandbRun=wandbRun, 
+        model=model, device=device, return_step=True)
+    logger['Model_Info'] = f'Loaded {config.loadModelName} model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}'
+    t3 = time.time()
+
+    #Run Inference
+    print('Running Inference...')
+    logger = modelInference(model=model, descData=descData, abs_idx2word=absIdx2Word, device=device, logger=logger)
+    t4 = time.time()
+    # utils.profileModel(model, val_data, devName='cuda' if torch.cuda.is_available() else 'cpu')
+
+    #Do logging
+    logger['Data Loading and Preprocessing Duration (s)'] = round(t2-t1, 3)
+    logger['Model Loading Duration (s)'] = round(t3-t2, 3)
+    logger['Model Inference Duration (s)'] = round(t4-t3, 3)
+    logger['Total Inference Duration (s)'] = round(t4-t0, 3)
+    logger.toCSV(PARENT_DIR+'Data/inference.csv')
+    #Also log into wandb as a summary
+    wandbRun.summary.update(logger.data)
+
+    #end wandbrun
+    wandbRun.finish()
+
+
+if __name__ == '__main__':
     args = vars(get_args())
     logger = utils.CSVLogger()
     logger['Time_Stamp'] = time.strftime("%H:%M:%S on %Y/%m/%d")
@@ -80,51 +130,4 @@ if __name__ == '__main__':
     config.update(cfgModel)
     config.update(args)
 
-    wandbRun = wandb.init(project="Text-Summarization", notes="wandb for inference", tags=["Inference"], 
-        config=config, save_code=False, job_type='expt', group='Inference')
-    config = wandbRun.config
-
-    #random state setup (for repeatability)
-    torch.backends.cudnn.deterministic = True #not sure if need this (#ignored if GPU not available)
-    torch.manual_seed(config.seed)
-    torch.cuda.manual_seed_all(config.seed) #no need to do this (#ignored if GPU not available)
-    # torch.backends.cudnn.benchmark = False #not sure if need this
-
-    #this is the inference pipeline
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    t1 = time.time()
-    descData, descVocabSize, absVocabSize, absIdx2Word, logger = loadAndPreprocessData.getData(inputTextFile=config.inputTextFile, 
-                                                        cpc_codes=config.cpcCodes, logger=logger)
-    t2 = time.time()
-    model = eval('models.'+config.modelType)(descVocabSize=descVocabSize, absVocabSize=absVocabSize, 
-                                beamSize=config.beamSize, embMult=config.embMult, predMaxLen=config.predMaxLen, 
-                                encMaxLen=config.encMaxLen, pad_token=config.padToken, 
-                                hiddenDim=config.hiddenDim, numLayers=config.numLayers, dropout=config.dropout,
-                                numHeads=config.numHeads, decNumLayers=config.decNumLayers)
-    #load model
-    print('Loading model from wandb artifact...')
-    model, step, metricVal = utils.loadWandBModelArtifact(artifactNameVer=config.loadModelName, wandbRun=wandbRun, 
-        model=model, device=device, return_step=True)
-    logger['Model_Info'] = f'Loaded {config.loadModelName} model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}'
-    t3 = time.time()
-
-    #evaluate
-    print('Running Inference...')
-    logger = modelInference(model=model, descData=descData, abs_idx2word=absIdx2Word, device=device, logger=logger)
-    t4 = time.time()
-    # utils.profileModel(model, val_data, devName='cuda' if torch.cuda.is_available() else 'cpu')
-
-    #log duration
-    logger['Data Loading and Preprocessing Duration (s)'] = round(t2-t1, 3)
-    logger['Model Loading Duration (s)'] = round(t3-t2, 3)
-    logger['Model Inference Duration (s)'] = round(t4-t3, 3)
-    logger['Total Inference Duration (s)'] = round(t4-t0, 3)
-    logger.toCSV(PARENT_DIR+'Data/inference.csv')
-
-    #Also log into wandb as a summary
-    wandbRun.summary.update(logger.data)
-
-    #end wandbrun
-    wandbRun.finish()
-
-
+    Pipeline(config, logger)

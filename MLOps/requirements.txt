@@ -10,6 +10,7 @@ tqdm==4.41.1
 rouge==1.0.0
 wandb==0.10.31
 spacy==2.2.4
+awscli==1.19.88
 # re from standard library
 # unicodedata from standard library
 

@@ -8,7 +8,6 @@ Inference:
         padToken: 0
         seed: 0
         fullVocab: true #Use the full vocab or generate vocab based only upon the data used for training
-        cpcCodes: "de"
         fname: "data0_str_json.gz"
         trainSize: 500
         valSize: 16

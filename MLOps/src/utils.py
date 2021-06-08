@@ -425,7 +425,7 @@ def saveWandBDataArtifact(train_data, val_data, lang_train, dataArtifact, wandbR
         wandbRun.save(fname, base_path=f"{PARENT_DIR}Data/Training")
     wandbRun.log_artifact(dataArtifact)
 
-def loadWandBDataArtifact(artifactName, wandbRun, version):
+def loadWandBDataArtifact(artifactName, wandbRun, version, trainData=True):
     dataArtifact = wandbRun.use_artifact(f"{artifactName}:{version}", type='data')
     dataDir = dataArtifact.download()
     fnameTrain = f"{dataDir}/train.pt"
@@ -437,8 +437,11 @@ def loadWandBDataArtifact(artifactName, wandbRun, version):
     fnameDescIdx2Word = f"{dataDir}/descIdx2Word.json"
     fnameAbsIdx2Word = f"{dataDir}/absIdx2Word.json"
 
-    train_data = torch.load(fnameTrain)
-    val_data = torch.load(fnameVal) 
+    train_data = val_data = None
+    if trainData:
+        train_data = torch.load(fnameTrain)
+        val_data = torch.load(fnameVal)
+
     lang_train = namedtuple('lang_train', ["desc_vocab", "abs_vocab", "desc_word2idx", "abs_word2idx", "desc_idx2word", "abs_idx2word"])
     lang_train.desc_vocab = load_json(fnameDescVocab)
     lang_train.abs_vocab = load_json(fnameAbsVocab)

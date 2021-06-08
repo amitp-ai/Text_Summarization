@@ -83,8 +83,11 @@ def Pipeline(config, logger):
 
     #Load and Preprocess Input Data (coming from a json file)
     t1 = time.time()
-    descData, descVocabSize, absVocabSize, absIdx2Word, logger = loadAndPreprocessData.getData(inputTextFile=config.inputTextFile, 
-                                                        cpc_codes=config.cpcCodes, logger=logger)
+    _, _, lang_train = utils.loadWandBDataArtifact(artifactName='Data', 
+        wandbRun=wandbRun, version='latest', trainData=False)
+    descData, descVocabSize, absVocabSize, absIdx2Word, logger = \
+                loadAndPreprocessData.getData(inputTextFile=config.inputTextFile, 
+                        lang_train=lang_train, logger=logger)
     t2 = time.time()
     
     #Build and Load a Saved Model

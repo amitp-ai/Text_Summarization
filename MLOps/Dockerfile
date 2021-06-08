@@ -2,8 +2,8 @@
 FROM python:3.6-buster
 
 # Print commands and their arguments as they are executed and Create the working directory
-RUN set -ex && mkdir /mlops
-WORKDIR /mlops
+RUN set -ex && mkdir /production
+WORKDIR /production
 
 # Install Python dependencies
 COPY requirements.txt ./requirements.txt
@@ -11,17 +11,11 @@ COPY requirements.txt ./requirements.txt
 RUN pip install --upgrade pip~=21.0.0
 RUN pip install -r requirements.txt
 
-# Copy only the relevant directories and files
-COPY src/ ./src
-COPY Data/*.csv ./Data/
-COPY Data/*.json ./Data/
-copy Data/Training/Dicts ./Data/Training/Dicts
-COPY logs/ ./logs
-COPY config.yaml ./config.yaml
-COPY s3Bucket.sh ./s3Bucket.sh
+# Copy only the relevant directories and files (using .dockerignore)
+COPY ./ ./
 
-# Expose port
+# Expose port and command to run
 EXPOSE 8000
-ENV PYTHONPATH /mlops
-CMD python3 # /mlops/src/inference.py
+ENV PYTHONPATH /production
+CMD python3 # /production/src/inference.py
 

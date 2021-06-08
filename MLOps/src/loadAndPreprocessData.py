@@ -36,23 +36,23 @@ import spacy
 import utils
 
 PARENT_DIR = './'
-def getData(inputTextFile, cpc_codes, logger):
+def getData(inputTextFile, lang_train, logger):
     '''
     Function to input and preprocess the input text (assuming one example at a time i.e. not in a batch)
     args:
         inputTextFile: json file containing the input text to be summarized. 
                         "Description" key is for description. 
                         An optional 'Target_Summary' key-value pair can also be provided.
-        cpc_codes: string for cpc code e.g. 'd' or 'e' or even 'de'
+        lang_train: contains the vocabulary, word2idx, idx2word dicitonaries for description and abstract
         logger: to log different things in a CSV file
     '''
-    desc_vocab = utils.load_json(file_name = f"{PARENT_DIR}Data/Training/Dicts/desc_vocab_final_{cpc_codes}_after_preprocess_text.json")
-    abs_vocab = utils.load_json(file_name = f"{PARENT_DIR}Data/Training/Dicts/abs_vocab_final_{cpc_codes}_after_preprocess_text.json")
-    desc_word2idx = utils.load_json(file_name = f'{PARENT_DIR}Data/Training/Dicts/desc_{cpc_codes}_word2idx.json')
-    abs_idx2word = utils.load_json(file_name = f'{PARENT_DIR}Data/Training/Dicts/abs_{cpc_codes}_idx2word.json', ifIdx2Word=True)
-    abs_word2idx = utils.load_json(file_name = f'{PARENT_DIR}Data/Training/Dicts/abs_{cpc_codes}_word2idx.json')
-    # desc_idx2word = utils.load_json(file_name = f'{PARENT_DIR}Data/Training/Dicts/desc_{cpc_codes}_idx2word.json', ifIdx2Word=True)
-    
+    desc_vocab = lang_train.desc_vocab
+    abs_vocab = lang_train.abs_vocab
+    desc_word2idx = lang_train.desc_word2idx
+    abs_idx2word =  lang_train.abs_idx2word
+    abs_word2idx = lang_train.abs_word2idx
+    # desc_idx2word =  lang_train.desc_idx2word
+
     inputText = utils.load_json(f"{PARENT_DIR}Data/{inputTextFile}")
     desc = inputText['Description']
     logger['Desc_Orig'] = desc

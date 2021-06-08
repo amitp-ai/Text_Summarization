@@ -1,3 +1,7 @@
-.git
 .*_cache
-data
+.*_checkpoints
+artifacts
+SavedModels
+wandb
+test
+data/Training

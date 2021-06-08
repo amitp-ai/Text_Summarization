@@ -97,6 +97,8 @@ def Pipeline(config, logger):
     model, step, metricVal = utils.loadWandBModelArtifact(artifactNameVer=config.loadModelName, wandbRun=wandbRun, 
         model=model, device=device, return_step=True)
     logger['Model_Info'] = f'Loaded {config.loadModelName} model for {model.__class__.__name__}, which is from step {step} and metric value is {metricVal:.3f}'
+    #convert model to static graph for faster inference
+    # model = torch.jit.script(model) #doesn't work. gives error.
     t3 = time.time()
 
     #Run Inference

@@ -53,7 +53,7 @@ def getData(inputTextFile, cpc_codes, logger):
     abs_word2idx = utils.load_json(file_name = f'{PARENT_DIR}Data/Training/Dicts/abs_{cpc_codes}_word2idx.json')
     # desc_idx2word = utils.load_json(file_name = f'{PARENT_DIR}Data/Training/Dicts/desc_{cpc_codes}_idx2word.json', ifIdx2Word=True)
     
-    inputText = utils.load_json(f"Data/{inputTextFile}")
+    inputText = utils.load_json(f"{PARENT_DIR}Data/{inputTextFile}")
     desc = inputText['Description']
     logger['Desc_Orig'] = desc
 

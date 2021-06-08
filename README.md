@@ -12,5 +12,5 @@ Notebook named `Literature_Survey.ipynb` located inside the `LiteratureSurvey` d
 ## Model Experimentation/Building
 The notebook named `ModelBuilding.ipynb` inside the `ModelBuilding` directory contains the many different deep learning based text summarization models I built.
 
-## MLOps
-**This is the main directory containing the end-to-end pipeline for data preprocessing, model training, data and model versioning, logging metrics, as well as inference.** Please refer to the `Readme.md` file located inside this directory for details.
+## **MLOps**
+**This is the main directory containing the end-to-end pipeline for data preprocessing, model training, data and model versioning, logging metrics, as well as inference.** Please refer to the `Readme.md` file located inside the `MLOps` directory for details.

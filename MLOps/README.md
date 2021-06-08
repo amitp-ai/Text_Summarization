@@ -4,8 +4,11 @@ In this repo we use an end-to-end pipeline (using the Weights-and-Biases MLOps f
 Information about the runs, model and data versioning, etc can be found at:  
 `https://wandb.ai/amitp-ai/Text-Summarization?workspace=user-amitp-ai`
 
-Note: Run all commands from the `MLOps` directory  
+Note: Run all commands from the `MLOps` directory
 
+The dataset, saved models, logs, wandb repo, and wandb artifacts are stored in the AWS S3 bucket named `ucsdx-textsummarization` (arn:aws:s3:::ucsdx-textsummarization)  
+
+The `config.yaml` file contains various configuration parameters used for training, inference, as well as unit testing.
 
 ## Installing
 Go to MLOps directory (i.e. directory containing this Readme.md)
@@ -33,7 +36,7 @@ Inference data and results are logged into the above wandb link as well as in a 
 
 
 ## Transfer Data and SavedModels to/from S3
-1. Once the model is trained, the data and save models can be uploaded to an AWS S3 bucket using:  
+1. Once the model is trained, the data and saved models can be uploaded to an AWS S3 bucket using:  
     `./s3Bucket.sh upload_and_delete_locally`  
 2. Before training the model and running inference, download the latest data and saved models from AWS S3 using:             `./s3Bucket.sh download`
 

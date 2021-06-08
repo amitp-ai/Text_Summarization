@@ -122,21 +122,21 @@ class Seq2SeqwithXfmrMemEfficient(nn.Module):
         mask = mask.float().masked_fill(mask == 0, largeNegNum).masked_fill(mask == 1, float(0.0))
         return mask
 
+    def runEncoderHelper(self, xsub):
+        xMask = (xsub != self.pad_token).unsqueeze(-1) #B x Lenc/n x 1
+        xsub = self.encEmbedding(xsub)*np.sqrt(self.embMult) + self.encPos(xsub) #B x Lenc/n x E
+        xsub = xsub * xMask #zero out all the inputs corresponding to pad tokens
+        xsub= xsub.transpose(0,1) #Lenc/n x B x E
+
+        srcKeyPadMask = xMask.logical_not().squeeze(-1) #B x Lenc/n
+        srcKeyPadMask[:,0] = False #assume first position is non pad (otherwise self.encoder() retuns tensor with nan)
+        srcMask = None #bcse causality does not apply (so attend to everything)
+        memory = self.encoder(xsub, mask=srcMask, src_key_padding_mask=srcKeyPadMask) #Lenc/n x B x E
+
+        return memory, srcKeyPadMask
+
     def runEncoder(self, x):
         ''' x is of shape : B x Lenc'''
-        def helper(xsub):
-            xMask = (xsub != self.pad_token).unsqueeze(-1) #B x Lenc/n x 1
-            xsub = self.encEmbedding(xsub)*np.sqrt(self.embMult) + self.encPos(xsub) #B x Lenc/n x E
-            xsub = xsub * xMask #zero out all the inputs corresponding to pad tokens
-            xsub= xsub.transpose(0,1) #Lenc/n x B x E
-
-            srcKeyPadMask = xMask.logical_not().squeeze(-1) #B x Lenc/n
-            srcKeyPadMask[:,0] = False #assume first position is non pad (otherwise self.encoder() retuns tensor with nan)
-            srcMask = None #bcse causality does not apply (so attend to everything)
-            memory = self.encoder(xsub, mask=srcMask, src_key_padding_mask=srcKeyPadMask) #Lenc/n x B x E
-
-            return memory, srcKeyPadMask
-
         numSplits, overLap = 4, 100
         Lenc = x.size(1)
         split = Lenc//numSplits
@@ -145,7 +145,7 @@ class Seq2SeqwithXfmrMemEfficient(nn.Module):
         for i in range(numSplits):
             strt, stp = i*split, (i+1)*split + overLap
             xTmp = x[:,strt:stp] #B x Lenc/n
-            memoryTmp, srcKeyPadMaskTmp = helper(xTmp)
+            memoryTmp, srcKeyPadMaskTmp = self.runEncoderHelper(xTmp)
             memory.append(memoryTmp)
             memKeyPadMask.append(srcKeyPadMaskTmp)
 

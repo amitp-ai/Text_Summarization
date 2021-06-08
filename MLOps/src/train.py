@@ -22,7 +22,6 @@ from tqdm import tqdm
 import wandb
 
 wandb.login()
-PARENT_DIR = './'
 logger = utils.create_logger('train.log')
 
 def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epochs, 

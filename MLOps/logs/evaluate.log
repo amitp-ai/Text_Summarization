@@ -1,0 +1,294 @@
+06.01.21 02:32:10:evaluate:Example
+Prediction
+--start-- 
+Target
+a handle
+06.01.21 02:32:10:evaluate:For this example, Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:32:11:evaluate:Example
+Prediction
+--start-- 
+Target
+a handle
+06.01.21 02:32:11:evaluate:For this example, Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:36:35:evaluate:Example
+Prediction
+--start-- a novel water asphalt pavement either at one - on - side , both components capable of holding different , the danger of holding different and is disclosed . the injection parts comprises a flange having a waterproof arm --oov-- an --oov-- adjacent to a dirt , at which the exterior surface having a separation between adjacent conditions and a closed main body portion at least one connecting said roll for receiving the exterior channel . the non - sealing material provides a corresponding to cover portion at least one waterproof disintegrating with the window or window or cover throughout the exterior wall of the exterior wall section , thereby occupies equal to a great welding in the static conditions . --stop--
+Target
+the present invention is directed towards a window sill flashing comprising a base having a substantially rectangular shape . a front flange projects perpendicularly downward from a front edge of the base and at least one side flange extends vertically from a side edge of the base . the side flange includes a front surface . the window sill flashing is made from a rigid --oov-- vinyl film . --stop--                                                     
+06.01.21 02:36:35:evaluate:For this example, Rouge-1 is 0.3227, Rouge-2 is 0.0607, and Rouge-l is 0.2461
+06.01.21 02:37:04:evaluate:Example
+Prediction
+--start-- a novel water asphalt pavement either at one - on - side , both components capable of holding different , the danger of holding different and is disclosed . the injection parts comprises a flange having a waterproof arm --oov-- an --oov-- adjacent to a dirt , at which the exterior surface having a separation between adjacent conditions and a closed main body portion at least one connecting said roll for receiving the exterior channel . the non - sealing material provides a corresponding to cover portion at least one waterproof disintegrating with the window or window or cover throughout the exterior wall of the exterior wall section , thereby occupies equal to a great welding in the static conditions . --stop--
+Target
+the present invention is directed towards a window sill flashing comprising a base having a substantially rectangular shape . a front flange projects perpendicularly downward from a front edge of the base and at least one side flange extends vertically from a side edge of the base . the side flange includes a front surface . the window sill flashing is made from a rigid --oov-- vinyl film . --stop--                                                     
+06.01.21 02:37:04:evaluate:For this example, Rouge-1 is 0.3241, Rouge-2 is 0.0594, and Rouge-l is 0.2587
+06.01.21 02:46:03:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--           
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed
+06.01.21 02:46:03:evaluate:For this example, Rouge-1 is 0.3342, Rouge-2 is 0.0608, and Rouge-l is 0.2569
+06.01.21 02:46:25:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--                            
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.01.21 02:46:25:evaluate:For this example, Rouge-1 is 0.3300, Rouge-2 is 0.0596, and Rouge-l is 0.2565
+06.01.21 02:50:56:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--           
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed
+06.01.21 02:50:56:evaluate:For this example, Rouge-1 is 0.3342, Rouge-2 is 0.0608, and Rouge-l is 0.2569
+06.01.21 02:51:18:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--                            
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.01.21 02:51:18:evaluate:For this example, Rouge-1 is 0.3300, Rouge-2 is 0.0596, and Rouge-l is 0.2565
+06.01.21 18:52:31:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--           
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed
+06.01.21 18:52:31:evaluate:For this example, Rouge-1 is 0.3342, Rouge-2 is 0.0608, and Rouge-l is 0.2569
+06.01.21 18:52:53:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--                            
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.01.21 18:52:53:evaluate:For this example, Rouge-1 is 0.3300, Rouge-2 is 0.0596, and Rouge-l is 0.2565
+06.01.21 19:02:48:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--           
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed
+06.01.21 19:02:48:evaluate:For this example, Rouge-1 is 0.3342, Rouge-2 is 0.0608, and Rouge-l is 0.2569
+06.01.21 19:03:11:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--                            
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.01.21 19:03:11:evaluate:For this example, Rouge-1 is 0.3300, Rouge-2 is 0.0596, and Rouge-l is 0.2565
+06.01.21 19:16:09:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--           
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed
+06.01.21 19:16:09:evaluate:For this example, Rouge-1 is 0.3342, Rouge-2 is 0.0608, and Rouge-l is 0.2569
+06.01.21 19:16:31:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--                            
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.01.21 19:16:31:evaluate:For this example, Rouge-1 is 0.3300, Rouge-2 is 0.0596, and Rouge-l is 0.2565
+06.01.21 21:44:23:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--           
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed
+06.01.21 21:44:23:evaluate:For this example, Rouge-1 is 0.3342, Rouge-2 is 0.0608, and Rouge-l is 0.2569
+06.01.21 21:44:48:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity containing a component and configured to receive contacts --oov-- the surface and through the cavity while the cavity partially outer core from the inner core to the inner core . a circular tubular barrel having in its lower , a path is provided with guidance located on the inner shaft . --stop--                            
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.01.21 21:44:48:evaluate:For this example, Rouge-1 is 0.3300, Rouge-2 is 0.0596, and Rouge-l is 0.2565
+06.01.21 22:48:07:evaluate:Example
+Prediction
+--start-- 
+Target
+a handle
+06.01.21 22:48:07:evaluate:For this example, Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:30:52:evaluate:Example
+Prediction
+--start-- 
+Target
+a collector
+06.01.21 23:30:52:evaluate:For this example, Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:30:54:evaluate:Example
+Prediction
+--start-- 
+Target
+a collector
+06.01.21 23:30:54:evaluate:For this example, Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.02.21 00:02:19:evaluate:Example
+Prediction
+--start-- a pressure toilet is provided which includes a water - containing jet spray cone material and a water in the pressurized choke , and a large handle of water in the pack . the method of --oov-- bulk material in the pressurized water in the collection tank . the mass flush material also is withdrawn from the water injection container to the water in the water in the longer existing consecutively out . these liquid is drained that have sufficient to be formed in the inside the inside the trapway siphon . the method of using drilling - held in the siphon of increasing the siphon of contaminants from reaching and permit flushing of removal . --stop--        
+Target
+a pressure toilet has a trapway providing as needed siphon assist . during normal liquid waste or low bulk flushing , no siphon is formed in the trapway , and the water and light waste in the bowl are evacuated solely under the force of the pressurized jet of water . a large volume near or just downstream from the dam is provided to accommodate the blow out from the water jet . only upon reaching a threshold concentration of bulk waste material in the down leg does the trapway draw a siphon . a horizontal baffle at the lower part of the down leg assists in the accumulation of bulk material of sufficient concentration to establish a siphon in the trapway . --stop--  
+06.02.21 00:02:19:evaluate:For this example, Rouge-1 is 0.3116, Rouge-2 is 0.0604, and Rouge-l is 0.2062
+06.02.21 00:32:50:evaluate:Example
+Prediction
+--start-- in one aspect , external aspect of the present invention provides for example , actuation of a --oov-- arrangement for example , for example , or wires or more connection between the other or more associated with an open wall , unfolded efficient connection as it is provided . each peripheral blade which they may be attached in the wall , a board for example , or permits disengagement throughout such or permits disengagement of the --oov-- of the wall . --oov-- provided may be configured to the space and maintain them brought / or adjusted may be --oov-- access laterally along the wall , and may be engaged to the wall such design , and maintain part of the wall may be --oov-- for storage in a position . --stop--
+Target
+in one embodiment , the present invention provides a free - standing --oov-- stack for storing multiple --oov-- in a single column vertical stacking arrangement . in another embodiment the invention provides a --oov-- stack for storing multiple --oov-- in a single column vertical stacking arrangement wherein the --oov-- stack is --oov-- or inserted for permanent or removable attachment to the inside of a gun safe . in one aspect of this embodiment , the gun stack is configured to a height and width that takes up about the same amount of space as a long gun if such long gun were disposed or secured in a vertical position in the same space within the gun safe . --stop--             
+06.02.21 00:32:50:evaluate:For this example, Rouge-1 is 0.2896, Rouge-2 is 0.0552, and Rouge-l is 0.2303
+06.02.21 00:58:18:evaluate:Example
+Prediction
+--start-- a ladder - like ladder safety is provided which is adapted to be mounted on a base wheel . the base is such as a flat surface of two parts , is suitable for attachment to a base portion of the comprising of the j - type case and floor and top surface . a base portion of the base film of the base and the like support structure for attachment to the surfaces of the clip . a base further , the base plate and the base plate is made of a base . a flat dome and fabric to raise of the base . a locking apparatus for attachment means for attachment purposes and hand elements also designed top surface to be self easily attachment to the base . --stop--                
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                         
+06.02.21 00:58:18:evaluate:For this example, Rouge-1 is 0.3124, Rouge-2 is 0.0528, and Rouge-l is 0.2221
+06.02.21 02:36:24:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity defined by the core of a tubular core , an axially extending extending extending extending from the outer tubular shaped extending inserts , the outer collar extending from the outer core , an inner surface a third end to which in displacing , the outer housing and extending from the inner shaft including a plurality of wires operatively connected to said surrounding the acid into which the inner surface . --stop--         
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.02.21 02:36:24:evaluate:For this example, Rouge-1 is 0.3014, Rouge-2 is 0.0385, and Rouge-l is 0.2331
+06.02.21 02:36:26:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity defined by the core of a tubular core , an axially extending extending extending extending from the outer tubular shaped extending inserts , the outer collar extending from the outer core , an inner surface a third end to which in displacing , the outer housing and extending from the inner shaft including a plurality of wires operatively connected to said surrounding the acid into which the inner surface . --stop--         
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.02.21 02:36:26:evaluate:For this example, Rouge-1 is 0.2982, Rouge-2 is 0.0370, and Rouge-l is 0.2143
+06.02.21 02:39:00:evaluate:Example
+Prediction
+--start-- a process to facilitate use of a fabric having a composite machine . the invention is : a composite pattern including at a composite material ; a composite pattern rotatable on the framework ; a finishing device and a composite finishing device for a loom and phase shift the device to a composite needle head ; a finishing device for a finishing therewith ; and with application in conformity with the weave path for the layer ; and at a similarly the periphery of a heated second fabric by means ; and applying only the woven to woven at the reflective base . --stop--                 
+Target
+a sun control textile with high transmittance and a manufacturing method thereof . in the manufacturing method of the sun control textile , a high - performance sun control film is processed into slender filaments . the slender filaments are woven and assembled with other yarns by a weaving device to together form a sun control textile . the different connection manners of the sun control film yarns lead to different visible light transmittance and sun control effect of the sun control textile , whereby an excellent sun control textile with high transmittance can be achieved . --stop--                        
+06.02.21 02:39:00:evaluate:For this example, Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 03:05:13:evaluate:Example
+Prediction
+--start-- a process to facilitate use of a fabric having a composite machine . the invention is : a composite pattern including at a composite material ; a composite pattern rotatable on the framework ; a finishing device and a composite finishing device for a loom and phase shift the device to a composite needle head ; a finishing device for a finishing therewith ; and with application in conformity with the weave path for the layer ; and at a similarly the periphery of a heated second fabric by means ; and applying only the woven to woven at the reflective base . --stop--                 
+Target
+a sun control textile with high transmittance and a manufacturing method thereof . in the manufacturing method of the sun control textile , a high - performance sun control film is processed into slender filaments . the slender filaments are woven and assembled with other yarns by a weaving device to together form a sun control textile . the different connection manners of the sun control film yarns lead to different visible light transmittance and sun control effect of the sun control textile , whereby an excellent sun control textile with high transmittance can be achieved . --stop--                        
+06.02.21 03:05:13:evaluate:For this example, Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 03:15:55:evaluate:Example
+Prediction
+--start-- a process to facilitate use of a fabric having a composite machine . the invention is : a composite pattern including at a composite material ; a composite pattern rotatable on the framework ; a finishing device and a composite finishing device for a loom and phase shift the device to a composite needle head ; a finishing device for a finishing therewith ; and with application in conformity with the weave path for the layer ; and at a similarly the periphery of a heated second fabric by means ; and applying only the woven to woven at the reflective base . --stop--                 
+Target
+a sun control textile with high transmittance and a manufacturing method thereof . in the manufacturing method of the sun control textile , a high - performance sun control film is processed into slender filaments . the slender filaments are woven and assembled with other yarns by a weaving device to together form a sun control textile . the different connection manners of the sun control film yarns lead to different visible light transmittance and sun control effect of the sun control textile , whereby an excellent sun control textile with high transmittance can be achieved . --stop--                        
+06.02.21 03:15:55:evaluate:For this example, Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 03:18:13:evaluate:Example
+Prediction
+--start-- a process to facilitate use of a fabric having a composite machine . the invention is : a composite pattern including at a composite material ; a composite pattern rotatable on the framework ; a finishing device and a composite finishing device for a loom and phase shift the device to a composite needle head ; a finishing device for a finishing therewith ; and with application in conformity with the weave path for the layer ; and at a similarly the periphery of a heated second fabric by means ; and applying only the woven to woven at the reflective base . --stop--                 
+Target
+a sun control textile with high transmittance and a manufacturing method thereof . in the manufacturing method of the sun control textile , a high - performance sun control film is processed into slender filaments . the slender filaments are woven and assembled with other yarns by a weaving device to together form a sun control textile . the different connection manners of the sun control film yarns lead to different visible light transmittance and sun control effect of the sun control textile , whereby an excellent sun control textile with high transmittance can be achieved . --stop--                        
+06.02.21 03:18:13:evaluate:For this example, Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 03:51:40:evaluate:Example
+Prediction
+--start-- a process to facilitate use of a fabric having a composite machine . the invention is : a composite pattern including at a composite material ; a composite pattern rotatable on the framework ; a finishing device and a composite finishing device for a loom and phase shift the device to a composite needle head ; a finishing device for a finishing therewith ; and with application in conformity with the weave path for the layer ; and at a similarly the periphery of a heated second fabric by means ; and applying only the woven to woven at the reflective base . --stop--                 
+Target
+a sun control textile with high transmittance and a manufacturing method thereof . in the manufacturing method of the sun control textile , a high - performance sun control film is processed into slender filaments . the slender filaments are woven and assembled with other yarns by a weaving device to together form a sun control textile . the different connection manners of the sun control film yarns lead to different visible light transmittance and sun control effect of the sun control textile , whereby an excellent sun control textile with high transmittance can be achieved . --stop--                        
+06.02.21 03:51:40:evaluate:For this example, Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 03:55:34:evaluate:Example
+Prediction
+--start-- a pressure toilet is provided which includes a water - containing jet spray cone material and a water in the pressurized choke , and a large handle of water in the pack . the method of --oov-- bulk material in the pressurized water in the collection tank . the mass flush material also is withdrawn from the water injection container to the water in the water in the longer existing consecutively out . these liquid is drained that have sufficient to be formed in the inside the inside the trapway siphon . the method of using drilling - held in the siphon of increasing the siphon of contaminants from reaching and permit flushing of removal . --stop--        
+Target
+a pressure toilet has a trapway providing as needed siphon assist . during normal liquid waste or low bulk flushing , no siphon is formed in the trapway , and the water and light waste in the bowl are evacuated solely under the force of the pressurized jet of water . a large volume near or just downstream from the dam is provided to accommodate the blow out from the water jet . only upon reaching a threshold concentration of bulk waste material in the down leg does the trapway draw a siphon . a horizontal baffle at the lower part of the down leg assists in the accumulation of bulk material of sufficient concentration to establish a siphon in the trapway . --stop--  
+06.02.21 03:55:34:evaluate:For this example, Rouge-1 is 0.3116, Rouge-2 is 0.0604, and Rouge-l is 0.2062
+06.02.21 04:08:17:evaluate:Example
+Prediction
+--start-- a fracturing device and a system to grip a down device and a down device , is adapted to be extending upwardly in the head and / or end of the device , the latch mechanism being extending lengthwise direction generally engageable to be lifted allowing the purpose of the head and to be extending at a proper short path from the valve for additional communication of the flow line . --stop--                                                                
+Target
+an apparatus for manipulating an eccentrically located well bore device is disclosed . one embodiment of the apparatus comprises : a main body attachable to a conveyance member ; an arm hinged to the main body ; a lock assembly for selectively retaining the arm in a locked position and releasing the arm from the locked position ; a kick over assembly for moving the arm to a --oov-- over position ; and an adapter connected to the lift arm , the adapter connectable with a tool for latching onto the device . the kick over assembly comprises a kick member operatively connected to the arm and a biasing member having a first end connected to the arm and a second end connected to the kick member . --stop--        
+06.02.21 04:08:17:evaluate:For this example, Rouge-1 is 0.3051, Rouge-2 is 0.0562, and Rouge-l is 0.2091
+06.02.21 14:35:38:evaluate:Example
+Prediction
+--start-- an improved an improved indicator system includes a cavity defined by the core of a tubular core , an axially extending extending extending extending from the outer tubular shaped extending inserts , the outer collar extending from the outer core , an inner surface a third end to which in displacing , the outer housing and extending from the inner shaft including a plurality of wires operatively connected to said surrounding the acid into which the inner surface . --stop--         
+Target
+a collector for dog droppings includes a stick provided with a support bell at its ground - side end . the stick includes at its lower end an extension which projects through the support bell and is rotatable relative thereto . connected to the extension is a receiving insert which includes two semicircular plates with one plate movable relative to the other stationary plate so that the insert can be opened and closed for collecting and retaining the waste in the collector and for subsequent disposal thereof . --stop-- 
+06.02.21 14:35:39:evaluate:For this example, Rouge-1 is 0.3014, Rouge-2 is 0.0385, and Rouge-l is 0.2331
+06.02.21 14:35:43:evaluate:Example
+Prediction
+--start-- a mounting system a mounting system that is installed in a remote vertical position , more efficient and includes a pair of provided slidable flat panels coupled to the body configured to which plates are movable relative to the body as a seam passes therebetween . ends of the body also is --oov-- insertable compresses or eliminates alignment with the seam . through modular attachment . end modification sidewall preferably between the lever movement of the lever and allows any direction , thereby allowing manual and replacement of the like . while the throttle defines an oblique hinge bracket . while the body portion of the lever plane of the lever movement of the lever saw grooved body extends parallel to allow the . --stop--
+Target
+a snow pusher attachment for use in conjunction with a straight blade angle - type snow plow mounted to a work vehicle . this pusher allows a work vehicle to capture , contain , and --oov-- large amounts of snow very quickly and efficiently . the attachment consists of side panels , connected by horizontal members between . this pusher attachment is secured to the snow plow by bracket assemblies , attached to the upper edge of the snow plow that engage hooks on the upper , rear portion of the pusher attachment . the attachment does not require the operator to exit the work vehicle to secure or release it from the snowplow . accordingly , the attachment allows the quick and repeated conversion of
+06.02.21 14:35:43:evaluate:For this example, Rouge-1 is 0.3068, Rouge-2 is 0.0331, and Rouge-l is 0.1871
+06.02.21 15:43:38:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 15:43:38:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 15:49:18:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 15:49:18:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 15:53:44:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 15:53:44:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 16:02:27:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 16:02:27:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 16:05:35:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 16:05:35:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 17:08:26:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 17:08:26:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 17:32:51:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 17:32:51:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 18:03:07:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 18:03:07:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 18:08:39:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 18:08:39:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 18:10:42:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 18:10:42:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 18:12:51:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 18:12:51:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 19:46:42:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 19:46:42:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 20:12:58:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 20:12:58:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 20:22:43:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 20:22:43:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 20:27:00:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 20:27:00:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093
+06.02.21 21:06:42:evaluate:Example
+Prediction
+--start-- a folding guide is used for the like utilizes a pair of articulating cord manual edge , each of opposed end of a raised from a side support support panel from the other by a base , which is designed can be rotated on either side walls or a flat surface in a floor , a plurality of raised about a similar --stop--                                                                             
+Target
+identical metal trough sections adapted for twist - lock attachment end to end . the twist - lock arrangement is built into the trough sections . no separate fasteners are required . the attached trough sections produce a half - round elongated member . the elongated member is useful for supporting and protecting --oov-- flexible sewer hose of the type normally used on motor homes and trailers for emptying holding tanks . after use , the elongated support member can be --oov-- back into the smaller trough sections for storage . --stop--                                                 
+06.02.21 21:06:42:evaluate:For this example, Rouge-1 is 0.2806, Rouge-2 is 0.0490, and Rouge-l is 0.2093

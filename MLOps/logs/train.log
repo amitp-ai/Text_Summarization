@@ -1,0 +1,1108 @@
+06.01.21 01:27:33:train:Saver will maximize rouge-1...
+06.01.21 01:30:37:train:	Model eval on validation data...
+06.01.21 02:23:43:train:Saver will maximize rouge-1...
+06.01.21 02:26:35:train:Saver will maximize rouge-1...
+06.01.21 02:26:38:train:After Iteration 0: LR is 0.001000 and Loss is 9.290595
+06.01.21 02:26:38:train:	Model eval on training data after iteration 0...
+06.01.21 02:28:30:train:Saver will maximize rouge-1...
+06.01.21 02:28:32:train:After Iteration 0: LR is 0.001000 and Loss is 9.384995
+06.01.21 02:28:32:train:	Model eval on training data after iteration 0...
+06.01.21 02:28:34:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:28:34:train:	Model eval on validation data after iteration 0...
+06.01.21 02:28:35:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:31:51:train:Saver will maximize rouge-1...
+06.01.21 02:31:54:train:After Iteration 0: LR is 0.001000 and Loss is 9.180809
+06.01.21 02:31:54:train:	Model eval on training data after iteration 0...
+06.01.21 02:31:55:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:31:55:train:	Model eval on validation data after iteration 0...
+06.01.21 02:31:57:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:31:57:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 02:31:57:train:New best checkpoint at step 0...
+06.01.21 02:32:02:train:After Iteration 2: LR is 0.001000 and Loss is 8.640971
+06.01.21 02:32:02:train:	Model eval on training data after iteration 2...
+06.01.21 02:32:04:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:32:04:train:	Model eval on validation data after iteration 2...
+06.01.21 02:32:05:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:32:05:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 02:32:08:train:
+Model eval on validation data after final iteration...
+06.01.21 02:32:10:train:
+	Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:32:10:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 02:32:10:train:	Model eval on validation data...
+06.01.21 02:32:11:train:
+Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 02:34:27:train:Saver will maximize rouge-1...
+06.01.21 02:34:29:train:After Iteration 0: LR is 0.001000 and Loss is 0.002383
+06.01.21 02:34:29:train:	Model eval on training data after iteration 0...
+06.01.21 02:34:47:train:		Rouge-1 is 0.3346, Rouge-2 is 0.0919, and Rouge-l is 0.2602
+06.01.21 02:34:47:train:	Model eval on validation data after iteration 0...
+06.01.21 02:35:10:train:		Rouge-1 is 0.2647, Rouge-2 is 0.0458, and Rouge-l is 0.2469
+06.01.21 02:35:10:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 02:35:15:train:After Iteration 2: LR is 0.001000 and Loss is 1.129786
+06.01.21 02:35:15:train:	Model eval on training data after iteration 2...
+06.01.21 02:35:37:train:		Rouge-1 is 0.4035, Rouge-2 is 0.2335, and Rouge-l is 0.4097
+06.01.21 02:35:37:train:	Model eval on validation data after iteration 2...
+06.01.21 02:36:04:train:		Rouge-1 is 0.2973, Rouge-2 is 0.0346, and Rouge-l is 0.2378
+06.01.21 02:36:04:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 02:36:06:train:
+Model eval on validation data after final iteration...
+06.01.21 02:36:35:train:
+	Rouge-1 is 0.3225, Rouge-2 is 0.0547, and Rouge-l is 0.2272
+06.01.21 02:36:35:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 02:36:35:train:	Model eval on validation data...
+06.01.21 02:37:04:train:
+Rouge-1 is 0.3232, Rouge-2 is 0.0543, and Rouge-l is 0.2267
+06.01.21 02:43:58:train:Saver will maximize rouge-1...
+06.01.21 02:44:00:train:After Iteration 0: LR is 0.001000 and Loss is 0.002599
+06.01.21 02:44:00:train:	Model eval on training data after iteration 0...
+06.01.21 02:44:23:train:		Rouge-1 is 0.3935, Rouge-2 is 0.1500, and Rouge-l is 0.2971
+06.01.21 02:44:23:train:	Model eval on validation data after iteration 0...
+06.01.21 02:44:46:train:		Rouge-1 is 0.2924, Rouge-2 is 0.0408, and Rouge-l is 0.2158
+06.01.21 02:44:46:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 02:44:51:train:After Iteration 2: LR is 0.001000 and Loss is 2.052089
+06.01.21 02:44:51:train:	Model eval on training data after iteration 2...
+06.01.21 02:45:13:train:		Rouge-1 is 0.4474, Rouge-2 is 0.2069, and Rouge-l is 0.3294
+06.01.21 02:45:13:train:	Model eval on validation data after iteration 2...
+06.01.21 02:45:40:train:		Rouge-1 is 0.3036, Rouge-2 is 0.0576, and Rouge-l is 0.2202
+06.01.21 02:45:40:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 02:45:42:train:
+Model eval on validation data after final iteration...
+06.01.21 02:46:03:train:
+	Rouge-1 is 0.3259, Rouge-2 is 0.0503, and Rouge-l is 0.2413
+06.01.21 02:46:04:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 02:46:04:train:	Model eval on validation data...
+06.01.21 02:46:25:train:
+Rouge-1 is 0.3280, Rouge-2 is 0.0482, and Rouge-l is 0.2465
+06.01.21 02:48:50:train:Saver will maximize rouge-1...
+06.01.21 02:48:52:train:After Iteration 0: LR is 0.001000 and Loss is 0.002599
+06.01.21 02:48:52:train:	Model eval on training data after iteration 0...
+06.01.21 02:49:15:train:		Rouge-1 is 0.3935, Rouge-2 is 0.1500, and Rouge-l is 0.2971
+06.01.21 02:49:15:train:	Model eval on validation data after iteration 0...
+06.01.21 02:49:38:train:		Rouge-1 is 0.2924, Rouge-2 is 0.0408, and Rouge-l is 0.2158
+06.01.21 02:49:38:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 02:49:43:train:After Iteration 2: LR is 0.001000 and Loss is 2.052089
+06.01.21 02:49:43:train:	Model eval on training data after iteration 2...
+06.01.21 02:50:06:train:		Rouge-1 is 0.4474, Rouge-2 is 0.2069, and Rouge-l is 0.3294
+06.01.21 02:50:06:train:	Model eval on validation data after iteration 2...
+06.01.21 02:50:32:train:		Rouge-1 is 0.3036, Rouge-2 is 0.0576, and Rouge-l is 0.2202
+06.01.21 02:50:33:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 02:50:35:train:
+Model eval on validation data after final iteration...
+06.01.21 02:50:56:train:
+	Rouge-1 is 0.3259, Rouge-2 is 0.0503, and Rouge-l is 0.2413
+06.01.21 02:50:56:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 02:50:56:train:	Model eval on validation data...
+06.01.21 02:51:18:train:
+Rouge-1 is 0.3280, Rouge-2 is 0.0482, and Rouge-l is 0.2465
+06.01.21 18:50:10:train:Saver will maximize rouge-1...
+06.01.21 18:50:13:train:After Iteration 0: LR is 0.001000 and Loss is 0.002599
+06.01.21 18:50:13:train:	Model eval on training data after iteration 0...
+06.01.21 18:50:36:train:		Rouge-1 is 0.3935, Rouge-2 is 0.1500, and Rouge-l is 0.2971
+06.01.21 18:50:36:train:	Model eval on validation data after iteration 0...
+06.01.21 18:51:00:train:		Rouge-1 is 0.2924, Rouge-2 is 0.0408, and Rouge-l is 0.2158
+06.01.21 18:51:01:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 18:51:06:train:After Iteration 2: LR is 0.001000 and Loss is 2.052080
+06.01.21 18:51:06:train:	Model eval on training data after iteration 2...
+06.01.21 18:51:38:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2218, and Rouge-l is 0.3480
+06.01.21 18:51:38:train:	Model eval on validation data after iteration 2...
+06.01.21 18:52:06:train:		Rouge-1 is 0.3036, Rouge-2 is 0.0576, and Rouge-l is 0.2202
+06.01.21 18:52:07:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 18:52:09:train:
+Model eval on validation data after final iteration...
+06.01.21 18:52:31:train:
+	Rouge-1 is 0.3156, Rouge-2 is 0.0479, and Rouge-l is 0.2314
+06.01.21 18:52:32:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 18:52:32:train:	Model eval on validation data...
+06.01.21 18:52:53:train:
+Rouge-1 is 0.3176, Rouge-2 is 0.0459, and Rouge-l is 0.2366
+06.01.21 19:00:31:train:Saver will maximize rouge-1...
+06.01.21 19:00:33:train:After Iteration 0: LR is 0.001000 and Loss is 0.002599
+06.01.21 19:00:33:train:	Model eval on training data after iteration 0...
+06.01.21 19:00:56:train:		Rouge-1 is 0.3935, Rouge-2 is 0.1500, and Rouge-l is 0.2971
+06.01.21 19:00:56:train:	Model eval on validation data after iteration 0...
+06.01.21 19:01:20:train:		Rouge-1 is 0.2924, Rouge-2 is 0.0408, and Rouge-l is 0.2158
+06.01.21 19:01:20:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 19:01:25:train:After Iteration 2: LR is 0.001000 and Loss is 2.052080
+06.01.21 19:01:25:train:	Model eval on training data after iteration 2...
+06.01.21 19:01:56:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2218, and Rouge-l is 0.3480
+06.01.21 19:01:56:train:	Model eval on validation data after iteration 2...
+06.01.21 19:02:24:train:		Rouge-1 is 0.3036, Rouge-2 is 0.0576, and Rouge-l is 0.2202
+06.01.21 19:02:24:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 19:02:27:train:
+Model eval on validation data after final iteration...
+06.01.21 19:02:48:train:
+	Rouge-1 is 0.3156, Rouge-2 is 0.0479, and Rouge-l is 0.2314
+06.01.21 19:02:49:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 19:02:49:train:	Model eval on validation data...
+06.01.21 19:03:11:train:
+Rouge-1 is 0.3176, Rouge-2 is 0.0459, and Rouge-l is 0.2366
+06.01.21 19:13:53:train:Saver will maximize rouge-1...
+06.01.21 19:13:56:train:After Iteration 0: LR is 0.001000 and Loss is 0.002599
+06.01.21 19:13:56:train:	Model eval on training data after iteration 0...
+06.01.21 19:14:18:train:		Rouge-1 is 0.3935, Rouge-2 is 0.1500, and Rouge-l is 0.2971
+06.01.21 19:14:18:train:	Model eval on validation data after iteration 0...
+06.01.21 19:14:42:train:		Rouge-1 is 0.2924, Rouge-2 is 0.0408, and Rouge-l is 0.2158
+06.01.21 19:14:42:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 19:14:47:train:After Iteration 2: LR is 0.001000 and Loss is 2.052080
+06.01.21 19:14:47:train:	Model eval on training data after iteration 2...
+06.01.21 19:15:18:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2218, and Rouge-l is 0.3480
+06.01.21 19:15:18:train:	Model eval on validation data after iteration 2...
+06.01.21 19:15:45:train:		Rouge-1 is 0.3036, Rouge-2 is 0.0576, and Rouge-l is 0.2202
+06.01.21 19:15:46:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 19:15:48:train:
+Model eval on validation data after final iteration...
+06.01.21 19:16:09:train:
+	Rouge-1 is 0.3156, Rouge-2 is 0.0479, and Rouge-l is 0.2314
+06.01.21 19:16:09:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 19:16:09:train:	Model eval on validation data...
+06.01.21 19:16:31:train:
+Rouge-1 is 0.3176, Rouge-2 is 0.0459, and Rouge-l is 0.2366
+06.01.21 21:41:51:train:Saver will maximize rouge-1...
+06.01.21 21:41:54:train:After Iteration 0: LR is 0.001000 and Loss is 0.002599
+06.01.21 21:41:54:train:	Model eval on training data after iteration 0...
+06.01.21 21:42:20:train:		Rouge-1 is 0.3935, Rouge-2 is 0.1500, and Rouge-l is 0.2971
+06.01.21 21:42:20:train:	Model eval on validation data after iteration 0...
+06.01.21 21:42:46:train:		Rouge-1 is 0.2924, Rouge-2 is 0.0408, and Rouge-l is 0.2158
+06.01.21 21:42:46:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 21:42:51:train:After Iteration 2: LR is 0.001000 and Loss is 2.052080
+06.01.21 21:42:51:train:	Model eval on training data after iteration 2...
+06.01.21 21:43:25:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2218, and Rouge-l is 0.3480
+06.01.21 21:43:25:train:	Model eval on validation data after iteration 2...
+06.01.21 21:43:57:train:		Rouge-1 is 0.3036, Rouge-2 is 0.0576, and Rouge-l is 0.2202
+06.01.21 21:43:57:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 21:44:00:train:
+Model eval on validation data after final iteration...
+06.01.21 21:44:23:train:
+	Rouge-1 is 0.3156, Rouge-2 is 0.0479, and Rouge-l is 0.2314
+06.01.21 21:44:24:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 21:44:24:train:	Model eval on validation data...
+06.01.21 21:44:48:train:
+Rouge-1 is 0.3176, Rouge-2 is 0.0459, and Rouge-l is 0.2366
+06.01.21 22:33:49:train:Namespace(batchSize=24, beamSize=0, configPath='', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=False, lr=0.001, modelType=None, numEpochs=10, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.01.21 22:35:27:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=False, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=1, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.01.21 22:35:27:train:Getting the training and validation data...
+06.01.21 22:35:43:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.01.21 22:35:44:train:
+Starting model training...
+06.01.21 22:35:44:train:Saver will maximize rouge-1...
+06.01.21 22:36:28:train:After Iteration 0: LR is 0.001000 and Loss is 9.312745
+06.01.21 22:36:28:train:	Model eval on training data after iteration 0...
+06.01.21 22:36:40:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 22:36:40:train:	Model eval on validation data after iteration 0...
+06.01.21 22:36:48:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 22:36:48:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.01.21 22:36:48:train:New best checkpoint at step 0...
+06.01.21 22:48:00:train:
+Model eval on validation data after final iteration...
+06.01.21 22:48:07:train:
+	Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 22:48:08:train:Saved checkpoint: ./SavedModels/MODEL7_step_21.pth.tar
+06.01.21 23:30:44:train:Saver will maximize rouge-1...
+06.01.21 23:30:45:train:After Iteration 0: LR is 0.001000 and Loss is 8.840713
+06.01.21 23:30:45:train:	Model eval on training data after iteration 0...
+06.01.21 23:30:45:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:30:45:train:	Model eval on validation data after iteration 0...
+06.01.21 23:30:45:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:30:49:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.01.21 23:30:49:train:After Iteration 2: LR is 0.001000 and Loss is 8.465849
+06.01.21 23:30:49:train:	Model eval on training data after iteration 2...
+06.01.21 23:30:49:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:30:49:train:	Model eval on validation data after iteration 2...
+06.01.21 23:30:49:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:30:51:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.01.21 23:30:51:train:
+Model eval on validation data after final iteration...
+06.01.21 23:30:52:train:
+	Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:30:54:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.01.21 23:30:54:train:	Model eval on validation data...
+06.01.21 23:30:54:train:
+Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:33:53:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=False, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=100, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.01.21 23:33:53:train:Getting the training and validation data...
+06.01.21 23:54:13:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=10, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.01.21 23:54:13:train:Getting the training and validation data...
+06.01.21 23:54:24:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.01.21 23:54:27:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 0 and metric value is 0.000
+06.01.21 23:54:27:train:
+Starting model training...
+06.01.21 23:54:27:train:Saver will maximize rouge-1...
+06.01.21 23:54:28:train:After Iteration 0: LR is 0.001000 and Loss is 8.893717
+06.01.21 23:54:28:train:	Model eval on training data after iteration 0...
+06.01.21 23:54:29:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:54:29:train:	Model eval on validation data after iteration 0...
+06.01.21 23:54:29:train:		Rouge-1 is 0.0000, Rouge-2 is 0.0000, and Rouge-l is 0.0000
+06.01.21 23:54:30:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.01.21 23:56:24:train:
+Model eval on validation data after final iteration...
+06.01.21 23:59:44:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=10, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.01.21 23:59:44:train:Getting the training and validation data...
+06.01.21 23:59:55:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.01.21 23:59:58:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.01.21 23:59:58:train:
+Starting model training...
+06.01.21 23:59:58:train:Saver will maximize rouge-1...
+06.01.21 23:59:59:train:After Iteration 0: LR is 0.001000 and Loss is 0.003962
+06.01.21 23:59:59:train:	Model eval on training data after iteration 0...
+06.02.21 00:00:10:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2795, and Rouge-l is 0.4344
+06.02.21 00:00:10:train:	Model eval on validation data after iteration 0...
+06.02.21 00:00:17:train:		Rouge-1 is 0.2860, Rouge-2 is 0.0614, and Rouge-l is 0.2197
+06.02.21 00:00:18:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 00:02:12:train:
+Model eval on validation data after final iteration...
+06.02.21 00:02:19:train:
+	Rouge-1 is 0.3116, Rouge-2 is 0.0604, and Rouge-l is 0.2062
+06.02.21 00:02:19:train:Saved checkpoint: ./SavedModels/MODEL7_step_210.pth.tar
+06.02.21 00:26:04:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=30, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 00:26:04:train:Getting the training and validation data...
+06.02.21 00:26:15:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 00:26:18:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 00:26:18:train:
+Starting model training...
+06.02.21 00:26:18:train:Saver will maximize rouge-1...
+06.02.21 00:26:19:train:After Iteration 0: LR is 0.001000 and Loss is 0.003962
+06.02.21 00:26:19:train:	Model eval on training data after iteration 0...
+06.02.21 00:26:30:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2795, and Rouge-l is 0.4344
+06.02.21 00:26:30:train:	Model eval on validation data after iteration 0...
+06.02.21 00:26:37:train:		Rouge-1 is 0.2860, Rouge-2 is 0.0614, and Rouge-l is 0.2197
+06.02.21 00:26:38:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 00:31:11:train:After Iteration 500: LR is 0.001000 and Loss is 0.087480
+06.02.21 00:31:11:train:	Model eval on training data after iteration 500...
+06.02.21 00:31:24:train:		Rouge-1 is 0.8626, Rouge-2 is 0.8010, and Rouge-l is 0.8442
+06.02.21 00:31:24:train:	Model eval on validation data after iteration 500...
+06.02.21 00:31:32:train:		Rouge-1 is 0.3084, Rouge-2 is 0.0553, and Rouge-l is 0.2263
+06.02.21 00:31:32:train:Saved checkpoint: ./SavedModels/MODEL7_step_500.pth.tar
+06.02.21 00:32:42:train:
+Model eval on validation data after final iteration...
+06.02.21 00:32:50:train:
+	Rouge-1 is 0.2896, Rouge-2 is 0.0552, and Rouge-l is 0.2303
+06.02.21 00:32:50:train:Saved checkpoint: ./SavedModels/MODEL7_step_630.pth.tar
+06.02.21 00:34:42:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=10, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 00:34:42:train:Getting the training and validation data...
+06.02.21 00:34:53:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 00:34:57:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 00:34:57:train:
+Starting model training...
+06.02.21 00:34:57:train:Saver will maximize rouge-1...
+06.02.21 00:34:57:train:After Iteration 0: LR is 0.001000 and Loss is 0.003962
+06.02.21 00:34:57:train:	Model eval on training data after iteration 0...
+06.02.21 00:35:08:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2795, and Rouge-l is 0.4344
+06.02.21 00:35:08:train:	Model eval on validation data after iteration 0...
+06.02.21 00:35:16:train:		Rouge-1 is 0.2860, Rouge-2 is 0.0614, and Rouge-l is 0.2197
+06.02.21 00:35:16:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 00:37:10:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=100, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 00:37:10:train:Getting the training and validation data...
+06.02.21 00:37:21:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 00:37:25:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 00:37:25:train:
+Starting model training...
+06.02.21 00:37:25:train:Saver will maximize rouge-1...
+06.02.21 00:37:25:train:After Iteration 0: LR is 0.001000 and Loss is 0.003962
+06.02.21 00:37:25:train:	Model eval on training data after iteration 0...
+06.02.21 00:37:36:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2795, and Rouge-l is 0.4344
+06.02.21 00:37:36:train:	Model eval on validation data after iteration 0...
+06.02.21 00:37:44:train:		Rouge-1 is 0.2860, Rouge-2 is 0.0614, and Rouge-l is 0.2197
+06.02.21 00:37:44:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 00:42:17:train:After Iteration 500: LR is 0.001000 and Loss is 0.087480
+06.02.21 00:42:17:train:	Model eval on training data after iteration 500...
+06.02.21 00:42:30:train:		Rouge-1 is 0.8626, Rouge-2 is 0.8010, and Rouge-l is 0.8442
+06.02.21 00:42:30:train:	Model eval on validation data after iteration 500...
+06.02.21 00:42:38:train:		Rouge-1 is 0.3084, Rouge-2 is 0.0553, and Rouge-l is 0.2263
+06.02.21 00:42:38:train:Saved checkpoint: ./SavedModels/MODEL7_step_500.pth.tar
+06.02.21 00:47:11:train:After Iteration 1000: LR is 0.001000 and Loss is 0.002222
+06.02.21 00:47:11:train:	Model eval on training data after iteration 1000...
+06.02.21 00:47:23:train:		Rouge-1 is 0.9935, Rouge-2 is 0.9934, and Rouge-l is 0.9893
+06.02.21 00:47:23:train:	Model eval on validation data after iteration 1000...
+06.02.21 00:47:31:train:		Rouge-1 is 0.3106, Rouge-2 is 0.0481, and Rouge-l is 0.2222
+06.02.21 00:47:31:train:Saved checkpoint: ./SavedModels/MODEL7_step_1000.pth.tar
+06.02.21 00:52:05:train:After Iteration 1500: LR is 0.001000 and Loss is 0.000336
+06.02.21 00:52:05:train:	Model eval on training data after iteration 1500...
+06.02.21 00:52:16:train:		Rouge-1 is 0.9938, Rouge-2 is 0.9937, and Rouge-l is 0.9903
+06.02.21 00:52:16:train:	Model eval on validation data after iteration 1500...
+06.02.21 00:52:24:train:		Rouge-1 is 0.2856, Rouge-2 is 0.0425, and Rouge-l is 0.2057
+06.02.21 00:52:24:train:Saved checkpoint: ./SavedModels/MODEL7_step_1500.pth.tar
+06.02.21 00:52:24:train:Removed checkpoint: ./SavedModels/MODEL7_step_1500.pth.tar
+06.02.21 00:56:57:train:After Iteration 2000: LR is 0.001000 and Loss is 0.000179
+06.02.21 00:56:57:train:	Model eval on training data after iteration 2000...
+06.02.21 00:57:09:train:		Rouge-1 is 0.9942, Rouge-2 is 0.9941, and Rouge-l is 0.9901
+06.02.21 00:57:09:train:	Model eval on validation data after iteration 2000...
+06.02.21 00:57:16:train:		Rouge-1 is 0.3060, Rouge-2 is 0.0480, and Rouge-l is 0.2249
+06.02.21 00:57:16:train:Saved checkpoint: ./SavedModels/MODEL7_step_2000.pth.tar
+06.02.21 00:57:16:train:Removed checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 00:58:10:train:
+Model eval on validation data after final iteration...
+06.02.21 00:58:18:train:
+	Rouge-1 is 0.3124, Rouge-2 is 0.0528, and Rouge-l is 0.2221
+06.02.21 00:58:18:train:Saved checkpoint: ./SavedModels/MODEL7_step_2100.pth.tar
+06.02.21 00:58:18:train:Removed checkpoint: ./SavedModels/MODEL7_step_2000.pth.tar
+06.02.21 02:36:14:train:Saver will maximize rouge-1...
+06.02.21 02:36:14:train:After Iteration 0: LR is 0.001000 and Loss is 0.002599
+06.02.21 02:36:14:train:	Model eval on training data after iteration 0...
+06.02.21 02:36:16:train:		Rouge-1 is 0.3935, Rouge-2 is 0.1500, and Rouge-l is 0.2971
+06.02.21 02:36:16:train:	Model eval on validation data after iteration 0...
+06.02.21 02:36:18:train:		Rouge-1 is 0.2924, Rouge-2 is 0.0408, and Rouge-l is 0.2158
+06.02.21 02:36:18:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.02.21 02:36:18:train:After Iteration 2: LR is 0.001000 and Loss is 2.055803
+06.02.21 02:36:18:train:	Model eval on training data after iteration 2...
+06.02.21 02:36:20:train:		Rouge-1 is 0.4639, Rouge-2 is 0.2125, and Rouge-l is 0.3265
+06.02.21 02:36:20:train:	Model eval on validation data after iteration 2...
+06.02.21 02:36:22:train:		Rouge-1 is 0.3270, Rouge-2 is 0.0685, and Rouge-l is 0.2108
+06.02.21 02:36:22:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.02.21 02:36:22:train:
+Model eval on validation data after final iteration...
+06.02.21 02:36:24:train:
+	Rouge-1 is 0.3206, Rouge-2 is 0.0421, and Rouge-l is 0.2254
+06.02.21 02:36:24:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.02.21 02:36:24:train:	Model eval on validation data...
+06.02.21 02:36:26:train:
+Rouge-1 is 0.3206, Rouge-2 is 0.0421, and Rouge-l is 0.2254
+06.02.21 02:37:45:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=3, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 02:37:45:train:Getting the training and validation data...
+06.02.21 02:37:56:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 02:38:00:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 02:38:00:train:
+Starting model training...
+06.02.21 02:38:00:train:Saver will maximize rouge-1...
+06.02.21 02:38:00:train:After Iteration 0: LR is 0.001000 and Loss is 0.003962
+06.02.21 02:38:00:train:	Model eval on training data after iteration 0...
+06.02.21 02:38:11:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2795, and Rouge-l is 0.4344
+06.02.21 02:38:11:train:	Model eval on validation data after iteration 0...
+06.02.21 02:38:19:train:		Rouge-1 is 0.2860, Rouge-2 is 0.0614, and Rouge-l is 0.2197
+06.02.21 02:38:19:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 02:38:53:train:
+Model eval on validation data after final iteration...
+06.02.21 02:39:00:train:
+	Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 02:39:00:train:Saved checkpoint: ./SavedModels/MODEL7_step_63.pth.tar
+06.02.21 02:52:46:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=3, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 02:54:21:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=3, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 02:57:25:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=3, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 02:58:10:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=3, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 02:59:01:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=3, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 02:59:54:train:Namespace(batchSize=24, beamSize=0, configPath='./config.yaml', decNumLayers=4, dropout=0.0, hiddenDim=128, loadBestModel=True, lr=0.001, modelType='Seq2SeqwithXfmrMemEfficient', numEpochs=3, numHeads=4, numLayers=2, savedModelBaseName='MODEL7')
+06.02.21 03:03:59:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 3, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 03:03:59:train:Getting the training and validation data...
+06.02.21 03:04:09:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 03:04:13:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 03:04:13:train:
+Starting model training...
+06.02.21 03:04:13:train:Saver will maximize rouge-1...
+06.02.21 03:04:14:train:After Iteration 0: LR is 0.001000 and Loss is 0.003962
+06.02.21 03:04:14:train:	Model eval on training data after iteration 0...
+06.02.21 03:04:25:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2795, and Rouge-l is 0.4344
+06.02.21 03:04:25:train:	Model eval on validation data after iteration 0...
+06.02.21 03:04:32:train:		Rouge-1 is 0.2860, Rouge-2 is 0.0614, and Rouge-l is 0.2197
+06.02.21 03:04:33:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 03:05:06:train:
+Model eval on validation data after final iteration...
+06.02.21 03:05:13:train:
+	Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 03:05:13:train:Saved checkpoint: ./SavedModels/MODEL7_step_63.pth.tar
+06.02.21 03:14:34:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 3, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 03:14:40:train:Getting the training and validation data...
+06.02.21 03:14:51:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 03:14:55:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 03:14:55:train:
+Starting model training...
+06.02.21 03:14:55:train:Saver will maximize rouge-1...
+06.02.21 03:14:55:train:After Iteration 0: LR is 0.001000 and Loss is 0.003962
+06.02.21 03:14:55:train:	Model eval on training data after iteration 0...
+06.02.21 03:15:06:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2795, and Rouge-l is 0.4344
+06.02.21 03:15:06:train:	Model eval on validation data after iteration 0...
+06.02.21 03:15:14:train:		Rouge-1 is 0.2860, Rouge-2 is 0.0614, and Rouge-l is 0.2197
+06.02.21 03:15:14:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 03:15:48:train:
+Model eval on validation data after final iteration...
+06.02.21 03:15:55:train:
+	Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 03:15:55:train:Saved checkpoint: ./SavedModels/MODEL7_step_63.pth.tar
+06.02.21 03:16:54:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 3, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 03:16:58:train:Getting the training and validation data...
+06.02.21 03:17:09:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 03:17:13:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 03:17:13:train:
+Starting model training...
+06.02.21 03:17:13:train:Saver will maximize rouge-1...
+06.02.21 03:17:14:train:After Iteration 0: LR is 0.001000 and Loss is 0.003962
+06.02.21 03:17:14:train:	Model eval on training data after iteration 0...
+06.02.21 03:17:25:train:		Rouge-1 is 0.4643, Rouge-2 is 0.2795, and Rouge-l is 0.4344
+06.02.21 03:17:25:train:	Model eval on validation data after iteration 0...
+06.02.21 03:17:32:train:		Rouge-1 is 0.2860, Rouge-2 is 0.0614, and Rouge-l is 0.2197
+06.02.21 03:17:33:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 03:18:06:train:
+Model eval on validation data after final iteration...
+06.02.21 03:18:13:train:
+	Rouge-1 is 0.2782, Rouge-2 is 0.0461, and Rouge-l is 0.1938
+06.02.21 03:18:13:train:Saved checkpoint: ./SavedModels/MODEL7_step_63.pth.tar
+06.02.21 03:26:45:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 3, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 03:26:48:train:Getting the training and validation data...
+06.02.21 03:26:59:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 03:27:03:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 03:27:03:train:
+Starting model training...
+06.02.21 03:27:03:train:Saver will maximize rouge-1...
+06.02.21 03:48:15:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 3, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 03:48:18:train:Getting the training and validation data...
+06.02.21 03:48:29:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 03:48:33:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 03:48:33:train:
+Starting model training...
+06.02.21 03:48:33:train:Saver will maximize rouge-1...
+06.02.21 03:48:52:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 03:50:23:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 3, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 03:50:25:train:Getting the training and validation data...
+06.02.21 03:50:37:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 03:50:40:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 03:50:40:train:
+Starting model training...
+06.02.21 03:50:40:train:Saver will maximize rouge-1...
+06.02.21 03:51:00:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 03:51:40:train:Saved checkpoint: ./SavedModels/MODEL7_step_63.pth.tar
+06.02.21 03:52:55:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 10, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 03:52:58:train:Getting the training and validation data...
+06.02.21 03:53:09:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 03:53:13:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 03:53:13:train:
+Starting model training...
+06.02.21 03:53:13:train:Saver will maximize rouge-1...
+06.02.21 03:53:32:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 03:55:34:train:Saved checkpoint: ./SavedModels/MODEL7_step_210.pth.tar
+06.02.21 03:59:02:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 10, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 10, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 03:59:06:train:Getting the training and validation data...
+06.02.21 03:59:17:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 03:59:21:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 03:59:21:train:
+Starting model training...
+06.02.21 03:59:21:train:Saver will maximize rouge-1...
+06.02.21 03:59:41:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 04:00:05:train:Saved checkpoint: ./SavedModels/MODEL7_step_10.pth.tar
+06.02.21 04:00:30:train:Saved checkpoint: ./SavedModels/MODEL7_step_20.pth.tar
+06.02.21 04:00:55:train:Saved checkpoint: ./SavedModels/MODEL7_step_30.pth.tar
+06.02.21 04:00:55:train:Removed checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 04:01:18:train:Saved checkpoint: ./SavedModels/MODEL7_step_40.pth.tar
+06.02.21 04:01:18:train:Removed checkpoint: ./SavedModels/MODEL7_step_10.pth.tar
+06.02.21 04:01:44:train:Saved checkpoint: ./SavedModels/MODEL7_step_50.pth.tar
+06.02.21 04:01:44:train:Removed checkpoint: ./SavedModels/MODEL7_step_20.pth.tar
+06.02.21 04:02:09:train:Saved checkpoint: ./SavedModels/MODEL7_step_60.pth.tar
+06.02.21 04:02:09:train:Removed checkpoint: ./SavedModels/MODEL7_step_50.pth.tar
+06.02.21 04:02:35:train:Saved checkpoint: ./SavedModels/MODEL7_step_70.pth.tar
+06.02.21 04:02:35:train:Removed checkpoint: ./SavedModels/MODEL7_step_70.pth.tar
+06.02.21 04:02:59:train:Saved checkpoint: ./SavedModels/MODEL7_step_80.pth.tar
+06.02.21 04:02:59:train:Removed checkpoint: ./SavedModels/MODEL7_step_80.pth.tar
+06.02.21 04:03:25:train:Saved checkpoint: ./SavedModels/MODEL7_step_90.pth.tar
+06.02.21 04:03:25:train:Removed checkpoint: ./SavedModels/MODEL7_step_30.pth.tar
+06.02.21 04:03:51:train:Saved checkpoint: ./SavedModels/MODEL7_step_100.pth.tar
+06.02.21 04:03:51:train:Removed checkpoint: ./SavedModels/MODEL7_step_100.pth.tar
+06.02.21 04:04:17:train:Saved checkpoint: ./SavedModels/MODEL7_step_110.pth.tar
+06.02.21 04:04:17:train:Removed checkpoint: ./SavedModels/MODEL7_step_110.pth.tar
+06.02.21 04:04:43:train:Saved checkpoint: ./SavedModels/MODEL7_step_120.pth.tar
+06.02.21 04:04:43:train:Removed checkpoint: ./SavedModels/MODEL7_step_120.pth.tar
+06.02.21 04:05:08:train:Saved checkpoint: ./SavedModels/MODEL7_step_130.pth.tar
+06.02.21 04:05:08:train:Removed checkpoint: ./SavedModels/MODEL7_step_130.pth.tar
+06.02.21 04:05:33:train:Saved checkpoint: ./SavedModels/MODEL7_step_140.pth.tar
+06.02.21 04:05:33:train:Removed checkpoint: ./SavedModels/MODEL7_step_40.pth.tar
+06.02.21 04:05:57:train:Saved checkpoint: ./SavedModels/MODEL7_step_150.pth.tar
+06.02.21 04:05:57:train:Removed checkpoint: ./SavedModels/MODEL7_step_150.pth.tar
+06.02.21 04:06:24:train:Saved checkpoint: ./SavedModels/MODEL7_step_160.pth.tar
+06.02.21 04:06:24:train:Removed checkpoint: ./SavedModels/MODEL7_step_140.pth.tar
+06.02.21 04:06:50:train:Saved checkpoint: ./SavedModels/MODEL7_step_170.pth.tar
+06.02.21 04:06:50:train:Removed checkpoint: ./SavedModels/MODEL7_step_60.pth.tar
+06.02.21 04:07:15:train:Saved checkpoint: ./SavedModels/MODEL7_step_180.pth.tar
+06.02.21 04:07:15:train:Removed checkpoint: ./SavedModels/MODEL7_step_180.pth.tar
+06.02.21 04:07:39:train:Saved checkpoint: ./SavedModels/MODEL7_step_190.pth.tar
+06.02.21 04:07:39:train:Removed checkpoint: ./SavedModels/MODEL7_step_190.pth.tar
+06.02.21 04:08:05:train:Saved checkpoint: ./SavedModels/MODEL7_step_200.pth.tar
+06.02.21 04:08:05:train:Removed checkpoint: ./SavedModels/MODEL7_step_200.pth.tar
+06.02.21 04:08:17:train:Saved checkpoint: ./SavedModels/MODEL7_step_210.pth.tar
+06.02.21 04:08:17:train:Removed checkpoint: ./SavedModels/MODEL7_step_210.pth.tar
+06.02.21 14:28:07:train:Saver will maximize rouge-1...
+06.02.21 14:32:39:train:Saver will maximize rouge-1...
+06.02.21 14:35:23:train:Saver will maximize rouge-1...
+06.02.21 14:35:29:train:Saved checkpoint: ./SavedModels/MODEL79_step_0.pth.tar
+06.02.21 14:35:35:train:Saved checkpoint: ./SavedModels/MODEL79_step_2.pth.tar
+06.02.21 14:35:40:train:Saved checkpoint: ./SavedModels/MODEL79_step_4.pth.tar
+06.02.21 14:35:40:train:	Model eval on validation data...
+06.02.21 14:35:43:train:
+Rouge-1 is 0.3206, Rouge-2 is 0.0421, and Rouge-l is 0.2254
+06.02.21 15:42:18:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 15:42:21:train:Getting the training and validation data...
+06.02.21 15:42:34:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 15:42:39:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 15:42:39:train:
+Starting model training...
+06.02.21 15:42:39:train:Saver will maximize rouge-1...
+06.02.21 15:43:06:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 15:43:38:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 15:47:57:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 15:48:00:train:Getting the training and validation data...
+06.02.21 15:48:13:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 15:48:17:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 15:48:17:train:
+Starting model training...
+06.02.21 15:48:17:train:Saver will maximize rouge-1...
+06.02.21 15:48:46:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 15:49:18:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 15:52:23:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 15:52:26:train:Getting the training and validation data...
+06.02.21 15:52:39:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 15:52:44:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 15:52:44:train:
+Starting model training...
+06.02.21 15:52:44:train:Saver will maximize rouge-1...
+06.02.21 15:53:12:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 15:53:45:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 15:59:57:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 16:01:07:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 16:01:10:train:Getting the training and validation data...
+06.02.21 16:01:23:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 16:01:27:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 16:01:27:train:
+Starting model training...
+06.02.21 16:01:27:train:Saver will maximize rouge-1...
+06.02.21 16:01:55:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 16:02:27:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 16:04:14:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 16:04:17:train:Getting the training and validation data...
+06.02.21 16:04:30:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 16:04:35:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 16:04:35:train:
+Starting model training...
+06.02.21 16:04:35:train:Saver will maximize rouge-1...
+06.02.21 16:05:03:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 16:05:35:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 17:07:07:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 17:07:10:train:Getting the training and validation data...
+06.02.21 17:07:23:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 17:07:27:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 17:07:27:train:
+Starting model training...
+06.02.21 17:07:27:train:Saver will maximize rouge-1...
+06.02.21 17:07:54:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 17:08:26:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 17:31:29:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 17:31:32:train:Getting the training and validation data...
+06.02.21 17:31:46:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 17:31:51:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 17:31:51:train:
+Starting model training...
+06.02.21 17:31:51:train:Saver will maximize rouge-1...
+06.02.21 17:32:19:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 17:32:51:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 18:01:47:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 18:01:50:train:Getting the training and validation data...
+06.02.21 18:02:03:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 18:02:08:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 18:02:08:train:
+Starting model training...
+06.02.21 18:02:08:train:Saver will maximize rouge-1...
+06.02.21 18:02:35:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 18:03:07:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 18:07:20:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 18:07:23:train:Getting the training and validation data...
+06.02.21 18:07:36:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 18:07:40:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 18:07:40:train:
+Starting model training...
+06.02.21 18:07:40:train:Saver will maximize rouge-1...
+06.02.21 18:08:08:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 18:08:40:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 18:09:22:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 18:09:25:train:Getting the training and validation data...
+06.02.21 18:09:38:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 18:09:43:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 18:09:43:train:
+Starting model training...
+06.02.21 18:09:43:train:Saver will maximize rouge-1...
+06.02.21 18:10:10:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 18:10:42:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 18:11:32:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 18:11:35:train:Getting the training and validation data...
+06.02.21 18:11:48:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 18:11:53:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 18:11:53:train:
+Starting model training...
+06.02.21 18:11:53:train:Saver will maximize rouge-1...
+06.02.21 18:12:20:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 18:12:51:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 18:14:35:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 18:14:38:train:Getting the training and validation data...
+06.02.21 18:14:51:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 18:15:30:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 18:15:33:train:Getting the training and validation data...
+06.02.21 18:15:46:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 19:37:26:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 19:37:29:train:Getting the training and validation data...
+06.02.21 19:37:42:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 19:37:47:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 19:44:05:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 19:44:08:train:Getting the training and validation data...
+06.02.21 19:44:22:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 19:44:26:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 19:44:26:train:
+Starting model training...
+06.02.21 19:45:21:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 19:45:24:train:Getting the training and validation data...
+06.02.21 19:45:37:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 19:45:42:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 19:45:42:train:
+Starting model training...
+06.02.21 19:45:42:train:Saver will maximize rouge-1...
+06.02.21 19:46:10:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 19:46:42:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 20:11:38:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 20:11:41:train:Getting the training and validation data...
+06.02.21 20:11:55:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 20:11:59:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 20:11:59:train:
+Starting model training...
+06.02.21 20:11:59:train:Saver will maximize rouge-1...
+06.02.21 20:12:27:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 20:12:59:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 20:21:23:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 20:21:26:train:Getting the training and validation data...
+06.02.21 20:21:39:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 20:21:43:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 20:21:43:train:
+Starting model training...
+06.02.21 20:21:43:train:Saver will maximize rouge-1...
+06.02.21 20:22:11:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 20:22:43:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 20:25:38:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 20:25:41:train:Getting the training and validation data...
+06.02.21 20:25:54:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 20:25:58:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 20:25:58:train:
+Starting model training...
+06.02.21 20:25:58:train:Saver will maximize rouge-1...
+06.02.21 20:26:27:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 20:27:00:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.02.21 21:05:22:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 500, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.02.21 21:05:25:train:Getting the training and validation data...
+06.02.21 21:05:38:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.02.21 21:05:43:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.02.21 21:05:43:train:
+Starting model training...
+06.02.21 21:05:43:train:Saver will maximize rouge-1...
+06.02.21 21:06:10:train:Saved checkpoint: ./SavedModels/MODEL7_step_0.pth.tar
+06.02.21 21:06:42:train:Saved checkpoint: ./SavedModels/MODEL7_step_42.pth.tar
+06.03.21 22:09:41:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': False, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 100, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': False, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.03.21 22:09:44:train:Getting the training and validation data...
+06.03.21 22:10:01:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.03.21 22:10:06:train:
+Starting model training...
+06.03.21 22:10:09:train:Saver will maximize rouge-1...
+06.03.21 22:10:11:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.03.21 22:10:11:train:New best checkpoint at step 0...
+06.03.21 22:15:31:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_500.pt
+06.03.21 22:15:31:train:New best checkpoint at step 500...
+06.03.21 22:20:44:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_1000.pt
+06.03.21 22:20:44:train:New best checkpoint at step 1000...
+06.03.21 22:25:52:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_1500.pt
+06.03.21 22:25:52:train:New best checkpoint at step 1500...
+06.03.21 22:25:52:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.03.21 22:31:02:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_2000.pt
+06.03.21 22:31:02:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_500.pt
+06.03.21 22:36:10:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_2500.pt
+06.03.21 22:36:10:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_1000.pt
+06.03.21 22:41:15:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_3000.pt
+06.03.21 22:41:15:train:New best checkpoint at step 3000...
+06.03.21 22:41:15:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_2000.pt
+06.03.21 22:46:22:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_3500.pt
+06.03.21 22:46:22:train:New best checkpoint at step 3500...
+06.03.21 22:46:22:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_2500.pt
+06.03.21 22:51:26:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_4000.pt
+06.03.21 22:51:26:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_1500.pt
+06.03.21 22:56:32:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_4500.pt
+06.03.21 22:56:32:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_3000.pt
+06.03.21 23:01:37:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_5000.pt
+06.03.21 23:01:37:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_4000.pt
+06.03.21 23:06:44:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_5500.pt
+06.03.21 23:06:44:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_5000.pt
+06.03.21 23:11:49:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_6000.pt
+06.03.21 23:11:49:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_6000.pt
+06.03.21 23:16:57:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_6500.pt
+06.03.21 23:16:57:train:New best checkpoint at step 6500...
+06.03.21 23:16:57:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_4500.pt
+06.03.21 23:22:01:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_7000.pt
+06.03.21 23:22:01:train:New best checkpoint at step 7000...
+06.03.21 23:22:01:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_5500.pt
+06.03.21 23:27:08:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_7500.pt
+06.03.21 23:27:08:train:New best checkpoint at step 7500...
+06.03.21 23:27:08:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_3500.pt
+06.03.21 23:32:14:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_8000.pt
+06.03.21 23:32:14:train:New best checkpoint at step 8000...
+06.03.21 23:32:14:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_6500.pt
+06.03.21 23:37:18:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_8500.pt
+06.03.21 23:37:18:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_8500.pt
+06.03.21 23:42:22:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_9000.pt
+06.03.21 23:42:22:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_7000.pt
+06.03.21 23:47:26:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_9500.pt
+06.03.21 23:47:26:train:New best checkpoint at step 9500...
+06.03.21 23:47:26:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_7500.pt
+06.03.21 23:52:32:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_10000.pt
+06.03.21 23:52:32:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_9000.pt
+06.03.21 23:57:38:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_10500.pt
+06.03.21 23:57:38:train:New best checkpoint at step 10500...
+06.03.21 23:57:38:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_8000.pt
+06.04.21 00:02:47:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_11000.pt
+06.04.21 00:02:47:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_10000.pt
+06.04.21 00:07:54:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_11500.pt
+06.04.21 00:07:54:train:New best checkpoint at step 11500...
+06.04.21 00:07:54:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_9500.pt
+06.04.21 00:12:59:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_12000.pt
+06.04.21 00:12:59:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_11000.pt
+06.04.21 00:18:04:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_12500.pt
+06.04.21 00:18:04:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_12000.pt
+06.04.21 00:23:10:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_13000.pt
+06.04.21 00:23:10:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_13000.pt
+06.04.21 00:28:16:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_13500.pt
+06.04.21 00:28:16:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_13500.pt
+06.04.21 00:33:21:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_14000.pt
+06.04.21 00:33:21:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_14000.pt
+06.04.21 00:38:28:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_14500.pt
+06.04.21 00:38:28:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_14500.pt
+06.04.21 00:43:33:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_15000.pt
+06.04.21 00:43:33:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_15000.pt
+06.04.21 00:48:39:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_15500.pt
+06.04.21 00:48:39:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_15500.pt
+06.04.21 00:53:43:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_16000.pt
+06.04.21 00:53:43:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_16000.pt
+06.04.21 00:58:49:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_16500.pt
+06.04.21 00:58:49:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_16500.pt
+06.04.21 01:03:55:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_17000.pt
+06.04.21 01:03:55:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_12500.pt
+06.04.21 01:08:59:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_17500.pt
+06.04.21 01:08:59:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_17500.pt
+06.04.21 01:14:04:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_18000.pt
+06.04.21 01:14:04:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_18000.pt
+06.04.21 01:19:07:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_18500.pt
+06.04.21 01:19:07:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_18500.pt
+06.04.21 01:24:09:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_19000.pt
+06.04.21 01:24:09:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_19000.pt
+06.04.21 01:29:14:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_19500.pt
+06.04.21 01:29:14:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_19500.pt
+06.04.21 01:34:19:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_20000.pt
+06.04.21 01:34:19:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_17000.pt
+06.04.21 01:39:26:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_20500.pt
+06.04.21 01:39:26:train:New best checkpoint at step 20500...
+06.04.21 01:39:26:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_10500.pt
+06.04.21 01:43:20:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_20900.pt
+06.04.21 01:43:20:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_20900.pt
+06.04.21 01:50:34:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 100, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 01:50:37:train:Loading data from wandb artifact...
+06.04.21 01:50:38:train:Loading model from wandb artifact...
+06.04.21 01:50:42:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.04.21 01:50:42:train:
+Starting model training...
+06.04.21 01:50:42:train:Saver will maximize rouge-1...
+06.04.21 01:51:11:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 01:56:14:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_500.pt
+06.04.21 02:01:19:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_1000.pt
+06.04.21 02:06:23:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_1500.pt
+06.04.21 02:06:23:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_500.pt
+06.04.21 02:11:28:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_2000.pt
+06.04.21 02:11:28:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_2000.pt
+06.04.21 02:16:32:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_2500.pt
+06.04.21 02:16:32:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_1000.pt
+06.04.21 02:21:37:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_3000.pt
+06.04.21 02:21:37:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_3000.pt
+06.04.21 02:26:43:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_3500.pt
+06.04.21 02:26:43:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_1500.pt
+06.04.21 02:31:49:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_4000.pt
+06.04.21 02:31:49:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_2500.pt
+06.04.21 02:36:55:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_4500.pt
+06.04.21 02:36:55:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 02:42:01:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_5000.pt
+06.04.21 02:42:01:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_4500.pt
+06.04.21 02:47:07:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_5500.pt
+06.04.21 02:47:07:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_4000.pt
+06.04.21 02:52:10:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_6000.pt
+06.04.21 02:52:11:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_3500.pt
+06.04.21 02:57:16:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_6500.pt
+06.04.21 02:57:16:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_5000.pt
+06.04.21 03:02:20:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_7000.pt
+06.04.21 03:02:20:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_7000.pt
+06.04.21 03:07:23:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_7500.pt
+06.04.21 03:07:23:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_7500.pt
+06.04.21 03:12:29:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_8000.pt
+06.04.21 03:12:29:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_6500.pt
+06.04.21 03:17:36:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_8500.pt
+06.04.21 03:17:36:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_6000.pt
+06.04.21 03:22:41:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_9000.pt
+06.04.21 03:22:41:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_5500.pt
+06.04.21 03:27:48:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_9500.pt
+06.04.21 03:27:48:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_9000.pt
+06.04.21 03:32:55:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_10000.pt
+06.04.21 03:32:55:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_10000.pt
+06.04.21 03:38:01:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_10500.pt
+06.04.21 03:38:01:train:New best checkpoint at step 10500...
+06.04.21 03:38:02:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_9500.pt
+06.04.21 03:43:07:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_11000.pt
+06.04.21 03:43:07:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_8000.pt
+06.04.21 03:48:14:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_11500.pt
+06.04.21 03:48:15:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_11500.pt
+06.04.21 03:53:21:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_12000.pt
+06.04.21 03:53:21:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_12000.pt
+06.04.21 03:58:28:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_12500.pt
+06.04.21 03:58:28:train:New best checkpoint at step 12500...
+06.04.21 03:58:28:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_11000.pt
+06.04.21 04:03:34:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_13000.pt
+06.04.21 04:03:34:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_13000.pt
+06.04.21 14:53:32:train:Saver will maximize rouge-1...
+06.04.21 14:58:42:train:Saver will maximize rouge-1...
+06.04.21 14:58:48:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 14:58:52:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_2.pt
+06.04.21 14:58:54:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_4.pt
+06.04.21 14:58:57:train:	Model eval on validation data...
+06.04.21 14:58:59:train:
+Rouge-1 is 0.2860, Rouge-2 is 0.0444, and Rouge-l is 0.2036
+06.04.21 15:54:37:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 15:54:40:train:Loading data from wandb artifact...
+06.04.21 15:54:45:train:Loading model from wandb artifact...
+06.04.21 15:54:53:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.04.21 15:54:53:train:
+Starting model training...
+06.04.21 15:54:53:train:Saver will maximize rouge-1...
+06.04.21 15:55:21:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 15:59:24:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_418.pt
+06.04.21 16:03:47:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 2, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 16:03:50:train:Loading data from wandb artifact...
+06.04.21 16:03:52:train:Loading model from wandb artifact...
+06.04.21 16:03:55:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 12500 and metric value is 0.410
+06.04.21 16:03:55:train:
+Starting model training...
+06.04.21 16:03:55:train:Saver will maximize rouge-1...
+06.04.21 16:04:27:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 16:08:31:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_418.pt
+06.04.21 17:31:26:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 1, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 17:31:29:train:Loading data from wandb artifact...
+06.04.21 17:31:31:train:Loading model from wandb artifact...
+06.04.21 17:32:37:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 1, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': False, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 17:32:40:train:Loading data from wandb artifact...
+06.04.21 17:32:41:train:
+Starting model training...
+06.04.21 17:32:44:train:Saver will maximize rouge-1...
+06.04.21 17:32:46:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 17:32:46:train:New best checkpoint at step 0...
+06.04.21 17:34:53:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_209.pt
+06.04.21 17:34:53:train:New best checkpoint at step 209...
+06.04.21 17:38:23:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 1, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 17:38:25:train:Loading data from wandb artifact...
+06.04.21 17:38:27:train:Loading model from wandb artifact...
+06.04.21 17:38:30:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 209 and metric value is 0.180
+06.04.21 17:38:30:train:
+Starting model training...
+06.04.21 17:38:30:train:Saver will maximize rouge-1...
+06.04.21 17:38:34:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 17:40:45:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_209.pt
+06.04.21 17:44:13:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 1, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 17:44:16:train:Loading data from wandb artifact...
+06.04.21 17:44:17:train:Loading model from wandb artifact...
+06.04.21 17:44:20:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 209 and metric value is 0.180
+06.04.21 17:44:20:train:
+Starting model training...
+06.04.21 17:44:20:train:Saver will maximize rouge-1...
+06.04.21 17:44:24:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 17:46:35:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_209.pt
+06.04.21 18:05:12:train:Saver will maximize rouge-1...
+06.04.21 18:05:19:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 18:05:19:train:New best checkpoint at step 0...
+06.04.21 18:05:28:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_2.pt
+06.04.21 18:05:32:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_4.pt
+06.04.21 18:05:35:train:	Model eval on validation data...
+06.04.21 18:05:40:train:
+Rouge-1 is 0.1256, Rouge-2 is 0.0128, and Rouge-l is 0.1150
+06.04.21 18:06:51:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 3, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 18:06:54:train:Loading data from wandb artifact...
+06.04.21 18:10:23:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': False, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 3, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': False, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 18:10:26:train:Getting the training and validation data...
+06.04.21 18:10:42:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.04.21 18:10:50:train:
+Starting model training...
+06.04.21 18:10:52:train:Saver will maximize rouge-1...
+06.04.21 18:10:54:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 18:10:55:train:New best checkpoint at step 0...
+06.04.21 18:16:15:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_500.pt
+06.04.21 18:16:15:train:New best checkpoint at step 500...
+06.04.21 18:17:41:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_627.pt
+06.04.21 18:17:41:train:New best checkpoint at step 627...
+06.04.21 18:32:42:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 100, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': False, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL7', 'configPath': './config.yaml'}
+06.04.21 18:32:44:train:Loading data from wandb artifact...
+06.04.21 18:32:46:train:
+Starting model training...
+06.04.21 18:32:49:train:Saver will maximize rouge-1...
+06.04.21 18:32:51:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 18:32:51:train:New best checkpoint at step 0...
+06.04.21 18:38:10:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_500.pt
+06.04.21 18:38:10:train:New best checkpoint at step 500...
+06.04.21 18:43:21:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_1000.pt
+06.04.21 18:43:22:train:New best checkpoint at step 1000...
+06.04.21 18:48:38:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_1500.pt
+06.04.21 18:48:38:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_0.pt
+06.04.21 18:53:49:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_2000.pt
+06.04.21 18:53:49:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_500.pt
+06.04.21 18:58:56:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_2500.pt
+06.04.21 18:58:56:train:New best checkpoint at step 2500...
+06.04.21 18:58:56:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_1500.pt
+06.04.21 19:04:04:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_3000.pt
+06.04.21 19:04:05:train:New best checkpoint at step 3000...
+06.04.21 19:04:05:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_2000.pt
+06.04.21 19:09:06:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_3500.pt
+06.04.21 19:09:06:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_1000.pt
+06.04.21 19:14:12:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_4000.pt
+06.04.21 19:14:12:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_4000.pt
+06.04.21 19:19:18:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_4500.pt
+06.04.21 19:19:18:train:New best checkpoint at step 4500...
+06.04.21 19:19:18:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_3500.pt
+06.04.21 19:24:23:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_5000.pt
+06.04.21 19:24:23:train:New best checkpoint at step 5000...
+06.04.21 19:24:23:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_2500.pt
+06.04.21 19:29:27:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_5500.pt
+06.04.21 19:29:27:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_3000.pt
+06.04.21 19:34:34:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_6000.pt
+06.04.21 19:34:34:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_6000.pt
+06.04.21 19:39:40:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_6500.pt
+06.04.21 19:39:40:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_5500.pt
+06.04.21 19:44:42:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_7000.pt
+06.04.21 19:44:42:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_7000.pt
+06.04.21 19:49:47:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_7500.pt
+06.04.21 19:49:48:train:New best checkpoint at step 7500...
+06.04.21 19:49:48:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_6500.pt
+06.04.21 19:54:54:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_8000.pt
+06.04.21 19:54:54:train:New best checkpoint at step 8000...
+06.04.21 19:54:54:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_4500.pt
+06.04.21 19:59:59:train:Saved checkpoint: /content/WandB/SavedModels/MODEL7_step_8500.pt
+06.04.21 19:59:59:train:New best checkpoint at step 8500...
+06.04.21 19:59:59:train:Removed checkpoint: /content/WandB/SavedModels/MODEL7_step_5000.pt
+06.04.21 20:33:23:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 100, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': False, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL1', 'configPath': './config.yaml'}
+06.04.21 20:33:26:train:Loading data from wandb artifact...
+06.04.21 20:34:46:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': True, 'loadFromArtifact': False, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 100, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': False, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL1', 'configPath': './config.yaml'}
+06.04.21 20:34:49:train:Getting the training and validation data...
+06.04.21 20:35:04:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.04.21 20:35:11:train:
+Starting model training...
+06.04.21 20:35:14:train:Saver will maximize rouge-1...
+06.04.21 20:35:16:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_0.pt
+06.04.21 20:35:16:train:New best checkpoint at step 0...
+06.04.21 20:40:36:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_500.pt
+06.04.21 20:40:36:train:New best checkpoint at step 500...
+06.04.21 20:45:50:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_1000.pt
+06.04.21 20:45:50:train:New best checkpoint at step 1000...
+06.04.21 20:50:58:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_1500.pt
+06.04.21 20:50:58:train:New best checkpoint at step 1500...
+06.04.21 20:50:58:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_0.pt
+06.04.21 20:56:09:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_2000.pt
+06.04.21 20:56:09:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_500.pt
+06.04.21 21:01:19:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_2500.pt
+06.04.21 21:01:19:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_1000.pt
+06.04.21 21:06:25:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_3000.pt
+06.04.21 21:06:25:train:New best checkpoint at step 3000...
+06.04.21 21:06:25:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_2000.pt
+06.04.21 21:11:32:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_3500.pt
+06.04.21 21:11:32:train:New best checkpoint at step 3500...
+06.04.21 21:11:32:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_2500.pt
+06.04.21 21:16:37:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_4000.pt
+06.04.21 21:16:37:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_1500.pt
+06.04.21 21:21:45:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_4500.pt
+06.04.21 21:21:45:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_3000.pt
+06.04.21 21:26:51:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_5000.pt
+06.04.21 21:26:51:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_4000.pt
+06.04.21 21:31:59:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_5500.pt
+06.04.21 21:31:59:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_5000.pt
+06.04.21 21:37:05:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_6000.pt
+06.04.21 21:37:05:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_6000.pt
+06.04.21 21:42:14:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_6500.pt
+06.04.21 21:42:14:train:New best checkpoint at step 6500...
+06.04.21 21:42:14:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_4500.pt
+06.04.21 21:47:19:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_7000.pt
+06.04.21 21:47:19:train:New best checkpoint at step 7000...
+06.04.21 21:47:19:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_5500.pt
+06.04.21 21:52:27:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_7500.pt
+06.04.21 21:52:27:train:New best checkpoint at step 7500...
+06.04.21 21:52:27:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_3500.pt
+06.04.21 21:57:34:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_8000.pt
+06.04.21 21:57:34:train:New best checkpoint at step 8000...
+06.04.21 21:57:34:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_6500.pt
+06.04.21 22:02:39:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_8500.pt
+06.04.21 22:02:39:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_8500.pt
+06.04.21 22:07:44:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_9000.pt
+06.04.21 22:07:44:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_7000.pt
+06.04.21 22:12:48:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_9500.pt
+06.04.21 22:12:48:train:New best checkpoint at step 9500...
+06.04.21 22:12:48:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_7500.pt
+06.04.21 22:17:54:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_10000.pt
+06.04.21 22:17:54:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_9000.pt
+06.04.21 22:22:59:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_10500.pt
+06.04.21 22:22:59:train:New best checkpoint at step 10500...
+06.04.21 22:22:59:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_8000.pt
+06.04.21 22:28:09:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_11000.pt
+06.04.21 22:28:09:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_10000.pt
+06.04.21 22:33:17:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_11500.pt
+06.04.21 22:33:17:train:New best checkpoint at step 11500...
+06.04.21 22:33:17:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_9500.pt
+06.04.21 22:38:23:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_12000.pt
+06.04.21 22:38:23:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_11000.pt
+06.04.21 22:43:28:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_12500.pt
+06.04.21 22:43:28:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_12000.pt
+06.04.21 22:48:34:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_13000.pt
+06.04.21 22:48:34:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_13000.pt
+06.04.21 22:53:40:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_13500.pt
+06.04.21 22:53:40:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_13500.pt
+06.04.21 22:58:44:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_14000.pt
+06.04.21 22:58:44:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_14000.pt
+06.04.21 23:03:51:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_14500.pt
+06.04.21 23:03:51:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_14500.pt
+06.04.21 23:08:56:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_15000.pt
+06.04.21 23:08:56:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_15000.pt
+06.04.21 23:14:01:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_15500.pt
+06.04.21 23:14:01:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_15500.pt
+06.04.21 23:19:05:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_16000.pt
+06.04.21 23:19:05:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_16000.pt
+06.04.21 23:24:11:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_16500.pt
+06.04.21 23:24:11:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_16500.pt
+06.04.21 23:29:16:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_17000.pt
+06.04.21 23:29:16:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_12500.pt
+06.04.21 23:34:20:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_17500.pt
+06.04.21 23:34:20:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_17500.pt
+06.04.21 23:39:27:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_18000.pt
+06.04.21 23:39:27:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_18000.pt
+06.04.21 23:44:32:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_18500.pt
+06.04.21 23:44:32:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_18500.pt
+06.04.21 23:49:37:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_19000.pt
+06.04.21 23:49:37:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_19000.pt
+06.04.21 23:54:43:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_19500.pt
+06.04.21 23:54:43:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_19500.pt
+06.04.21 23:59:49:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_20000.pt
+06.04.21 23:59:49:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_17000.pt
+06.05.21 00:04:57:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_20500.pt
+06.05.21 00:04:57:train:New best checkpoint at step 20500...
+06.05.21 00:04:57:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_10500.pt
+06.05.21 00:08:50:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_20900.pt
+06.05.21 00:08:51:train:Removed checkpoint: /content/WandB/SavedModels/MODEL1_step_20900.pt
+06.05.21 01:20:38:train:Saver will maximize rouge-1...
+06.05.21 01:20:44:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_0.pt
+06.05.21 01:20:50:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_2.pt
+06.05.21 01:20:53:train:Saved checkpoint: /content/WandB/SavedModels/MODEL1_step_4.pt
+06.05.21 01:20:55:train:	Model eval on validation data...
+06.05.21 01:20:58:train:
+Rouge-1 is 0.3206, Rouge-2 is 0.0421, and Rouge-l is 0.2254
+06.05.21 01:43:56:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': False, 'loadFromArtifact': False, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 100, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL1', 'configPath': './config.yaml'}
+06.05.21 01:43:59:train:Getting the training and validation data...
+06.05.21 01:44:15:train:Size of description vocab is 36828 and abstract vocab is 10769
+06.05.21 01:46:22:train:{'padToken': 0, 'seed': 0, 'fullVocab': True, 'cpcCodes': 'de', 'fname': 'data0_str_json.gz', 'trainSize': 5000, 'valSize': 16, 'printEveryIters': 500, 'l2Reg': 0.0, 'toTrain': False, 'loadFromArtifact': True, 'predMaxLen': 150, 'encMaxLen': 4000, 'embMult': 4, 'hiddenDim': 128, 'numLayers': 2, 'decNumLayers': 4, 'numHeads': 4, 'batchSize': 24, 'numEpochs': 100, 'beamSize': 0, 'lr': 0.001, 'dropout': 0.0, 'loadBestModel': True, 'modelType': 'Seq2SeqwithXfmrMemEfficient', 'savedModelBaseName': 'MODEL1', 'configPath': './config.yaml'}
+06.05.21 01:46:24:train:Loading data from wandb artifact...
+06.05.21 01:46:26:train:Loading model from wandb artifact...
+06.05.21 01:46:29:train:Loaded the current best model for Seq2SeqwithXfmrMemEfficient, which is from step 20500 and metric value is 0.384
+06.05.21 01:46:29:train:Starting model evaluation for the current best model...
+06.05.21 01:46:29:train:	Model eval on validation data...
+06.05.21 01:46:42:train:
+Rouge-1 is 0.3836, Rouge-2 is 0.1328, and Rouge-l is 0.2679
+06.05.21 20:42:31:train:Saver will maximize rouge-1...
+06.05.21 20:42:37:train:Saved checkpoint: ./SavedModels/MODEL1_step_0.pt
+06.05.21 20:42:43:train:Saved checkpoint: ./SavedModels/MODEL1_step_2.pt
+06.05.21 20:42:46:train:Saved checkpoint: ./SavedModels/MODEL1_step_4.pt
+06.07.21 02:10:45:train:Saver will maximize rouge-1...
+06.07.21 02:10:51:train:Saved checkpoint: ./SavedModels/MODEL1_step_0.pt
+06.07.21 02:10:56:train:Saved checkpoint: ./SavedModels/MODEL1_step_2.pt
+06.07.21 02:10:59:train:Saved checkpoint: ./SavedModels/MODEL1_step_4.pt

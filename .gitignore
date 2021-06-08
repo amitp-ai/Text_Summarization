@@ -26,19 +26,14 @@ git_repo_manager.ipynb
 **/bigPatentData/
 **/bigPatentPreprocessedData/
 
-#Tensorboard runs
+#Tensorboard runs (inside ModelBuilding)
 **/runs*
 
-#save models
+#saved models (inside ModelBuilding)
 **/saved_models*
 
-#log files
-**/logs*
-
 #MLOps folder things to ignore
-**/Data/
-**/SavedModels/
-
-#WandB files
 **/wandb/
 **/artifacts/
+**/Training/Preprocessed/train/de/data0_str_json.gz
+**/Training/wandbDataVersioning/train.pt

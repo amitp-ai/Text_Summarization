@@ -4,4 +4,4 @@ artifacts
 SavedModels
 wandb
 test
-data/Training
+Data/Training

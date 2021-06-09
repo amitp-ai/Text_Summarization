@@ -7,10 +7,14 @@ The `DataCollection` directory contains the script used to get various text summ
 The `DataWrangling` directory contains all the code used to load the dataset, then preprocess it by using various regular expressions, then generate the vocabulary, word2idx, idx2word dictionaries for both the description as well as the summary. Furthermore, data visualization is performed to understand various aspects of the input description and summary. Please refer to `Readme.md` and `step5_data_wrangling.ipynb` located inside this directory for details. 
 
 ## Literature Survey
-Notebook named `Literature_Survey.ipynb` located inside the `LiteratureSurvey` directory contains various methods used for text summarization, both extractive and abstractive methods. It discusses various unsupervised methods as well as supervised learning based deep learning methods.
+Notebook named `Literature_Survey.ipynb` located inside the `LiteratureSurvey` directory contains various methods used for text summarization, both extractive and abstractive methods. It discusses various unsupervised methods such as TextRank, Lead-3, Random Sampling as well as supervised learning based deep learning methods such as Pointer-Generator Networks, pre-trained BERT based models, etc.
 
-## Model Experimentation/Building
-The notebook named `ModelBuilding.ipynb` inside the `ModelBuilding` directory contains the many different deep learning based text summarization models I built.
+## Model Building/Experimentation
+The notebook named `ModelBuilding.ipynb` inside the `ModelBuilding` directory contains the many different encoder-decoder types of deep learning based text summarization models I built, such as:
+- LSTM
+- LSTM with Attention
+- Transformers
+- Memory efficient transformers
 
 ## MLOps
-This is the main directory containing the end-to-end pipeline for data preprocessing, model training, data & model versioning, logging metrics, as well as inference and production deployment. Please refer to the `Readme.md` file located inside the `MLOps` directory for details.
+This is the main directory containing the end-to-end pipeline for data preprocessing, model training, data & model versioning, logging metrics, as well as inference and production deployment. The `Weights and Biases` framework is used for MLOps and `Pytorch` is used for model training. Please refer to the `Readme.md` file located inside the `MLOps` directory for details.

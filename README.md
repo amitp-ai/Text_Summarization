@@ -9,7 +9,7 @@ In terms of approaches, there are two different types to text summarization appr
 
 Out of the two, abstractive summarization is more like what humans do; and thus, it has greater potential. But the downside is that it is much more complicated to implement because it requires a language model to generate new text based upon some prior (i.e. the input article). For this project, an abstractive text summarizer (using deep learning) is developed.
 
-The outline of the project is as follows:
+The project outline is as follows:
 1. Data collection
 2. Exploratory Data Analysis and Data Wrangling
 3. Literature Survey

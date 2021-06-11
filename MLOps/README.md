@@ -21,14 +21,15 @@ python setup.py sdist bdist_wheel
 
 
 ## Transfer Data and SavedModels to/from S3 Bucket
-First configure the AWS S3 bucket access by running `aws configure` and enter the `key id` and `access key` for accessing the bucket.
-1. Once the model is trained, the data and saved models can be uploaded to an AWS S3 bucket using:  
+First configure the AWS S3 bucket access by running `aws configure` and enter the `key id` and `access key` for accessing the bucket. Thereafter, use the `s3Bucket.sh` script as follows:
+1. Before training the model and running inference, download the latest data and saved models from AWS S3 using:             `./s3Bucket.sh download`
+2. Once the model is trained, the data and saved models can be uploaded to an AWS S3 bucket using:  
     `./s3Bucket.sh upload_and_delete_locally`  
-2. Before training the model and running inference, download the latest data and saved models from AWS S3 using:             `./s3Bucket.sh download`
 
 
 ## Unit Testing
-    `python -m pytest -s ./test/`  
+Running the following command will execute the various unit tests stored inside the test directory:  
+`python -m pytest -s ./test/`  
 
 			
 ## Training
@@ -53,13 +54,15 @@ Inference data and results are logged into the above wandb link as well as in a 
 ## Flask API
 The `app` directory contains `app.py` which is a flask based API for model serving. Below is an example command to consume this API:  
 `https://0.0.0.0:5000/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json`  
-The json file containing the input text can be stored at any public repository. The format of this json file should be:   `{"Description": "Description text", "Target_Summary": "Target summary text"}.` `The Target_Summary` is an optional field that can be used for further model training.
+
+The json file containing the input text can be stored in any public repository. The format of this json file should be:   `{"Description": "Description text", "Target_Summary": "Target summary text"}.` `The Target_Summary` is an optional field that can be used for further model training.
 
 
 ## Production Deployment
 For production deployment, use the Dockerfile in this directory to build a container using the following command:  
 `docker build -t textsum/inference -f MLOps/Dockerfile .`  
-For example, this Docker container can be deployed to an AWS EC2 with host IP 0.0.0.0 and port 5000 set to open. To do this, create new security group (named `full-access`) and set `inbound rule` to `all traffic` (this will also set host ip to 0.0.0.0/5000). Then select your instance, right click, select security, change security group and select the new group created (named `full access`). The model can then be consumed using the above Flask API example. 
+
+This Docker container can then be deployed to, for example, an AWS EC2 instance with host IP 0.0.0.0 and port 5000 set to open. To do this, create new security group (named `full-access`) and set `inbound rule` to `all traffic` (this will also set host ip to 0.0.0.0/5000). Then select your instance, right click, select security, change security group and select the new group created (named `full access`). The model can then be consumed using the above Flask API example. 
 
 If the WandB access key is already provided, then one can directly launch the container with the following command:  
 `docker run -p 5000:5000 -it --rm --entrypoint bash summarize/api`  

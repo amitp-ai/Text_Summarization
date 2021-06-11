@@ -4,8 +4,8 @@ This project is about building a text summarization system (for legal documents)
 There are many places where a good document summarizer will be valuable. For example, in the legal industry it can be used to summarize long legal documents, in the healthcare industry it can be used to summarize important aspects of a medication, in the news industry it can be used to summarize news articles, in the financial indistry it can be used to summarize 10K SEC filings, and many other examples.
 
 In terms of approaches, there are two different types to text summarization approaches:
-1. Extractive text summarization: it identifies important sections of the original article and then copies it to form the summary. It can be thought of as a highlighter.
-2. Abstractive text summarization: it reproduces important information in the article by first understanding the entire article and then succinctly generating new text based upon it. It can be thought of as a pen.
+1. Extractive text summarization: It identifies important sections of the original article and then copies it to form the summary. *It can be thought of as a highlighter.*
+2. Abstractive text summarization: It reproduces important information in the article by first understanding the entire article and then succinctly generating new text based upon it. *It can be thought of as a pen.*
 
 Out of the two, abstractive summarization is more like what humans do; and thus, it has greater potential. But the downside is that it is much more complicated to implement because it requires a language model to generate new text based upon some prior (i.e. the input article). For this project, an abstractive text summarizer (using deep learning) is developed.
 

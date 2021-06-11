@@ -1,7 +1,7 @@
 # Deep Learning Based Abstractive Text Summarization
 This project is about building a text summarization system (for legal documents) where the objective is to read in a piece of text (potentially containing many paragraphs) and output a summarized version of it. A good summarizer will output all the important details from the input text while being succinct.
 
-There are many places where a good document summarizer will be valuable. For example, in the legal industry it can be used to summarize long legal documents, in the healthcare industry it can be used to summarize important aspects of a medication, in the news industry it can be used to summarize news articles, in the financial indistry it can be used to summarize 10K SEC filings, and many other examples.
+There are many places where a good document summarizer will be valuable. For example, in the legal industry it can be used to summarize long legal documents, in the healthcare industry it can be used to summarize important aspects of a medication, in the news industry it can be used to summarize news articles, in the financial industry it can be used to summarize 10K SEC filings, and many other examples.
 
 In terms of approaches, there are two different types to text summarization approaches:
 1. Extractive text summarization: It identifies important sections of the original article and then copies it to form the summary. *It can be thought of as a highlighter.*
@@ -34,4 +34,4 @@ The notebook named `ModelBuilding.ipynb` inside the `ModelBuilding` directory co
 - Memory efficient transformers
 
 ## MLOps
-This is the main directory containing the end-to-end pipeline for data preprocessing, model training, data & model versioning, logging metrics, as well as inference and production deployment. The `Weights and Biases` framework is used for MLOps and `Pytorch` is used for model training. Flask based API is used for model serving. Moreover, a Docker cotainer is built that can then be deployed to a production environment. Please refer to the `Readme.md` file located inside the `MLOps` directory for details.
+This is the main directory containing the end-to-end pipeline for data preprocessing, model training, data & model versioning, logging metrics, as well as inference and production deployment. The `Weights and Biases` framework is used for MLOps and `Pytorch` is used for model training. Flask based API is used for model serving. Moreover, a Docker container is built that can then be deployed to a production environment. Please refer to the `Readme.md` file located inside the `MLOps` directory for details.

@@ -20,8 +20,8 @@ import models
 import evaluate
 from tqdm import tqdm
 import wandb
+# wandb.login() #set 'export WANDB_API_KEY=key' environment variable and then run this script from that same shell
 
-wandb.login()
 logger = utils.create_logger('train.log')
 
 def train(model, train_data, val_data, abs_idx2word, device, batch_size, num_epochs, 

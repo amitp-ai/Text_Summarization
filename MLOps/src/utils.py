@@ -549,23 +549,21 @@ class CSVLogger(object):
     """
     def __init__(self):
         self.data = {}
-        self.columns = []
 
     def __getitem__(self, key):
         return self.data[key]
 
     def __setitem__(self, key, value):
         self.data[key] = value
-        self.columns.append(key)
     
     def toCSV(self, fname):
         if not os.path.exists(fname):
             f = open(fname, 'w')
-            writer = csv.DictWriter(f, fieldnames = self.columns)
+            writer = csv.DictWriter(f, fieldnames = list(self.data.keys()))
             writer.writeheader()
         else:
             f = open(fname, 'a')
-            writer = csv.DictWriter(f, fieldnames = self.columns)
+            writer = csv.DictWriter(f, fieldnames = list(self.data.keys()))
         writer.writerows([self.data])
         f.close()
 

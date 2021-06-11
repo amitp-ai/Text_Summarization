@@ -7,10 +7,6 @@ Inference:
     OtherParams:
         padToken: 0
         seed: 0
-        fullVocab: true #Use the full vocab or generate vocab based only upon the data used for training
-        fname: "data0_str_json.gz"
-        trainSize: 500
-        valSize: 16
 
 
 Train:
@@ -32,6 +28,25 @@ Train:
         toTrain: true #Flag to train or evaluate the model
         loadFromArtifact: true #false #true
 
+
+
+App:
+    Models:
+            Seq2SeqwithXfmrMemEfficient:
+                predMaxLen: 150
+                encMaxLen: 4000
+                hiddenDim: 128
+                embMult: 4
+                numHeads: 4
+                dropout: 0.0
+                numLayers: 2
+                decNumLayers: 4
+    OtherParams:
+        modelType: Seq2SeqwithXfmrMemEfficient
+        padToken: 0
+        beamSize: 0 #3
+        loadModelName: "MODEL1:latest"
+        
 
 Unit_Tests:
     Models:

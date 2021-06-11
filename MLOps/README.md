@@ -49,10 +49,22 @@ This is especially convenient because we can train/build various different model
 Inference data and results are logged into the above wandb link as well as in a csv file.  
 
 
+## Flask API
+The `app` directory contains `app.py` which is a flask based API for model serving. Below is an example command to consume this API:  
+`https://0.0.0.0:5000/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json`  
+The json file containing the input text can be stored at any public repository. The format of this json file should be:   `{"Description": "Description text", "Target_Summary": "Target summary text"}.` `The Target_Summary` is an optional field that can be used for further model training.
+
+
 ## Production Deployment
 For production deployment, use the Dockerfile in this directory to build a container using the following command:  
 `docker build -t textsum/inference -f MLOps/Dockerfile .`  
-To experiment with the container, use the following command to start a bash terminal inside the container:  
-`docker run -it --rm --entrypoint bash -p 8000:8000 textsum/inference`
-To directly run inference, launch the container with the following command:  
-`docker run -it --rm --entrypoint bash -p 8000:8000 textsum/inference`
+For example, this Docker container can be deployed to an AWS EC2 with host IP 0.0.0.0 and port 5000 set to open. To do this, create new security group (named `full-access`) and set `inbound rule` to `all traffic` (this will also set host ip to 0.0.0.0/0). Then select your instance, right click, select security, change security group and select the new group created (named `full access`). The model can then be consumed using the above Flask API example. 
+
+If the WandB access key is already provided, then one can directly launch the container with the following command:  
+`docker run -p 5000:5000 -it --rm --entrypoint bash summarize/api`
+Otherwise, launch the Docker container into a Bash shell using the following command:  
+`docker run -p 5000:5000 -it --rm summarize/api`
+Then set the wandb key as an environment variable as follows:  
+`export WANDB_API_KEY=<key>`  
+Then launch the application by running:  
+`python ./app/app.py`

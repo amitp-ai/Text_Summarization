@@ -15,9 +15,7 @@ import os
 from rouge import Rouge
 import time
 import wandb
-wandb.login()
-
-PARENT_DIR = './'
+# wandb.login() #set 'export WANDB_API_KEY=key' environment variable and then run this script from that same shell
 
 def modelInference(model, descData, abs_idx2word, device, logger):
     """ To evaluate the model on a single input at a time ***(i.e. not batched input)
@@ -85,8 +83,9 @@ def Pipeline(config, logger):
     t1 = time.time()
     _, _, lang_train = utils.loadWandBDataArtifact(artifactName='Data', 
         wandbRun=wandbRun, version='latest', trainData=False)
+    inputTextFile = f"./Data/{config.inputTextFile}"
     descData, descVocabSize, absVocabSize, absIdx2Word, logger = \
-                loadAndPreprocessData.getData(inputTextFile=config.inputTextFile, 
+                loadAndPreprocessData.getData(inputTextFile=inputTextFile, 
                         lang_train=lang_train, logger=logger)
     t2 = time.time()
     
@@ -115,7 +114,7 @@ def Pipeline(config, logger):
     logger['Model Loading Duration (s)'] = round(t3-t2, 3)
     logger['Model Inference Duration (s)'] = round(t4-t3, 3)
     logger['Total Inference Duration (s)'] = round(t4-t0, 3)
-    logger.toCSV(PARENT_DIR+'Data/inference.csv')
+    logger.toCSV('./Data/inference.csv')
     #Also log into wandb as a summary
     wandbRun.summary.update(logger.data)
 

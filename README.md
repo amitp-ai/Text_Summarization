@@ -17,4 +17,4 @@ The notebook named `ModelBuilding.ipynb` inside the `ModelBuilding` directory co
 - Memory efficient transformers
 
 ## MLOps
-This is the main directory containing the end-to-end pipeline for data preprocessing, model training, data & model versioning, logging metrics, as well as inference and production deployment. The `Weights and Biases` framework is used for MLOps and `Pytorch` is used for model training. Please refer to the `Readme.md` file located inside the `MLOps` directory for details.
+This is the main directory containing the end-to-end pipeline for data preprocessing, model training, data & model versioning, logging metrics, as well as inference and production deployment. The `Weights and Biases` framework is used for MLOps and `Pytorch` is used for model training. Flask based API is used for model serving. Moreover, a Docker cotainer is built that can then be deployed to a production environment. Please refer to the `Readme.md` file located inside the `MLOps` directory for details.

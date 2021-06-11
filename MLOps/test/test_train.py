@@ -13,7 +13,7 @@ import pytest
 import torch
 # from ..ModelBuilding.src import models
 import sys
-sys.path.append(f'{PARENT_DIR}src')
+sys.path.append('./src')
 import train
 import utils
 import models

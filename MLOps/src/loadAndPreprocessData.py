@@ -35,7 +35,6 @@ import re
 import spacy
 import utils
 
-PARENT_DIR = './'
 def getData(inputTextFile, lang_train, logger):
     '''
     Function to input and preprocess the input text (assuming one example at a time i.e. not in a batch)
@@ -53,7 +52,7 @@ def getData(inputTextFile, lang_train, logger):
     abs_word2idx = lang_train.abs_word2idx
     # desc_idx2word =  lang_train.desc_idx2word
 
-    inputText = utils.load_json(f"{PARENT_DIR}Data/{inputTextFile}")
+    inputText = utils.load_json(inputTextFile)
     desc = inputText['Description']
     logger['Desc_Orig'] = desc
 

@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt
 COPY ./ ./
 
 # Expose port and command to run
-EXPOSE 8000
+EXPOSE 8888
 ENV PYTHONPATH /production
-CMD python3 # /production/src/inference.py
+CMD python3 /production/app/app.py
 

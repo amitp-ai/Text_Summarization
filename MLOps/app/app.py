@@ -1,9 +1,10 @@
 """
     In an web browser, enter:
-    https://0.0.0.0:5000/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json
+    https://0.0.0.0:8888/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json
+    or using an EC2
+    http://ec2-18-204-216-235.compute-1.amazonaws.com:8888/summarize?inputFileURL=https://public-text-summarizer.s3    .amazonaws.com/inferenceData.json
 """
 from flask import Flask, request, jsonify
-from flask_ngrok import run_with_ngrok #for colab only
 import requests
 import time
 import torch
@@ -18,7 +19,6 @@ import wandb
 
 
 app = Flask(__name__)
-run_with_ngrok(app) #for colab only
 
 @app.route("/")
 def index():
@@ -96,8 +96,8 @@ def Pipeline(config):
     LOGGER['Model Loading Duration (s)'] = round(t3-t2, 3)
 
     #Run the app
-    app.run()
-    # app.run(host='0.0.0.0', port=5000, debug=True)
+    # app.run()
+    app.run(host='0.0.0.0', port=8888, debug=False)
 
     #end wandbrun
     WANDBRUN.finish()

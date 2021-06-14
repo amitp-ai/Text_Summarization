@@ -53,23 +53,32 @@ Inference data and results are logged into the above wandb link as well as in a 
 
 ## Flask API
 The `app` directory contains `app.py` which is a flask based API for model serving. Below is an example command to consume this API:  
-`https://0.0.0.0:5000/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json`  
+`https://0.0.0.0:8888/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json`  
+
+To consume it when deployed on an AWS EC2 instance with public DNS `http://ec2-18-204-216-235.compute-1.amazonaws.com`:
+`http://ec2-18-204-216-235.compute-1.amazonaws.com:8888/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json`
 
 The json file containing the input text can be stored in any public repository. The format of this json file should be:   `{"Description": "Description text", "Target_Summary": "Target summary text"}.` `The Target_Summary` is an optional field that can be used for further model training.
+
+The input text, predicted summary, inference duration, etc are logged in a CSV file named `app.csv` inside the `Data` directory.
 
 
 ## Production Deployment
 For production deployment, use the Dockerfile in this directory to build a container using the following command:  
-`docker build -t textsum/inference -f MLOps/Dockerfile .`  
+`docker build -t textsum-api -f Dockerfile .`  
 
-This Docker container can then be deployed to, for example, an AWS EC2 instance with host IP 0.0.0.0 and port 5000 set to open. To do this, create new security group (named `full-access`) and set `inbound rule` to `all traffic` (this will also set host ip to 0.0.0.0/5000). Then select your instance, right click, select security, change security group and select the new group created (named `full access`). The model can then be consumed using the above Flask API example. 
+This Docker container can then be deployed to, for example, an AWS EC2 instance with host IP 0.0.0.0 and port 8888 set to open. To do this, create new security group (named `full-access`) and set `inbound rule` to `all traffic` and set source to `anywhere` (and set host ip to 0.0.0.0/0). Then select your instance, right click, select security, change security group and select the new group created (named `full-access`). The model can then be consumed using the above Flask API example. 
+
+Note: use port 8888 when ssh'ing into the EC2 insance e.g. `ssh -L localhost:8888:localhost:8888 -i <.pem filename> ubuntu@<instance DNS>` 
 
 If the WandB access key is already provided, then one can directly launch the container with the following command:  
-`docker run -p 5000:5000 -it --rm --entrypoint bash summarize/api`  
+`docker run -p 8888:8888 -it --rm textsum-api`  
 
 Otherwise, launch the Docker container into a Bash shell using the following command:  
-`docker run -p 5000:5000 -it --rm summarize/api`  
+`docker run -p 8888:8888 -it --rm --entrypoint bash textsum-api`  
 Then set the wandb key as an environment variable as follows:  
 `export WANDB_API_KEY=<key>`  
 Then launch the application by running:  
 `python ./app/app.py`
+
+Then consume the flask API using the above mentioned instructions.

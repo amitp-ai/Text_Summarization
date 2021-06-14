@@ -13,21 +13,21 @@ The project outline is as follows:
 1. Data collection
 2. Exploratory Data Analysis and Data Wrangling
 3. Literature Survey
-4. Model Building
+4. Model Building and Evaluation
 5. MLOps and Deployment
 
 
 ## Data Collection
 The `DataCollection` directory contains the script used to get various text summarization datasets such as BigPatents dataset, CNN/Daily mail, Arxiv/PubMed scientific papers, Gigaword dataset. For this project, the `BigPatents` dataset is use. For more details, please refer to the Readme.md file inside the DataCollection directory
 
-## Exploratory Data Analysis and Data Wrangling
+## Data Wrangling and Exploratory Data Analysis
 The `DataWrangling` directory contains all the code used to load the dataset, then preprocess it by using various regular expressions, then generate the vocabulary, word2idx, idx2word dictionaries for both the description as well as the summary. Furthermore, data visualization is performed to understand various aspects of the input description and summary. Please refer to `Readme.md` and `step5_data_wrangling.ipynb` located inside this directory for details. 
 
 ## Literature Survey
 Notebook named `Literature_Survey.ipynb` located inside the `LiteratureSurvey` directory contains various methods used for text summarization, both extractive and abstractive methods. It discusses various unsupervised methods such as TextRank, Lead-3, Random Sampling as well as supervised learning based deep learning methods such as Pointer-Generator Networks, pre-trained BERT based models, etc.
 
-## Model Building/Experimentation
-The notebook named `ModelBuilding.ipynb` inside the `ModelBuilding` directory contains the many different encoder-decoder types of deep learning based text summarization models I built, such as:
+## Model Building/Experimentation and Evaluation
+The notebook named `ModelBuilding.ipynb` inside the `ModelBuilding` directory contains the many different encoder-decoder types of deep learning based text summarization models I built in `Pytorch`, such as:
 - LSTM
 - LSTM with Attention
 - Transformers

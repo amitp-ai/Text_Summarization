@@ -57,7 +57,8 @@ def summarize():
     #Also log into wandb as a summary
     WANDBRUN.summary.update(LOGGER.data) #will have to create a table in WandB to store after every run
 
-    return jsonify({'The Generated Summary is: ': LOGGER['Prediction_Summary']})
+    return jsonify({'Generated Summary is: ': LOGGER['Prediction_Summary'], 
+                    'Rouge Score is': LOGGER['Rouge_Scores']})
 
 
 def Pipeline(config):

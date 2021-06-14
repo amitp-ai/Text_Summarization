@@ -60,8 +60,9 @@ To consume it when deployed on an AWS EC2 instance with public DNS `http://ec2-1
 
 The json file containing the input text can be stored in any public repository. The format of this json file should be:   `{"Description": "Description text", "Target_Summary": "Target summary text"}.` `The Target_Summary` is an optional field that can be used for further model training.
 
-The input text, predicted summary, inference duration, etc are logged in a CSV file named `app.csv` inside the `Data` directory.
+The input text, predicted summary, inference duration, etc are logged into a CSV file named `app.csv` inside the `Data` directory.
 
+The model inference duration on a CPU based `m3.large` instance is about 5.5 seconds for summarizing a 1000 word input text. One a GPU based instance (e.g. p3.2xlarge) will be much faster.
 
 ## Production Deployment
 For production deployment, use the Dockerfile in this directory to build a container using the following command:  

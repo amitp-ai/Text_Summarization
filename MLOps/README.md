@@ -15,9 +15,9 @@ Go to MLOps directory (i.e. directory containing this Readme.md)
 1. Install all the dependencies using:  
 `pip install -r requirements.txt`
 2. Install setup.py    
-`pip install -e .`
-If want to create a wheel build and .tar that you can share with someone do,
-python setup.py sdist bdist_wheel
+`pip install -e .`  
+If want to create a wheel build and .tar that you can share with someone, do
+`python setup.py sdist bdist_wheel`
 
 
 ## Transfer Data and SavedModels to/from S3 Bucket
@@ -45,7 +45,7 @@ Below is an example command to run the training pipeline (i.e. data loading, dat
 ## Inference
 Below is an example command to run inference pipeline from the command line using the latest training run of a model named `MODEL1`. Instead of the latest run, older runs can also be using using v0, v1 etc. Moreover, the best performing model in a given run is used.  
 
-This is especially convenient because we can train/build various different models (using the above command), and once we are satisfied with a given model, we can use that model name in the below command to download it from WandB server and then deploy it into production.  
+This is especially convenient because we can train/build various different models (using the above training command), and once we are satisfied with a given model, we can use that model name in the below command to download it from WandB server and then deploy it into production.  
 
 `python ./src/inference.py --hiddenDim 128 --numLayers 2 --decNumLayers 4 --numHeads 4 \
 --dropout 0.0 --inputTextFile 'inferenceData.json' --modelType 'Seq2SeqwithXfmrMemEfficient' \
@@ -57,20 +57,20 @@ Inference data and results are logged into the above wandb link as well as in a 
 The `app` directory contains `app.py` which is a flask based API for model serving. Below is an example command to consume this API:  
 `https://0.0.0.0:8888/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json`  
 
-To consume it when deployed on an AWS EC2 instance with public DNS `http://ec2-18-204-216-235.compute-1.amazonaws.com`:
+To consume it when deployed on an AWS EC2 instance with public DNS (for example) `http://ec2-18-204-216-235.compute-1.amazonaws.com`, use the following url in a web browser:  
 `http://ec2-18-204-216-235.compute-1.amazonaws.com:8888/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json`
 
 The json file containing the input text can be stored in any public repository. The format of this json file should be:   `{"Description": "Description text", "Target_Summary": "Target summary text"}.` `The Target_Summary` is an optional field that can be used for further model training.
 
-The input text, predicted summary, inference duration, etc are logged into a CSV file named `app.csv` inside the `Data` directory.
+For monitoring and data collection for future training, the input text, target summary (if provided), predicted summary, inference duration, etc are logged into a CSV file named `app.csv` inside the `Data` directory.
 
-The model inference duration on a CPU based `m3.large` instance is about 5.5 seconds for summarizing a 1000 word input text. On a GPU based instance (e.g. p3.2xlarge) it will be much faster.
+The model inference duration on a CPU based `m3.large` instance is about 5.5 seconds for summarizing a 1000 word input text. On a GPU based instance (e.g. `p3.2xlarge`) it will be much faster.
 
 ## Production Deployment
 For production deployment, use the Dockerfile in this directory to build a container using the following command:  
 `docker build -t textsum-api -f Dockerfile .`  
 
-This Docker container can then be deployed to, for example, an AWS EC2 instance with host IP 0.0.0.0 and port 8888 set to open. To do this, create new security group (named `full-access`) and set `inbound rule` to `all traffic` and set source to `anywhere` (and set host ip to 0.0.0.0/0). Then select your instance, right click, select security, change security group and select the new group created (named `full-access`). The model can then be consumed using the above Flask API example. 
+This Docker container can then be deployed to, for example, an AWS EC2 instance with host IP 0.0.0.0 and port 8888 set to open. To do this, create new security group (named `full-access`) and set `inbound rule` to `all traffic` and set source to `anywhere` (and set host ip to 0.0.0.0/0). Then select your EC2 instance, right click, select security, change security group and select the new group created (named `full-access`). The model can then be consumed using the above Flask API example. 
 
 Note: use port 8888 when ssh'ing into the EC2 insance e.g. `ssh -L localhost:8888:localhost:8888 -i <.pem filename> ubuntu@<instance DNS>` 
 

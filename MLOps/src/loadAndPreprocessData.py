@@ -33,7 +33,7 @@ So that is what we will use; and as a side benefit, it is significantly faster t
 import unicodedata
 import re
 import spacy
-import utils
+from src import utils
 
 def getData(inputTextFile, lang_train, logger):
     '''

@@ -10,12 +10,7 @@ CONFIGFILE = PARENT_DIR + 'config.yaml'
 
 import pytest
 import torch
-import sys
-sys.path.append('./src')
-import models
-import utils
-# from src import models
-# from ..ModelBuilding.src import models
+from src import models, utils
 
 def generate_data(batch_size, max_seq_len, vocab_size, seed):
     # Ensure deterministic behavior

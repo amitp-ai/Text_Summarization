@@ -4,11 +4,11 @@ In this repo we use an end-to-end pipeline (using the Weights-and-Biases MLOps f
 Information about the runs, model and data versioning, etc can be found at:  
 `https://wandb.ai/amitp-ai/Text-Summarization?workspace=user-amitp-ai`
 
-Note: Run all commands from the `MLOps` directory
+**Note: Run all the commands from the `MLOps` directory**
 
 The Dataset, SavedModels, and logs directories are merely provided as an example. The full version-controlled datasets, saved models, logs, wandb repo, and wandb artifacts are stored in the AWS S3 bucket named `ucsdx-textsummarization` (arn:aws:s3:::ucsdx-textsummarization)  as well as in the above linked WandB project.
 
-The `config.yaml` file contains various configuration parameters used for training, inference, as well as unit testing.
+The `config.yaml` file contains various configuration parameters used for training, inference, API serving, as well as unit testing.
 
 ## Installing
 Go to MLOps directory (i.e. directory containing this Readme.md)
@@ -21,6 +21,8 @@ python setup.py sdist bdist_wheel
 
 
 ## Transfer Data and SavedModels to/from S3 Bucket
+Using an S3 bucket as a backup for the data and models stored on WandB server.
+
 First configure the AWS S3 bucket access by running `aws configure` and enter the `key id` and `access key` for accessing the bucket. Thereafter, use the `s3Bucket.sh` script as follows:
 1. Before training the model and running inference, download the latest data and saved models from AWS S3 using:             `./s3Bucket.sh download`
 2. Once the model is trained, the data and saved models can be uploaded to an AWS S3 bucket using:  

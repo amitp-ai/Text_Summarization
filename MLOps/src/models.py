@@ -9,9 +9,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-import utils
-import evaluate
-
+from src import utils, evaluate
 
 class PositionalEncoding(nn.Module):
     def __init__(self, dModel, maxLen=5000):

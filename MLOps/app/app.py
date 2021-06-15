@@ -8,12 +8,7 @@ from flask import Flask, request, jsonify
 import requests
 import time
 import torch
-import sys
-sys.path.append('./src')
-import utils
-import inference
-import models
-import loadAndPreprocessData
+from src import utils, inference, models, loadAndPreprocessData
 import wandb
 # wandb.login() #set 'export WANDB_API_KEY=key' environment variable and then run this script from that same shell
 

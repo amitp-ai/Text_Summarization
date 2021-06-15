@@ -7,13 +7,11 @@ Description:
 
 import torch
 import argparse
-import utils
-import models
-import loadAndPreprocessData
 import pandas as pd
 import os
 from rouge import Rouge
 import time
+from src import utils, models, loadAndPreprocessData
 import wandb
 # wandb.login() #set 'export WANDB_API_KEY=key' environment variable and then run this script from that same shell
 

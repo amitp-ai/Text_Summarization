@@ -37,3 +37,6 @@ git_repo_manager.ipynb
 **/artifacts/
 **/Training/Preprocessed/train/de/data0_str_json.gz
 **/Training/wandbDataVersioning/train.pt
+
+#src installed packages
+**/src.egg-info/

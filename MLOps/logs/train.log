@@ -1114,3 +1114,11 @@ Rouge-1 is 0.3836, Rouge-2 is 0.1328, and Rouge-l is 0.2679
 06.10.21 02:23:28:train:Saved checkpoint: ./SavedModels/MODEL1_step_0.pt
 06.10.21 02:24:20:train:Saved checkpoint: ./SavedModels/MODEL1_step_2.pt
 06.10.21 02:24:43:train:Saved checkpoint: ./SavedModels/MODEL1_step_4.pt
+06.15.21 16:01:39:train:Saver will maximize rouge-1...
+06.15.21 16:02:19:train:Saved checkpoint: ./SavedModels/MODEL1_step_0.pt
+06.15.21 16:03:04:train:Saved checkpoint: ./SavedModels/MODEL1_step_2.pt
+06.15.21 16:03:23:train:Saved checkpoint: ./SavedModels/MODEL1_step_4.pt
+06.15.21 16:25:13:train:Saver will maximize rouge-1...
+06.15.21 16:25:53:train:Saved checkpoint: ./SavedModels/MODEL1_step_0.pt
+06.15.21 16:26:39:train:Saved checkpoint: ./SavedModels/MODEL1_step_2.pt
+06.15.21 16:26:59:train:Saved checkpoint: ./SavedModels/MODEL1_step_4.pt

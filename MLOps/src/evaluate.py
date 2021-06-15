@@ -11,8 +11,8 @@ import torch
 from rouge import Rouge
 import queue
 from itertools import count
-import utils
 import wandb
+from src import utils
 
 logger = utils.create_logger('evaluate.log')
 

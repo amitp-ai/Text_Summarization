@@ -5,3 +5,5 @@ SavedModels
 wandb
 test
 Data/Training
+src.egg-info
+

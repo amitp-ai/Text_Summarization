@@ -4,20 +4,19 @@ In this repo we use an end-to-end pipeline (using the Weights-and-Biases MLOps f
 Information about the runs, model and data versioning, etc can be found at:  
 `https://wandb.ai/amitp-ai/Text-Summarization?workspace=user-amitp-ai`
 
-**Note: Run all the commands from the `MLOps` directory**
+**Note: Run all the commands from the `./MLOps/MLOps/` directory (i.e. the directory containing this Readme.md file)**
 
 The Dataset, SavedModels, and logs directories are merely provided as an example. The full version-controlled datasets, saved models, logs, wandb repo, and wandb artifacts are stored in the AWS S3 bucket named `ucsdx-textsummarization` (arn:aws:s3:::ucsdx-textsummarization)  as well as in the above linked WandB project.
 
 The `config.yaml` file contains various configuration parameters used for training, inference, API serving, as well as unit testing.
 
 ## Installing
-Go to MLOps directory (i.e. directory containing this Readme.md)
 1. Install all the dependencies using:  
-`pip install -r requirements.txt`
+`pip install -r ../requirements.txt`
 2. Install setup.py    
-`pip install -e .`  
+`pip install -e ../`  
 If want to create a wheel build and .tar that you can share with someone, do
-`python setup.py sdist bdist_wheel`
+`python ../setup.py sdist bdist_wheel`
 
 
 ## Transfer Data and SavedModels to/from S3 Bucket

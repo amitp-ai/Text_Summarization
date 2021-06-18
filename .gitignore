@@ -39,4 +39,5 @@ git_repo_manager.ipynb
 **/Training/wandbDataVersioning/train.pt
 
 #src installed packages
-**/src.egg-info/
+**/*.egg-info/
+**/.eggs/

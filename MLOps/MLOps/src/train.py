@@ -15,7 +15,7 @@ import torch.utils.data as data
 from datetime import datetime
 import copy
 import argparse
-from src import utils, models, evaluate
+from MLOps.src import utils, models, evaluate
 from tqdm import tqdm
 import wandb
 # wandb.login() #set 'export WANDB_API_KEY=key' environment variable and then run this script from that same shell

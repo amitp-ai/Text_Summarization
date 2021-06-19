@@ -10,7 +10,7 @@ CONFIGFILE = PARENT_DIR + 'config.yaml'
 
 import pytest
 import torch
-from src import models, utils
+from MLOps.src import models, utils
 
 def generate_data(batch_size, max_seq_len, vocab_size, seed):
     # Ensure deterministic behavior

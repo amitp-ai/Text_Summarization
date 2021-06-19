@@ -12,7 +12,7 @@ from rouge import Rouge
 import queue
 from itertools import count
 import wandb
-from src import utils
+from MLOps.src import utils
 
 logger = utils.create_logger('evaluate.log')
 

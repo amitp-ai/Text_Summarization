@@ -9,7 +9,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from src import utils, evaluate
+from MLOps.src import utils, evaluate
 
 class PositionalEncoding(nn.Module):
     def __init__(self, dModel, maxLen=5000):

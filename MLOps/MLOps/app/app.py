@@ -1,5 +1,5 @@
 """
-    In an web browser, enter:
+    In a web browser, enter:
     https://0.0.0.0:8888/summarize?inputFileURL=https://public-text-summarizer.s3.amazonaws.com/inferenceData.json
     or using an EC2
     http://ec2-18-204-216-235.compute-1.amazonaws.com:8888/summarize?inputFileURL=https://public-text-summarizer.s3    .amazonaws.com/inferenceData.json
@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify
 import requests
 import time
 import torch
-from src import utils, inference, models, loadAndPreprocessData
+from MLOps.src import utils, inference, models, loadAndPreprocessData
 import wandb
 # wandb.login() #set 'export WANDB_API_KEY=key' environment variable and then run this script from that same shell
 

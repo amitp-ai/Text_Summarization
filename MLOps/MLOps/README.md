@@ -13,10 +13,17 @@ The `config.yaml` file contains various configuration parameters used for traini
 ## Installing
 1. Install all the dependencies using:  
 `pip install -r ../requirements.txt`
-2. Install setup.py    
+
+2. Install setup.py (but this is slow!)
 `pip install -e ../`  
 If want to create a wheel build and .tar that you can share with someone, do
 `python ../setup.py sdist bdist_wheel`
+
+    For quick and dirty prototyping, instead of pip installing, we can do either one of these two:
+    1. In bash terminal:
+            `export PYTHONPATH="${PYTHONPATH}:$PWD"`
+    2. Inside Python interpreter:
+            `import os; os.environ["PYTHONPATH"] = f'{os.environ["PYTHONPATH"]}:{PATH_NAME}/MLOps'`
 
 
 ## Transfer Data and SavedModels to/from S3 Bucket

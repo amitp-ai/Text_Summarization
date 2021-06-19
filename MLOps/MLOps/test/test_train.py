@@ -11,7 +11,7 @@ CONFIGFILE = PARENT_DIR + 'config.yaml'
 
 import pytest
 import torch
-from src import train, utils, models
+from MLOps.src import train, utils, models
 import wandb
 wandb.login()
 

@@ -10,7 +10,7 @@ setup(
     description="text summarizer",
     author="Amit Patel",
     author_email='amitpatel.gt@gmail.com',
-    packages=find_packages(where='.'),
+    packages=find_packages(where='./MLOPs'),
     license="MIT",
     install_requires=['torch>=1.8.1', 'wandb>=0.10.31', 'rouge>=1.0.0'],
     url = 'https://github.com/amitp-ai/Text_Summarization_UCSD/tree/main/MLOps',
@@ -19,5 +19,5 @@ setup(
     # include_package_data=True, #this will add all directories containing __init__.py (and everything inside them)
     # tests_require=['pytest'],
     # setup_requires=['flake8', 'pytest-runner'],    
-    # entry_points={'console_scripts': ['textSummarizerApi=app.app']}
+    # entry_points={'console_scripts': ['textSummarizerApi=MLOps.app.app:main']}
 )

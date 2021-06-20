@@ -10,7 +10,8 @@ The Dataset, SavedModels, and logs directories are merely provided as an example
 
 The `config.yaml` file contains various configuration parameters used for training, inference, API serving, as well as unit testing.
 
-## Installing (run these commands from the MLOps directory i.e. from one level above this Readme.md file)
+## Installing 
+Run these commands from the MLOps directory i.e. from one level above this Readme.md file.
 1. Install all the dependencies using:  
 `pip install -r requirements.txt`
 
@@ -23,7 +24,9 @@ If want to create a wheel build and .tar that you can share with someone, do
     1. In bash terminal:
             `export PYTHONPATH="${PYTHONPATH}:$PWD"`
     2. Inside Jupyter notebook:
+            `PATH_NAME = '/home/usr/Projects/Text_Summarization_UCSD'`
             `import os; os.environ["PYTHONPATH"] = f'{os.environ["PYTHONPATH"]}:{PATH_NAME}/MLOps'`
+        
 
 
 ## Transfer Data and SavedModels to/from S3 Bucket

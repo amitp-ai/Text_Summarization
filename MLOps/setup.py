@@ -10,7 +10,7 @@ setup(
     description="text summarizer",
     author="Amit Patel",
     author_email='amitpatel.gt@gmail.com',
-    packages=find_packages(where='./MLOPs'),
+    packages=find_packages(where='.'),
     license="MIT",
     install_requires=['torch>=1.8.1', 'wandb>=0.10.31', 'rouge>=1.0.0'],
     url = 'https://github.com/amitp-ai/Text_Summarization_UCSD/tree/main/MLOps',

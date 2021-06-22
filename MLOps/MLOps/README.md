@@ -16,7 +16,7 @@ Run these commands from the MLOps directory i.e. from one level above this Readm
 `pip install -r requirements.txt`
 
 2. Install setup.py (but this is slow!)  
-`pip install -e .`  or `pip install .`
+`pip install -e .`  or `pip install .`  
 If want to create a wheel build and .tar that you can share with someone, do  
 `python setup.py sdist bdist_wheel`
 

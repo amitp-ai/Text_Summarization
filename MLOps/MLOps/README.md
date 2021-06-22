@@ -16,7 +16,7 @@ Run these commands from the MLOps directory i.e. from one level above this Readm
 `pip install -r requirements.txt`
 
 2. Install setup.py (but this is slow!)  
-`pip install -e .`  
+`pip install -e .`  or `pip install .`
 If want to create a wheel build and .tar that you can share with someone, do  
 `python setup.py sdist bdist_wheel`
 
@@ -24,7 +24,7 @@ If want to create a wheel build and .tar that you can share with someone, do
     1. In bash terminal:
             `export PYTHONPATH="${PYTHONPATH}:$PWD"`
     2. Inside Jupyter notebook:
-            `PATH_NAME = '/home/usr/Projects/Text_Summarization_UCSD'`
+            `PATH_NAME = '/home/usr/Projects/Text_Summarization'`
             `import os; os.environ["PYTHONPATH"] = f'{os.environ["PYTHONPATH"]}:{PATH_NAME}/MLOps'`
         
 
